@@ -34,6 +34,7 @@ def replace_dollar_signs_in_md_files(root_dir="."):
                 
                 # 使用替换方法
                 new_content = content.replace(" $", "$")
+                new_content = new_content.replace(" $", "$")
                 new_content = new_content.replace("$", " $")
                 new_content = new_content.replace("$ $", "$$")
                 new_content = new_content.replace("① $", "①$")
@@ -42,6 +43,29 @@ def replace_dollar_signs_in_md_files(root_dir="."):
                 new_content = new_content.replace("\}", r"\rbrace")
                 new_content = new_content.replace("\[", " $")
                 new_content = new_content.replace("\]", "$")
+                new_content = new_content.replace("\(", " $")
+                new_content = new_content.replace("\)", "$")
+                new_content = new_content.replace("   A", "A")
+                new_content = new_content.replace("   B", "B")
+                new_content = new_content.replace("   C", "C")
+                new_content = new_content.replace("   D", "D")
+                new_content = new_content.replace("   A", "A")
+                new_content = new_content.replace("   B", "B")
+                new_content = new_content.replace("   C", "C")
+                new_content = new_content.replace("   D", "D")
+                new_content = new_content.replace("A", "   A")
+                new_content = new_content.replace("B", "   B")
+                new_content = new_content.replace("C", "   C")
+                new_content = new_content.replace("D", "   D")
+                new_content = new_content.replace("   **答案**", "**答案**")
+                new_content = new_content.replace("   **解析**", "**解析**")
+                new_content = new_content.replace("   **答案**", "**答案**")
+                new_content = new_content.replace("   **解析**", "**解析**")
+                new_content = new_content.replace("**答案**", "   **答案**")
+                new_content = new_content.replace("**解析**", "   **解析**")
+                new_content = new_content.replace(" \n", "\n")
+                new_content = new_content.replace(" \n", "\n")
+                new_content = new_content.replace("\n", "  \n")
 
                 # 写回文件
                 with open(file_path, "w", encoding="utf-8") as f:
