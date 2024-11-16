@@ -39,7 +39,7 @@ def replace_dollar_signs_in_md_files(root_dir="."):
                 new_content = new_content.replace("① $", "①$")
                 new_content = new_content.replace(" $ ", "$ ")
                 new_content = new_content.replace("\{", "\lbrace ")
-                new_content = new_content.replace("\}", " \rbrace")
+                new_content = new_content.replace("\}", r"\rbrace")
 
                 # 写回文件
                 with open(file_path, "w", encoding="utf-8") as f:
