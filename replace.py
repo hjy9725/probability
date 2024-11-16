@@ -31,11 +31,17 @@ def replace_dollar_signs_in_md_files(root_dir="."):
                 
                 # 读取文件内容并替换 $ 为 " $"
                 with open(file_path, "r", encoding="utf-8") as f:
-                    content = f.read()
+                    new_content = f.read()
                 
                 # 使用替换方法
-                new_content = content.replace(" $", "$")
+                new_content = new_content.replace("：\n\n$$", "：\n$$")
+                new_content = new_content.replace("：\n\n$$", "：\n$$")
+                new_content = new_content.replace("：\n\n$$", "：\n$$")
+                new_content = new_content.replace("：\n$$", "：\n\n$$")
                 new_content = new_content.replace(" $", "$")
+                new_content = new_content.replace(" $", "$")
+                new_content = new_content.replace("$ ", "$")
+                new_content = new_content.replace("$ ", "$")
                 new_content = new_content.replace("$", " $")
                 new_content = new_content.replace("$ $", "$$")
                 new_content = new_content.replace("① $", "①$")
