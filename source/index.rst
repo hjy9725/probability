@@ -6,12 +6,29 @@
 probability documentation
 =========================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Welcome to the probability documentation! Here you will find information related to various probability concepts.
 
+.. .. toctree::
+..    :maxdepth: 2
+..    :caption: Contents:
+   
+..    第二章-随机变量及其分布/2.1_随机变量
+..    第二章-随机变量及其分布/2.2_离散型随机变量及其分布律
+   
+..    Indices and tables
+..    ==================
+   
+..    * :ref:`genindex`
+..    * :ref:`modindex`
+..    * :ref:`search`
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: 目录
 
+   第二章-随机变量及其分布/2.1_随机变量
+   第二章-随机变量及其分布/2.2_离散型随机变量及其分布律
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
