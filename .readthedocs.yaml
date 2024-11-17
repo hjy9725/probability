@@ -1,18 +1,20 @@
-.. Documentation for Probability Project
+# .readthedocs.yaml
+# Read the Docs configuration file
 
-Welcome to Probability Project's documentation!
-===============================================
+# Required
+version: 2
 
-.. toctree::
-   :maxdepth: 2
-   :caption: 目录
+# Set the OS, Python version and other tools you might need
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.12"
 
-   第二章-随机变量及其分布/2.1_随机变量
-   第二章-随机变量及其分布/2.2_离散型随机变量及其分布律
+# Build documentation in the "source/" directory with Sphinx
+sphinx:
+  configuration: source/conf.py
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+# Specify Python requirements
+python:
+  install:
+    - requirements: source/requirements.txt
