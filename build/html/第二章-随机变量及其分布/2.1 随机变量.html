@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第二章 随机变量及其分布 &mdash; probability v0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7cf98a4c"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/my_custom.js?v=917a4a93"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">第二章 随机变量及其分布</a><ul>
+<li><a class="reference internal" href="#id2">§1 随机变量</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">随机变量知识点提炼、题目及解析</a><ul>
+<li><a class="reference internal" href="#id4">一、知识点提炼</a></li>
+<li><a class="reference internal" href="#id5">二、选择题</a><ul>
+<li><a class="reference internal" href="#id6">知识点提炼</a></li>
+<li><a class="reference internal" href="#id7">选择题</a></li>
+<li><a class="reference internal" href="#id8">提炼的知识点</a></li>
+<li><a class="reference internal" href="#id9">选择题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">probability</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">第二章 随机变量及其分布</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/第二章-随机变量及其分布/2.1 随机变量.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第二章 随机变量及其分布<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>§1 随机变量<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>在第一章我们看到一些随机试验，它们的结果可以用数来表示。此时样本空间 <span class="math notranslate nohighlight">\(S \)</span>的元素是一个数，如 <span class="math notranslate nohighlight">\(S_3, S_5 \)</span>；但有些则不然，如 <span class="math notranslate nohighlight">\(S_1, S_2 \)</span>。当样本空间 <span class="math notranslate nohighlight">\(S \)</span>的元素不是一个数时，人们对于 <span class="math notranslate nohighlight">\(S \)</span>就难以描述和研究。现在来讨论如何引入一个法则，将随机试验的每一个结果，即将 <span class="math notranslate nohighlight">\(S \)</span>的每个元素 <span class="math notranslate nohighlight">\(e \)</span>与实数 <span class="math notranslate nohighlight">\(x \)</span>对应起来，从而引入了随机变量的概念。我们从例题开始讨论。</p>
+<p><strong>例 1</strong> 在第一章 §4 例 1 中，将一枚硬币抛掷三次，观察出现正面和反面的情况，样本空间是<br />
+<span class="math notranslate nohighlight">\(S = \lbrace HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\rbrace \)</span>.</p>
+<p>以 <span class="math notranslate nohighlight">\(X \)</span>记三次投掷得到正面 <span class="math notranslate nohighlight">\(H \)</span>的总数，那么，对于样本空间 <span class="math notranslate nohighlight">\(S = \lbrace e\rbrace^{①} \)</span>中的每一个样本点 <span class="math notranslate nohighlight">\(e \)</span>， <span class="math notranslate nohighlight">\(X \)</span>都有一个数与之对应。 <span class="math notranslate nohighlight">\(X \)</span>是定义在样本空间 <span class="math notranslate nohighlight">\(S \)</span>上的一个实值单值函数。它的定义域是样本空间 <span class="math notranslate nohighlight">\(S \)</span>，值域是实数集合 <span class="math notranslate nohighlight">\(\lbrace 0, 1, 2, 3\rbrace \)</span>。使用函数记号可将 <span class="math notranslate nohighlight">\(X \)</span>写成</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+  
+X = X(e) =  
+\begin{cases}  
+3, &amp; e = HHH, \\  
+2, &amp; e = HHT, HTH, THH, \\  
+1, &amp; e = HTT, THT, TTH, \\  
+0, &amp; e = TTT.  
+\end{cases}  
+  
+ \end{split}\]</div>
+<p><strong>例 2</strong> 在一袋中装有编号分别为 <span class="math notranslate nohighlight">\(1, 2, 3 \)</span>的 <span class="math notranslate nohighlight">\(3 \)</span>只球，在袋中任取一只球，放回，再任取一只球，记录它们的号码，试验的样本空间为 <span class="math notranslate nohighlight">\(S = \lbrace e\rbrace = \lbrace (i, j) \mid i, j = 1, 2, 3\rbrace \)</span>， <span class="math notranslate nohighlight">\(i, j \)</span>分别为第 <span class="math notranslate nohighlight">\(1 \)</span>、第 <span class="math notranslate nohighlight">\(2 \)</span>次取到的球的号码。以 <span class="math notranslate nohighlight">\(X \)</span>记两球号码之和。我们看到，对于试验的每一个结果 <span class="math notranslate nohighlight">\(e = (i, j) \in S \)</span>， <span class="math notranslate nohighlight">\(X \)</span>都有一个指定的值 <span class="math notranslate nohighlight">\(i + j \)</span>与之对应。（如<a class="reference internal" href="#%E5%9B%BE2-1"><span class="xref myst">图2-1</span></a>）。 <span class="math notranslate nohighlight">\(X \)</span>是定义在样本空间 <span class="math notranslate nohighlight">\(S \)</span>上的单值实值函数。它的定义域是样本空间 <span class="math notranslate nohighlight">\(S \)</span>。值域是实数集合 <span class="math notranslate nohighlight">\(\lbrace 2, 3, 4, 5, 6\rbrace \)</span>。</p>
+<p><img alt="图2-1" src="第二章-随机变量及其分布/pic/%E5%9B%BE2-1.png" /></p>
+<p>① 我们用 <span class="math notranslate nohighlight">\(e \)</span>代表样本空间的元素，而将样本空间记成 <span class="math notranslate nohighlight">\(\lbrace e\rbrace \)</span>。</p>
+<p><span class="math notranslate nohighlight">\(X \)</span>可写成<br />
+<span class="math notranslate nohighlight">\(X = X(e) = X((i, j)) = i + j, \quad i, j = 1, 2, 3 \)</span>.</p>
+<p>一般有以下的定义。</p>
+<p><strong>定义</strong> 设随机试验的样本空间为 <span class="math notranslate nohighlight">\(S = \lbrace e\rbrace \)</span>。 <span class="math notranslate nohighlight">\(X = X(e) \)</span>是定义在样本空间 <span class="math notranslate nohighlight">\(S \)</span>上的实值单值函数。称 <span class="math notranslate nohighlight">\(X = X(e) \)</span>为随机变量 <span class="math notranslate nohighlight">\(^{②} \)</span>。</p>
+<p><img alt="图2-2" src="第二章-随机变量及其分布/pic/%E5%9B%BE2-2.png" /></p>
+<p><a class="reference internal" href="#%E5%9B%BE2-2"><span class="xref myst">图2-2</span></a>画出了样本点 <span class="math notranslate nohighlight">\(e \)</span>与实数 <span class="math notranslate nohighlight">\(X = X(e) \)</span>对应的示意图。</p>
+<p>有许多随机试验，它们的结果本身是一个数，即样本点 <span class="math notranslate nohighlight">\(e \)</span>本身是一个数。我们令 <span class="math notranslate nohighlight">\(X = X(e) = e \)</span>，那么 <span class="math notranslate nohighlight">\(X \)</span>就是一个随机变量。例如，用 <span class="math notranslate nohighlight">\(Y \)</span>记某车间一天的缺勤人数，以 <span class="math notranslate nohighlight">\(W \)</span>记某地区第一季度的降雨量，以 <span class="math notranslate nohighlight">\(Z \)</span>记某工厂一天的耗电量，以 <span class="math notranslate nohighlight">\(N \)</span>记某医院某一天的挂号人数。那么 <span class="math notranslate nohighlight">\(Y, W, Z, N \)</span>都是随机变量。</p>
+<p>本书中，我们一般以大写的字母如 <span class="math notranslate nohighlight">\(X, Y, Z, W, \cdots \)</span>表示随机变量，而以小写字母 <span class="math notranslate nohighlight">\(x, y, z, w, \cdots \)</span>表示实数。</p>
+<p>随机变量的取值随试验的结果而定，而试验的各个结果出现有一定的概率，因而随机变量的取值有一定的概率。例如，在例1中 <span class="math notranslate nohighlight">\(X \)</span>取值为2，记成 <span class="math notranslate nohighlight">\(\lbrace X=2\rbrace \)</span>，对应于样本点的集合 <span class="math notranslate nohighlight">\(A = \lbrace HHT, HTH, THH\rbrace \)</span>，这是一个事件，当且仅当事件 <span class="math notranslate nohighlight">\(A \)</span>发生时有 <span class="math notranslate nohighlight">\(\lbrace X=2\rbrace \)</span>。我们称概率 <span class="math notranslate nohighlight">\(P(A) = P\lbrace HHT, HTH, THH\rbrace \)</span>为 <span class="math notranslate nohighlight">\(\lbrace X=2\rbrace \)</span>的概率，即 <span class="math notranslate nohighlight">\(P(X=2) = P(A) = 3/8 \)</span>。以后，还将事件 <span class="math notranslate nohighlight">\(A = \lbrace HHT, HTH, THH\rbrace \)</span>说成是事件 <span class="math notranslate nohighlight">\(\lbrace X=2\rbrace \)</span>。类似地有</p>
+<p><span class="math notranslate nohighlight">\(P(X \leq 1) = P\lbrace HTT, THT, TTH, TTT\rbrace = \frac{1}{2} \)</span></p>
+<p>一般，若 <span class="math notranslate nohighlight">\(L \)</span>是一个实数集合，将 <span class="math notranslate nohighlight">\(X \)</span>在 <span class="math notranslate nohighlight">\(L \)</span>上取值写成 <span class="math notranslate nohighlight">\(\lbrace X \in L\rbrace \)</span>。它表示事件 <span class="math notranslate nohighlight">\(B = \lbrace e | X(e) \in L\rbrace \)</span>，即 <span class="math notranslate nohighlight">\(B \)</span>是由 <span class="math notranslate nohighlight">\(S \)</span>中使得 <span class="math notranslate nohighlight">\(X(e) \in L \)</span>的所有样本点 <span class="math notranslate nohighlight">\(e \)</span>所组成的事件，此时有</p>
+<p><span class="math notranslate nohighlight">\(P(X \in L) = P(B) = P\lbrace e | X(e) \in L\rbrace \)</span></p>
+<p>随机变量的取值随试验的结果而定，在试验之前不能预知它取什么值，且它的取值有一定的概率。这些性质显示了随机变量与普通函数有着本质的差异。</p>
+<p>随机变量的引入，使我们能用随机变量来描述各种随机现象，并能利用数学分析的方法对随机试验的结果进行深入广泛的研究和讨论。</p>
+<p>②严格地说“对于任意实数 <span class="math notranslate nohighlight">\(x \)</span>，集合 <span class="math notranslate nohighlight">\(\lbrace e | X(e) \leq x\rbrace \)</span>（即：使得 <span class="math notranslate nohighlight">\(X(e) \leq x \)</span>的所有样本点 <span class="math notranslate nohighlight">\(e \)</span>所组成的集合）有确定的概率”这一要求应包括在随机变量的定义之中，一般来说，不满足这一条件的情况，在实际应用中是很少遇到的。因此，我们在定义中未提及这一要求。</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>随机变量知识点提炼、题目及解析<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
+<section id="id4">
+<h2>一、知识点提炼<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>随机变量的引入背景</strong>：当随机试验样本空间元素非数时，难以直接用数学方法研究，故引入随机变量将样本空间元素与实数对应，以利后续分析。</p></li>
+<li><p><strong>随机变量的定义</strong>：设随机试验样本空间为 <span class="math notranslate nohighlight">\(S=\lbrace e\rbrace \)</span>， <span class="math notranslate nohighlight">\(X = X(e) \)</span>是定义在 <span class="math notranslate nohighlight">\(S \)</span>上的实值单值函数，则称 <span class="math notranslate nohighlight">\(X \)</span>为随机变量。例如抛硬币三次，记正面总数为 <span class="math notranslate nohighlight">\(X \)</span>；两次取球记号码和为 <span class="math notranslate nohighlight">\(X \)</span>等。</p></li>
+<li><p><strong>随机变量取值与概率</strong>：随机变量取值随试验结果而定且有对应概率。如抛硬币三次试验中， <span class="math notranslate nohighlight">\(P(X = 2) \)</span>对应特定样本点集合概率，可通过计算该集合元素个数与样本空间元素总数之比得到。</p></li>
+<li><p><strong>随机变量与普通函数的区别</strong>：随机变量取值前未知且有概率，普通函数给定自变量值后函数值确定。</p></li>
+<li><p><strong>随机变量表示事件</strong>：若 <span class="math notranslate nohighlight">\(L \)</span>是实数集合， <span class="math notranslate nohighlight">\(\lbrace X\in L\rbrace \)</span>表示由 <span class="math notranslate nohighlight">\(S \)</span>中使 <span class="math notranslate nohighlight">\(X(e)\in L \)</span>的样本点 <span class="math notranslate nohighlight">\(e \)</span>组成的事件，其概率为 <span class="math notranslate nohighlight">\(P(X\in L)=P\lbrace e|X(e)\in L\rbrace \)</span>。</p></li>
+</ol>
+</section>
+<section id="id5">
+<h2>二、选择题<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>随机变量是基于什么需求而引入的概念？（  ）</p>
+<ul class="simple">
+<li><p>A. 简化样本空间表述</p></li>
+<li><p>B. 便于用数学方法研究随机试验结果</p></li>
+<li><p>C. 统一随机试验的结果形式</p></li>
+<li><p>D. 使随机试验更具可操作性<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：引入随机变量主要是为了能用数学分析方法深入研究随机试验结果，将样本空间元素与实数对应，从而能运用数学工具处理随机现象，A选项简化表述不准确，C选项统一结果形式并非主要目的，D选项使试验更具可操作性也不是引入随机变量的核心原因。</p></li>
+</ul>
+</li>
+<li><p>在抛硬币三次的试验中，定义 <span class="math notranslate nohighlight">\(X \)</span>为出现正面的次数，样本空间 <span class="math notranslate nohighlight">\(S=\lbrace HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\rbrace \)</span>，那么 <span class="math notranslate nohighlight">\(X \)</span>的值域是（  ）。</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lbrace 0, 1, 2\rbrace \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lbrace 0, 1, 2, 3\rbrace \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\lbrace 1, 2, 3\rbrace \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\lbrace 0, 3\rbrace \)</span><br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：抛硬币三次，正面次数最少为 <span class="math notranslate nohighlight">\(0 \)</span>次（如 <span class="math notranslate nohighlight">\(TTT \)</span>），最多为 <span class="math notranslate nohighlight">\(3 \)</span>次（如 <span class="math notranslate nohighlight">\(HHH \)</span>），中间还有 <span class="math notranslate nohighlight">\(1 \)</span>次（如 <span class="math notranslate nohighlight">\(HTT \)</span>等三种情况）和 <span class="math notranslate nohighlight">\(2 \)</span>次（如 <span class="math notranslate nohighlight">\(HHT \)</span>等三种情况），所以值域是 <span class="math notranslate nohighlight">\(\lbrace 0, 1, 2, 3\rbrace \)</span>。</p></li>
+</ul>
+</li>
+<li><p>对于上述抛硬币三次定义的 <span class="math notranslate nohighlight">\(X \)</span>， <span class="math notranslate nohighlight">\(P(X = 1) \)</span>的值为（  ）。</p>
+<ul class="simple">
+<li><p>A. 1/8</p></li>
+<li><p>B. 3/8</p></li>
+<li><p>C. 1/2</p></li>
+<li><p>D. 5/8<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>： <span class="math notranslate nohighlight">\(X = 1 \)</span>时对应的样本点有 <span class="math notranslate nohighlight">\(HTT \)</span>、 <span class="math notranslate nohighlight">\(THT \)</span>、 <span class="math notranslate nohighlight">\(TTH \)</span>共 <span class="math notranslate nohighlight">\(3 \)</span>个，样本空间共 <span class="math notranslate nohighlight">\(8 \)</span>个元素，所以 <span class="math notranslate nohighlight">\(P(X = 1)=3/8 \)</span>。</p></li>
+</ul>
+</li>
+<li><p>若随机变量 <span class="math notranslate nohighlight">\(Y \)</span>表示某班级一次考试的及格人数，那么 <span class="math notranslate nohighlight">\(Y \)</span>是（  ）。</p>
+<ul class="simple">
+<li><p>A. 确定的数值</p></li>
+<li><p>B. 随机变量</p></li>
+<li><p>C. 样本空间</p></li>
+<li><p>D. 事件<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：班级考试及格人数会因学生考试情况这一随机试验结果而变化，且有对应的概率，符合随机变量定义，不是确定数值、样本空间或单一事件。</p></li>
+</ul>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>是随机变量， <span class="math notranslate nohighlight">\(M=\lbrace 2, 3\rbrace \)</span>， <span class="math notranslate nohighlight">\(\lbrace X\in M\rbrace \)</span>表示（  ）。</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>取值为 <span class="math notranslate nohighlight">\(2 \)</span>或 <span class="math notranslate nohighlight">\(3 \)</span>的事件</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>取值大于 <span class="math notranslate nohighlight">\(2 \)</span>且小于 <span class="math notranslate nohighlight">\(3 \)</span>的事件</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>取值为 <span class="math notranslate nohighlight">\(2 \)</span>且为 <span class="math notranslate nohighlight">\(3 \)</span>的事件</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>取值不在 <span class="math notranslate nohighlight">\(2 \)</span>和 <span class="math notranslate nohighlight">\(3 \)</span>的事件<br />
+<strong>答案</strong>：A<br />
+<strong>解析</strong>： <span class="math notranslate nohighlight">\(\lbrace X\in M\rbrace \)</span>表示由样本空间中使得 <span class="math notranslate nohighlight">\(X(e) \)</span>取值在 <span class="math notranslate nohighlight">\(M=\lbrace 2, 3\rbrace \)</span>中的样本点 <span class="math notranslate nohighlight">\(e \)</span>组成的事件，即 <span class="math notranslate nohighlight">\(X \)</span>取值为 <span class="math notranslate nohighlight">\(2 \)</span>或 <span class="math notranslate nohighlight">\(3 \)</span>的事件。</p></li>
+</ul>
+</li>
+<li><p>随机变量与普通函数的本质区别在于（  ）。</p>
+<ul class="simple">
+<li><p>A. 定义域不同</p></li>
+<li><p>B. 值域不同</p></li>
+<li><p>C. 随机变量取值有概率，普通函数没有</p></li>
+<li><p>D. 函数表达式不同<br />
+<strong>答案</strong>：C<br />
+<strong>解析</strong>：随机变量的取值是不确定的且有相应概率，普通函数在给定自变量时函数值确定，这是二者本质区别，定义域、值域和函数表达式并非其本质差异所在。</p></li>
+</ul>
+</li>
+<li><p>在一袋中有编号为 <span class="math notranslate nohighlight">\(1 \)</span>、 <span class="math notranslate nohighlight">\(2 \)</span>、 <span class="math notranslate nohighlight">\(3 \)</span>、 <span class="math notranslate nohighlight">\(4 \)</span>的 <span class="math notranslate nohighlight">\(4 \)</span>个球，从中任取一个球，记球的编号为 <span class="math notranslate nohighlight">\(X \)</span>，则 <span class="math notranslate nohighlight">\(X \)</span>是（  ）。</p>
+<ul class="simple">
+<li><p>A. 随机变量</p></li>
+<li><p>B. 普通变量</p></li>
+<li><p>C. 常数</p></li>
+<li><p>D. 样本点<br />
+<strong>答案</strong>：A<br />
+<strong>解析</strong>：因为取球的结果是随机的， <span class="math notranslate nohighlight">\(X \)</span>的取值取决于取球这一随机试验的结果且有相应概率，所以 <span class="math notranslate nohighlight">\(X \)</span>是随机变量。</p></li>
+</ul>
+</li>
+<li><p>对于随机变量 <span class="math notranslate nohighlight">\(X \)</span>，若 <span class="math notranslate nohighlight">\(P(X\leqslant a)=0.5 \)</span>，这意味着（  ）。</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>取值小于等于 <span class="math notranslate nohighlight">\(a \)</span>的概率为 <span class="math notranslate nohighlight">\(0.5 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>取值大于 <span class="math notranslate nohighlight">\(a \)</span>的概率为 <span class="math notranslate nohighlight">\(0.5 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>取值一定为 <span class="math notranslate nohighlight">\(a \)</span>的概率为 <span class="math notranslate nohighlight">\(0.5 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>取值在 <span class="math notranslate nohighlight">\(a \)</span>附近的概率为 <span class="math notranslate nohighlight">\(0.5 \)</span><br />
+<strong>答案</strong>：A<br />
+<strong>解析</strong>： <span class="math notranslate nohighlight">\(P(X\leqslant a) \)</span>表示的就是随机变量 <span class="math notranslate nohighlight">\(X \)</span>取值小于等于 <span class="math notranslate nohighlight">\(a \)</span>的概率为 <span class="math notranslate nohighlight">\(0.5 \)</span>。</p></li>
+</ul>
+</li>
+<li><p>以下不是随机变量的是（  ）。</p>
+<ul class="simple">
+<li><p>A. 某路口一天内经过的车辆数</p></li>
+<li><p>B. 水在标准大气压下的沸点</p></li>
+<li><p>C. 某运动员在一次比赛中的得分</p></li>
+<li><p>D. 某商场一天的客流量<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：水在标准大气压下沸点是固定的 <span class="math notranslate nohighlight">\(100^{\circ}C \)</span>，不是随随机试验结果变化且有概率的量，而其他选项均是与随机事件相关且取值不定有概率的随机变量。</p></li>
+</ul>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(X \)</span>是随机变量，其定义域为样本空间 <span class="math notranslate nohighlight">\(S \)</span>，则（  ）。</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>的值域一定是整数集</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>的值域由样本空间 <span class="math notranslate nohighlight">\(S \)</span>中元素决定</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>的值域是全体实数集</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>的值域与样本空间 <span class="math notranslate nohighlight">\(S \)</span>无关<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：随机变量 <span class="math notranslate nohighlight">\(X \)</span>的值域是由其对应样本空间 <span class="math notranslate nohighlight">\(S \)</span>中元素通过 <span class="math notranslate nohighlight">\(X(e) \)</span>的映射关系确定的，不一定是整数集或全体实数集，且与样本空间密切相关。</p></li>
+</ul>
+</li>
+<li><p>在两次掷骰子的试验中，设 <span class="math notranslate nohighlight">\(X \)</span>为两次点数之和，那么 <span class="math notranslate nohighlight">\(X \)</span>的最小值是（  ）。</p>
+<ul class="simple">
+<li><p>A. 1</p></li>
+<li><p>B. 2</p></li>
+<li><p>C. 3</p></li>
+<li><p>D. 4<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：骰子最小点数是 <span class="math notranslate nohighlight">\(1 \)</span>，两次掷骰子最小和为 <span class="math notranslate nohighlight">\(1 + 1 = 2 \)</span>。</p></li>
+</ul>
+</li>
+<li><p>对于上述两次掷骰子试验中的 <span class="math notranslate nohighlight">\(X \)</span>， <span class="math notranslate nohighlight">\(P(X = 7) \)</span>的值为（  ）。</p>
+<ul class="simple">
+<li><p>A. 1/6</p></li>
+<li><p>B. 1/9</p></li>
+<li><p>C. 1/12</p></li>
+<li><p>D. 1/36<br />
+<strong>答案</strong>：A<br />
+<strong>解析</strong>：两次掷骰子点数和为 <span class="math notranslate nohighlight">\(7 \)</span>的情况有 <span class="math notranslate nohighlight">\((1, 6) \)</span>、 <span class="math notranslate nohighlight">\((2, 5) \)</span>、 <span class="math notranslate nohighlight">\((3, 4) \)</span>、 <span class="math notranslate nohighlight">\((4, 3) \)</span>、 <span class="math notranslate nohighlight">\((5, 2) \)</span>、 <span class="math notranslate nohighlight">\((6, 1) \)</span>共 <span class="math notranslate nohighlight">\(6 \)</span>种，而两次掷骰子总的情况有 <span class="math notranslate nohighlight">\(6\times6 = 36 \)</span>种，所以 <span class="math notranslate nohighlight">\(P(X = 7)=6/36 = 1/6 \)</span>。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>取值的概率总和（  ）。</p>
+<ul class="simple">
+<li><p>A. 小于 <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>B. 等于 <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>C. 大于 <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>D. 不确定<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：随机变量所有可能取值的概率总和必然等于 <span class="math notranslate nohighlight">\(1 \)</span>，这是概率的基本性质。</p></li>
+</ul>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(X \)</span>表示某工厂产品的次品数，当产品数量增加时， <span class="math notranslate nohighlight">\(X \)</span>（  ）。</p>
+<ul class="simple">
+<li><p>A. 一定增大</p></li>
+<li><p>B. 一定减小</p></li>
+<li><p>C. 取值范围可能改变</p></li>
+<li><p>D. 与产品数量无关<br />
+<strong>答案</strong>：C<br />
+<strong>解析</strong>：随着产品数量增加，次品数 <span class="math notranslate nohighlight">\(X \)</span>的可能取值范围可能会改变，不一定是增大或减小，且与产品数量有密切关系。</p></li>
+</ul>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>是随机变量， <span class="math notranslate nohighlight">\(N=\lbrace x|x &gt; 5\rbrace \)</span>， <span class="math notranslate nohighlight">\(\lbrace X\in N\rbrace \)</span>表示（  ）。</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>取值大于 <span class="math notranslate nohighlight">\(5 \)</span>的事件</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>取值小于 <span class="math notranslate nohighlight">\(5 \)</span>的事件</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>取值等于 <span class="math notranslate nohighlight">\(5 \)</span>的事件</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>取值不大于 <span class="math notranslate nohighlight">\(5 \)</span>的事件<br />
+<strong>答案</strong>：A<br />
+<strong>解析</strong>： <span class="math notranslate nohighlight">\(\lbrace X\in N\rbrace \)</span>即 <span class="math notranslate nohighlight">\(X \)</span>的取值满足 <span class="math notranslate nohighlight">\(N=\lbrace x|x &gt; 5\rbrace \)</span>，也就是 <span class="math notranslate nohighlight">\(X \)</span>取值大于 <span class="math notranslate nohighlight">\(5 \)</span>的事件。</p></li>
+</ul>
+</li>
+<li><p>以下关于随机变量定义的理解，正确的是（  ）。</p>
+<ul class="simple">
+<li><p>A. 只要是定义在样本空间上的函数就是随机变量</p></li>
+<li><p>B. 定义在样本空间上的实值单值函数且满足特定概率条件才是随机变量</p></li>
+<li><p>C. 随机变量与样本空间的元素个数有关</p></li>
+<li><p>D. 随机变量的定义与函数的单调性有关<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：随机变量是定义在样本空间上的实值单值函数，且严格来说对于任意实数 <span class="math notranslate nohighlight">\(x \)</span>，集合 <span class="math notranslate nohighlight">\(\lbrace e|X(e)\leq x\rbrace \)</span>有确定概率（一般应用中不满足此条件情况很少），A选项不全面，C、D选项与随机变量定义无关。</p></li>
+</ul>
+</li>
+<li><p>在一次抽奖活动中，设 <span class="math notranslate nohighlight">\(X \)</span>表示中奖金额，那么 <span class="math notranslate nohighlight">\(X \)</span>（  ）。</p>
+<ul class="simple">
+<li><p>A. 只有一个取值</p></li>
+<li><p>B. 取值是固定的几个金额</p></li>
+<li><p>C. 取值有多种可能且有概率</p></li>
+<li><p>D. 取值与抽奖人数无关<br />
+<strong>答案</strong>：C<br />
+<strong>解析</strong>：抽奖活动中中奖金额 <span class="math notranslate nohighlight">\(X \)</span>取决于抽奖结果，有多种可能取值且每个取值都有相应概率，与抽奖人数有一定关联。</p></li>
+</ul>
+</li>
+<li><p>对于随机变量 <span class="math notranslate nohighlight">\(X \)</span>，若 <span class="math notranslate nohighlight">\(P(X = k)=0 \)</span>，这说明（  ）。</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>不可能取到 <span class="math notranslate nohighlight">\(k \)</span>值</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>取到 <span class="math notranslate nohighlight">\(k \)</span>值的概率极小</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>取到 <span class="math notranslate nohighlight">\(k \)</span>值的概率未确定</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>一定取到 <span class="math notranslate nohighlight">\(k \)</span>值以外的值<br />
+<strong>答案</strong>：A<br />
+<strong>解析</strong>： <span class="math notranslate nohighlight">\(P(X = k)=0 \)</span>表示在该随机试验中 <span class="math notranslate nohighlight">\(X \)</span>取到 <span class="math notranslate nohighlight">\(k \)</span>值这个事件几乎不可能发生，即 <span class="math notranslate nohighlight">\(X \)</span>不可能取到 <span class="math notranslate nohighlight">\(k \)</span>值。</p></li>
+</ul>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>表示某地区一天内的气温变化范围， <span class="math notranslate nohighlight">\(X \)</span>是（  ）。</p>
+<ul class="simple">
+<li><p>A. 随机变量</p></li>
+<li><p>B. 普通变量</p></li>
+<li><p>C. 常数</p></li>
+<li><p>D. 样本点<br />
+<strong>答案</strong>：A<br />
+<strong>解析</strong>：某地区一天内气温变化范围是随天气这一随机情况而变化的，且有相应概率，所以 <span class="math notranslate nohighlight">\(X \)</span>是随机变量。</p></li>
+</ul>
+</li>
+</ol>
+<section id="id6">
+<h3>知识点提炼<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>随机变量的定义</strong>：随机变量是样本空间到实数集的函数，它将样本空间中的每个结果映射到一个实数。</p></li>
+<li><p><strong>随机变量的分类</strong>：随机变量可以分为离散型和连续型，取决于其取值是否可以一一列举。</p></li>
+<li><p><strong>概率质量函数（PMF）</strong>：对于离散型随机变量，PMF给出了每个可能值的概率。</p></li>
+<li><p><strong>概率密度函数（PDF）</strong>：对于连续型随机变量，PDF描述了变量在某个区间内取值的概率密度。</p></li>
+<li><p><strong>累积分布函数（CDF）</strong>：CDF给出了随机变量取值小于或等于某个值的概率。</p></li>
+<li><p><strong>随机变量的期望</strong>：期望是随机变量的平均值，反映了随机变量的中心趋势。</p></li>
+</ol>
+</section>
+<section id="id7">
+<h3>选择题<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>随机变量是：</p>
+<ul class="simple">
+<li><p>A. 样本空间的一个子集</p></li>
+<li><p>B. 样本空间到实数集的函数</p></li>
+<li><p>C. 样本空间中的一个特定元素</p></li>
+<li><p>D. 实数集中的一个特定值<br />
+答案：B<br />
+解析：随机变量将样本空间中的每个结果映射到一个实数。</p></li>
+</ul>
+</li>
+<li><p>离散型随机变量的概率分布由什么描述？</p>
+<ul class="simple">
+<li><p>A. 累积分布函数</p></li>
+<li><p>B. 概率质量函数</p></li>
+<li><p>C. 概率密度函数</p></li>
+<li><p>D. 经验分布函数<br />
+答案：B<br />
+解析：离散型随机变量的概率分布由概率质量函数描述。</p></li>
+</ul>
+</li>
+<li><p>连续型随机变量的概率分布由什么描述？</p>
+<ul class="simple">
+<li><p>A. 概率质量函数</p></li>
+<li><p>B. 概率密度函数</p></li>
+<li><p>C. 累积分布函数</p></li>
+<li><p>D. 经验分布函数<br />
+答案：B<br />
+解析：连续型随机变量的概率分布由概率密度函数描述。</p></li>
+</ul>
+</li>
+<li><p>累积分布函数（CDF）描述了：</p>
+<ul class="simple">
+<li><p>A. 随机变量取值大于某个值的概率</p></li>
+<li><p>B. 随机变量取值小于某个值的概率</p></li>
+<li><p>C. 随机变量取值等于某个值的概率</p></li>
+<li><p>D. 随机变量取值在某个区间内的概率<br />
+答案：B<br />
+解析：CDF给出了随机变量取值小于或等于某个值的概率。</p></li>
+</ul>
+</li>
+<li><p>随机变量的期望值是：</p>
+<ul class="simple">
+<li><p>A. 随机变量的最大可能值</p></li>
+<li><p>B. 随机变量的最小可能值</p></li>
+<li><p>C. 随机变量的所有可能值的平均</p></li>
+<li><p>D. 随机变量的中位数<br />
+答案：C<br />
+解析：期望值是随机变量的所有可能值的加权平均，权重是每个值的概率。</p></li>
+</ul>
+</li>
+<li><p>如果随机变量 <span class="math notranslate nohighlight">\(X \)</span>的概率密度函数 <span class="math notranslate nohighlight">\(f(x) \)</span>满足 <span class="math notranslate nohighlight">\(\int_{ \infty}^{\infty} f(x) dx = 1 \)</span>，则：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(f(x) \)</span>必须在所有点上非负</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(f(x) \)</span>在某些点上可以为负</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(f(x) \)</span>只在 <span class="math notranslate nohighlight">\(x = 0 \)</span>时为正</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(f(x) \)</span>只在 <span class="math notranslate nohighlight">\(x = 1 \)</span>时为正<br />
+答案：A<br />
+解析：概率密度函数在整个实数域上的积分为1，且必须在所有点上非负。</p></li>
+</ul>
+</li>
+<li><p>对于离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>，其概率质量函数 <span class="math notranslate nohighlight">\(p(x) \)</span>满足：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\sum_{x} p(x) = 1 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\sum_{x} p(x) \)</span>可以大于1</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p(x) \)</span>只在 <span class="math notranslate nohighlight">\(x \)</span>为整数时为正</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(p(x) \)</span>只在 <span class="math notranslate nohighlight">\(x = 0 \)</span>时为正<br />
+答案：A<br />
+解析：离散型随机变量的概率质量函数的所有可能值的概率之和必须为1。</p></li>
+</ul>
+</li>
+<li><p>随机变量的值域是：</p>
+<ul class="simple">
+<li><p>A. 样本空间 <span class="math notranslate nohighlight">\(S \)</span></p></li>
+<li><p>B. 实数集合 <span class="math notranslate nohighlight">\(\mathbb{R} \)</span></p></li>
+<li><p>C. 整数集合 <span class="math notranslate nohighlight">\(\mathbb{Z} \)</span></p></li>
+<li><p>D. 有理数集合 <span class="math notranslate nohighlight">\(\mathbb{Q} \)</span><br />
+答案：B<br />
+解析：随机变量的值域是实数集合 <span class="math notranslate nohighlight">\(\mathbb{R} \)</span>，但也可以是实数的任何子集。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>取值为2的概率记为：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X=2) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X\leq2) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X&gt;2) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(P(X\geq2) \)</span><br />
+答案：A<br />
+解析： <span class="math notranslate nohighlight">\(P(X=2) \)</span>表示随机变量 <span class="math notranslate nohighlight">\(X \)</span>取值为2的概率。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \)</span>是一个随机变量，那么 <span class="math notranslate nohighlight">\(Y = 2X + 3 \)</span>是：</p>
+<ul class="simple">
+<li><p>A. 确定性变量</p></li>
+<li><p>B. 随机变量</p></li>
+<li><p>C. 常数</p></li>
+<li><p>D. 函数<br />
+答案：B<br />
+解析： <span class="math notranslate nohighlight">\(Y = 2X + 3 \)</span>是 <span class="math notranslate nohighlight">\(X \)</span>的线性变换，因此 <span class="math notranslate nohighlight">\(Y \)</span>也是随机变量。</p></li>
+</ul>
+</li>
+<li><p>随机变量的引入允许我们：</p>
+<ul class="simple">
+<li><p>A. 预测随机事件的确切结果</p></li>
+<li><p>B. 描述和分析随机现象</p></li>
+<li><p>C. 消除随机性</p></li>
+<li><p>D. 确定性地控制随机过程<br />
+答案：B<br />
+解析：随机变量的引入允许我们描述和分析随机现象。</p></li>
+</ul>
+</li>
+<li><p>随机变量的值在试验前：</p>
+<ul class="simple">
+<li><p>A. 可以预知</p></li>
+<li><p>B. 不能预知</p></li>
+<li><p>C. 总是整数</p></li>
+<li><p>D. 总是有理数<br />
+答案：B<br />
+解析：随机变量的值在试验前不能预知，这是随机变量的基本特性之一。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值 <span class="math notranslate nohighlight">\(E(X) \)</span>计算公式为：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(E(X) = \sum x \cdot P(X=x) \)</span>对于离散型</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(E(X) = \int x \cdot f(x) dx \)</span>对于连续型</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(E(X) = \max(X) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(E(X) = \min(X) \)</span><br />
+答案：A 和B<br />
+解析：期望值的计算公式取决于随机变量的类型，离散型使用求和，连续型使用积分。</p></li>
+</ul>
+</li>
+<li><p>概率密度函数 <span class="math notranslate nohighlight">\(f(x) \)</span>的图形表示：</p>
+<ul class="simple">
+<li><p>A. 曲线下的面积表示概率</p></li>
+<li><p>B. 曲线下的面积表示概率密度</p></li>
+<li><p>C. 曲线上的点表示概率</p></li>
+<li><p>D. 曲线上的点表示概率密度<br />
+答案：A<br />
+解析：概率密度函数的图形表示概率密度，而不是概率，曲线下的面积表示随机变量落在某个区间内的概率。</p></li>
+</ul>
+</li>
+<li><p>随机变量的方差 <span class="math notranslate nohighlight">\(\text{Var}(X) \)</span>描述了：</p>
+<ul class="simple">
+<li><p>A. 随机变量的期望值</p></li>
+<li><p>B. 随机变量的中心趋势</p></li>
+<li><p>C. 随机变量的离散程度</p></li>
+<li><p>D. 随机变量的分布形状<br />
+答案：C<br />
+解析：方差是衡量随机变量值与其期望值偏离程度的度量，描述了随机变量的离散程度。</p></li>
+</ul>
+</li>
+<li><p>对于连续型随机变量 <span class="math notranslate nohighlight">\(X \)</span>， <span class="math notranslate nohighlight">\(P(a &lt; X \leq b) \)</span>表示：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>取值在 <span class="math notranslate nohighlight">\(a \)</span>和 <span class="math notranslate nohighlight">\(b \)</span>之间的概率</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>取值小于 <span class="math notranslate nohighlight">\(a \)</span>的概率</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>取值大于 <span class="math notranslate nohighlight">\(b \)</span>的概率</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>取值等于 <span class="math notranslate nohighlight">\(a \)</span>或 <span class="math notranslate nohighlight">\(b \)</span>的概率<br />
+答案：A<br />
+解析：对于连续型随机变量， <span class="math notranslate nohighlight">\(P(a &lt; X \leq b) \)</span>表示 <span class="math notranslate nohighlight">\(X \)</span>取值在 <span class="math notranslate nohighlight">\(a \)</span>和 <span class="math notranslate nohighlight">\(b \)</span>之间的概率。</p></li>
+</ul>
+</li>
+<li><p>随机变量的中位数是：</p>
+<ul class="simple">
+<li><p>A. 随机变量的期望值</p></li>
+<li><p>B. 随机变量的众数</p></li>
+<li><p>C. 将随机变量的分布分为两个相等部分的值</p></li>
+<li><p>D. 随机变量的最大值<br />
+答案：C<br />
+解析：中位数是将随机变量的分布分为两个相等部分的值，即一半的值小于中位数，一半的值大于中位数。</p></li>
+</ul>
+</li>
+<li><p>随机变量的标准差是：</p>
+<ul class="simple">
+<li><p>A. 方差的平方根</p></li>
+<li><p>B. 方差的倒数</p></li>
+<li><p>C. 期望值的平方</p></li>
+<li><p>D. 期望值的倒数<br />
+答案：A<br />
+解析：标准差是方差的平方根，用于衡量随机变量的离散程度。</p></li>
+</ul>
+</li>
+<li><p>如果随机变量 <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>是独立的，那么：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X \cap Y) = P(X) \cdot P(Y) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X \cup Y) = P(X) + P(Y) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X | Y) = P(X) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(P(X, Y) = P(X)   P(Y) \)</span><br />
+答案：A<br />
+解析：对于独立的随机变量 <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>，它们同时发生的概率等于各自发生概率的乘积。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的方差 <span class="math notranslate nohighlight">\(\text{Var}(X) \)</span>为 0 意味着：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>总是取相同的值</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>取值在某个区间内</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>是连续型随机变量</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>是离散型随机变量<br />
+答案：A<br />
+解析：方差为 0 表示随机变量 <span class="math notranslate nohighlight">\(X \)</span>没有变异性，即总是取相同的值。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的标准差是：</p>
+<ul class="simple">
+<li><p>A. 方差的平方</p></li>
+<li><p>B. 方差的平方根</p></li>
+<li><p>C. 方差的倒数</p></li>
+<li><p>D. 期望值的平方<br />
+答案：B<br />
+解析：标准差是方差的平方根，用于衡量随机变量的离散程度。</p></li>
+</ul>
+</li>
+<li><p>对于离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>，其期望值 <span class="math notranslate nohighlight">\(E(X) \)</span>计算为：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(E(X) = \sum x \cdot P(X=x) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(E(X) = \int x \cdot f(x) dx \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(E(X) = \max(X) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(E(X) = \min(X) \)</span><br />
+答案：A<br />
+解析：离散型随机变量的期望值是所有可能值乘以其概率的总和。</p></li>
+</ul>
+</li>
+<li><p>对于连续型随机变量 <span class="math notranslate nohighlight">\(X \)</span>，其期望值 <span class="math notranslate nohighlight">\(E(X) \)</span>计算为：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(E(X) = \sum x \cdot P(X=x) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(E(X) = \int x \cdot f(x) dx \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(E(X) = \max(X) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(E(X) = \min(X) \)</span><br />
+答案：B<br />
+解析：连续型随机变量的期望值是所有可能值乘以其概率密度函数的积分。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的累积分布函数 <span class="math notranslate nohighlight">\(F(x) \)</span>满足：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(F(x) \)</span>是常数函数</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(F(x) \)</span>是非减函数</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(F(x) \)</span>是周期函数</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(F(x) \)</span>是线性函数<br />
+答案：B<br />
+解析：累积分布函数 <span class="math notranslate nohighlight">\(F(x) \)</span>是非减函数，表示随机变量取值小于或等于 <span class="math notranslate nohighlight">\(x \)</span>的概率。</p></li>
+</ul>
+</li>
+<li><p>如果随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从正态分布 <span class="math notranslate nohighlight">\(N(\mu, \sigma^2) \)</span>，则：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>的期望值是 <span class="math notranslate nohighlight">\(\mu \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>的方差是 <span class="math notranslate nohighlight">\(\sigma^2 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>的期望值和方差都是 <span class="math notranslate nohighlight">\(\sigma^2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>的期望值和方差都是 <span class="math notranslate nohighlight">\(\mu \)</span><br />
+答案：A 和B<br />
+解析：正态分布 <span class="math notranslate nohighlight">\(N(\mu, \sigma^2) \)</span>的期望值是 <span class="math notranslate nohighlight">\(\mu \)</span>，方差是 <span class="math notranslate nohighlight">\(\sigma^2 \)</span>。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的中位数是：</p>
+<ul class="simple">
+<li><p>A. 随机变量的期望值</p></li>
+<li><p>B. 随机变量的众数</p></li>
+<li><p>C. 将随机变量的分布分为两个相等部分的值</p></li>
+<li><p>D. 随机变量的最大值<br />
+答案：C<br />
+解析：中位数是将随机变量的分布分为两个相等部分的值，即一半的值小于中位数，一半的值大于中位数。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的众数是：</p>
+<ul class="simple">
+<li><p>A. 随机变量的期望值</p></li>
+<li><p>B. 随机变量的最常见值</p></li>
+<li><p>C. 随机变量的方差</p></li>
+<li><p>D. 随机变量的标准差<br />
+答案：B<br />
+解析：众数是随机变量的最常见值，即出现次数最多的值。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的协方差 <span class="math notranslate nohighlight">\(\text{Cov}(X, Y) \)</span>描述了：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的线性关系</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的独立性</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的期望值</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的方差<br />
+答案：A<br />
+解析：协方差描述了两个随机变量之间的线性关系，正值表示正相关，负值表示负相关。</p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的相关系数 <span class="math notranslate nohighlight">\(\rho_{XY} \)</span>描述了：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的线性关系强度</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的独立性</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的期望值</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>和 <span class="math notranslate nohighlight">\(Y \)</span>的方差<br />
+答案：A<br />
+解析：相关系数是协方差的标准化形式，描述了两个随机变量之间的线性关系强度，其值介于  1 和 1 之间。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id8">
+<h3>提炼的知识点<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>随机变量的定义</strong>：<br />
+随机变量是定义在样本空间上的实值单值函数。<br />
+随机变量通常用大写字母表示，如 <span class="math notranslate nohighlight">\(X, Y, Z \)</span>等。</p></li>
+<li><p><strong>随机变量的类型</strong>：<br />
+离散随机变量：取值为有限或可数无限个。<br />
+连续随机变量：取值为某个区间内的所有实数。</p></li>
+<li><p><strong>随机变量的取值范围</strong>：<br />
+随机变量的取值范围由样本空间和定义的函数决定。<br />
+例如，抛硬币试验中，随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围是 <span class="math notranslate nohighlight">\(\lbrace 0, 1, 2, 3\rbrace \)</span>。</p></li>
+<li><p><strong>随机变量的概率</strong>：<br />
+随机变量的取值有一定的概率。<br />
+例如， <span class="math notranslate nohighlight">\(P(X=2) \)</span>表示随机变量 <span class="math notranslate nohighlight">\(X \)</span>取值为 2 的概率。</p></li>
+<li><p><strong>随机变量的应用</strong>：<br />
+随机变量用于描述各种随机现象，并能利用数学分析的方法对随机试验的结果进行研究和讨论。</p></li>
+</ol>
+</section>
+<section id="id9">
+<h3>选择题<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>随机变量的定义是什么？</strong></p>
+<ul class="simple">
+<li><p>A. 随机变量是定义在样本空间上的实值函数。</p></li>
+<li><p>B. 随机变量是定义在实数集上的函数。</p></li>
+<li><p>C. 随机变量是定义在样本空间上的离散函数。</p></li>
+<li><p>D. 随机变量是定义在样本空间上的连续函数。<br />
+<strong>答案</strong>：A<br />
+<strong>解析</strong>：随机变量是定义在样本空间上的实值函数。选项B错误，因为随机变量是定义在样本空间上，而不是实数集上。选项C和D错误，因为随机变量可以是离散的也可以是连续的，但定义域始终是样本空间。</p></li>
+</ul>
+</li>
+<li><p><strong>在抛硬币试验中，随机变量 <span class="math notranslate nohighlight">\(X \)</span>表示什么？</strong></p>
+<ul class="simple">
+<li><p>A. 硬币的重量</p></li>
+<li><p>B. 投掷的次数</p></li>
+<li><p>C. 正面 <span class="math notranslate nohighlight">\(H \)</span>的总数</p></li>
+<li><p>D. 反面 <span class="math notranslate nohighlight">\(T \)</span>的总数<br />
+<strong>答案</strong>：C<br />
+<strong>解析</strong>：在抛硬币试验中，随机变量 <span class="math notranslate nohighlight">\(X \)</span>表示正面 <span class="math notranslate nohighlight">\(H \)</span>的总数。选项A和B与随机变量的定义无关。选项D表示反面 <span class="math notranslate nohighlight">\(T \)</span>的总数，但题目中明确指出 <span class="math notranslate nohighlight">\(X \)</span>表示正面 <span class="math notranslate nohighlight">\(H \)</span>的总数。</p></li>
+</ul>
+</li>
+<li><p><strong>在取球试验中，随机变量 <span class="math notranslate nohighlight">\(X \)</span>表示什么？</strong></p>
+<ul class="simple">
+<li><p>A. 球的数量</p></li>
+<li><p>B. 球的编号</p></li>
+<li><p>C. 两球号码之和</p></li>
+<li><p>D. 球的重量<br />
+<strong>答案</strong>：C<br />
+<strong>解析</strong>：在取球试验中，随机变量 <span class="math notranslate nohighlight">\(X \)</span>表示两球号码之和。选项A和D与随机变量的定义无关。选项B表示球的编号，但题目中明确指出 <span class="math notranslate nohighlight">\(X \)</span>表示两球号码之和。</p></li>
+</ul>
+</li>
+<li><p><strong>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围在抛硬币试验中是？</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lbrace 0, 1, 2, 3, 4\rbrace \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lbrace 1, 2, 3, 4\rbrace \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\lbrace 0, 1, 2, 3\rbrace \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\lbrace 1, 2, 3\rbrace \)</span><br />
+<strong>答案</strong>：C<br />
+<strong>解析</strong>：随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围在抛硬币试验中是 <span class="math notranslate nohighlight">\(\lbrace 0, 1, 2, 3\rbrace \)</span>。选项A和B包含了多余的取值。选项D缺少了取值0，因为可能没有正面 <span class="math notranslate nohighlight">\(H \)</span>出现。</p></li>
+</ul>
+</li>
+<li><p><strong>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围在取球试验中是？</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lbrace 1, 2, 3, 4, 5, 6\rbrace \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lbrace 2, 3, 4, 5, 6\rbrace \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\lbrace 1, 2, 3, 4, 5\rbrace \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\lbrace 2, 3, 4, 5\rbrace \)</span><br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围在取球试验中是 <span class="math notranslate nohighlight">\(\lbrace 2, 3, 4, 5, 6\rbrace \)</span>。选项A包含了多余的取值1。选项C和D缺少了取值6，因为两球号码之和最大为6。</p></li>
+</ul>
+</li>
+<li><p><strong>在抛硬币试验中， <span class="math notranslate nohighlight">\(P(X=2) \)</span>的概率是多少？</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(1/8 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(3/8 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(5/8 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(7/8 \)</span><br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：在抛硬币试验中， <span class="math notranslate nohighlight">\(P(X=2) \)</span>的概率是 <span class="math notranslate nohighlight">\(3/8 \)</span>。选项A表示 <span class="math notranslate nohighlight">\(1/8 \)</span>，选项C表示 <span class="math notranslate nohighlight">\(5/8 \)</span>，选项D表示 <span class="math notranslate nohighlight">\(7/8 \)</span>，均不符合实际情况。</p></li>
+</ul>
+</li>
+<li><p><strong>在抛硬币试验中， <span class="math notranslate nohighlight">\(P(X \leq 1) \)</span>的概率是多少？</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(1/4 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1/2 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(3/4 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(7/8 \)</span><br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：在抛硬币试验中， <span class="math notranslate nohighlight">\(P(X \leq 1) \)</span>的概率是 <span class="math notranslate nohighlight">\(1/2 \)</span>。选项A表示 <span class="math notranslate nohighlight">\(1/4 \)</span>，选项C表示 <span class="math notranslate nohighlight">\(3/4 \)</span>，选项D表示 <span class="math notranslate nohighlight">\(7/8 \)</span>，均不符合实际情况。</p></li>
+</ul>
+</li>
+<li><p><strong>随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值是否可以预知？</strong></p>
+<ul class="simple">
+<li><p>A. 可以预知</p></li>
+<li><p>B. 不可以预知</p></li>
+<li><p>C. 取决于试验</p></li>
+<li><p>D. 取决于样本空间<br />
+<strong>答案</strong>：B<br />
+<strong>解析</strong>：随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值不可以预知。选项A错误，因为随机变量的取值是随机的，不能预知。选项C和D错误，因为随机变量的取值不取决于试验或样本空间，而是取决于试验的结果。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, hjy。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

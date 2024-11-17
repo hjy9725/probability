@@ -1,0 +1,2348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>§2 离散型随机变量及其分布律 &mdash; probability v0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7cf98a4c"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/my_custom.js?v=917a4a93"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">§2 离散型随机变量及其分布律</a><ul>
+<li><a class="reference internal" href="#id2">知识点扩展与讲解：</a></li>
+<li><a class="reference internal" href="#id3">扩展讲解</a></li>
+<li><a class="reference internal" href="#id4">例题</a></li>
+<li><a class="reference internal" href="#id5">选择题</a></li>
+<li><a class="reference internal" href="#id6">知识点扩展讲解</a></li>
+<li><a class="reference internal" href="#id7">选择题</a></li>
+<li><a class="reference internal" href="#id8">（一）（0-1）分布</a></li>
+<li><a class="reference internal" href="#id9">（二）伯努利试验、二项分布</a></li>
+<li><a class="reference internal" href="#id10">知识点扩展与讲解：</a></li>
+<li><a class="reference internal" href="#id11">选择题及答案：</a></li>
+<li><a class="reference internal" href="#id12">知识点扩展讲解</a></li>
+<li><a class="reference internal" href="#id13">选择题</a></li>
+<li><a class="reference internal" href="#id14">扩展讲解</a><ul>
+<li><a class="reference internal" href="#id15">（一）（0-1）分布</a></li>
+<li><a class="reference internal" href="#id16">（二）伯努利试验、二项分布</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">选择题</a></li>
+<li><a class="reference internal" href="#id18">选择题答案及解释</a></li>
+<li><a class="reference internal" href="#id19">（三）泊松分布</a></li>
+<li><a class="reference internal" href="#id20">知识点扩展与讲解：</a></li>
+<li><a class="reference internal" href="#id21">选择题及答案：</a></li>
+<li><a class="reference internal" href="#id22">知识点扩展讲解</a></li>
+<li><a class="reference internal" href="#id23">选择题</a></li>
+<li><a class="reference internal" href="#id24">扩展讲解</a><ul>
+<li><a class="reference internal" href="#id25">（三）泊松分布</a></li>
+<li><a class="reference internal" href="#id26">泊松定理</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id27">选择题</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">probability</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">§2 离散型随机变量及其分布律</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/第二章-随机变量及其分布/2.2 离散型随机变量及其分布律.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>§2 离散型随机变量及其分布律<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>有些随机变量，它全部可能取到的值是有限个或可列无限多个，这种随机变量称为离散型随机变量。例如 §1 例 1 中的随机变量 <span class="math notranslate nohighlight">\(X \)</span>，它只可能取 <span class="math notranslate nohighlight">\(0, 1, 2, 3 \)</span>四个值，它是一个离散型随机变量。又如某城市的 <span class="math notranslate nohighlight">\(120 \)</span>急救电话台一昼夜收到的呼唤次数也是离散型随机变量。若以 <span class="math notranslate nohighlight">\(T \)</span>记某元件的寿命，它所可能取的值充满一个区间，是无法按一定次序一一列举出来的，因而它是一个非离散型的随机变量。本节只讨论离散型随机变量。</p>
+<p>容易知道，要掌握一个离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的统计规律，必须且只需知道 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值以及取每一个可能值的概率。</p>
+<p>设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(x_k (k = 1, 2, \cdots ) \)</span>， <span class="math notranslate nohighlight">\(X \)</span>取各个可能值的概率，即事件 <span class="math notranslate nohighlight">\(\lbrace X = x_k\rbrace \)</span>的概率，为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X = x_k) = p_k, \quad k = 1, 2, \cdots \tag{2.1} \end{equation}  
+ \]</div>
+<p>由概率的定义， <span class="math notranslate nohighlight">\(p_k \)</span>满足如下两个条件：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} 1^\circ \quad p_k \geq 0, \quad k = 1, 2, \cdots ; \tag{2.2} \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} 2^\circ \quad \sum_{k=1}^{\infty} p_k = 1. \tag{2.3} \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} 2^\circ \text{是由于} \lbrace X = x_1\rbrace \cup \lbrace X = x_2\rbrace \cup \cdots \text{是必然事件，且} \lbrace X = x_j\rbrace \cap \lbrace X = x_k\rbrace = \emptyset, \quad k \neq j, \text{故} 1 = P[\bigcup_{k=1}^{\infty} \lbrace X = x_k\rbrace] = \sum_{k=1}^{\infty} P\lbrace X = x_k\rbrace, \text{即} \sum_{k=1}^{\infty} p_k = 1. \end{equation}  
+ \]</div>
+<p>我们称（2.1）式为离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律。分布律也可以用表格的形式来表示</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}  
+\begin{array}{c|cccc}  
+X &amp; x_1 &amp; x_2 &amp; \cdots &amp; x_n &amp; \cdots \\  
+\hline  
+p_k &amp; p_1 &amp; p_2 &amp; \cdots &amp; p_n &amp; \cdots 
+\end{array} \tag{2.4}  
+\end{equation}  
+ \end{split}\]</div>
+<p>(2.4)直观地表示了随机变量 <span class="math notranslate nohighlight">\(X \)</span>取各个值的概率的规律。 <span class="math notranslate nohighlight">\(X \)</span>取各个值各占一些概率，这些概率合起来是 <span class="math notranslate nohighlight">\(1 \)</span>。可以想像成：概率 <span class="math notranslate nohighlight">\(1 \)</span>以一定的规律分布在各个可能值上。这就是(2.4)称为分布律的缘故。</p>
+<p><strong>例1</strong> 设一汽车在开往目的地的道路上需经过四组信号灯，每组信号灯以 <span class="math notranslate nohighlight">\(1/2 \)</span>的概率允许或禁止汽车通过。以 <span class="math notranslate nohighlight">\(X \)</span>表示汽车首次停下时，它已通过的信号灯的组数（设备组信号灯的工作是相互独立的），求 <span class="math notranslate nohighlight">\(X \)</span>的分布律。</p>
+<p><strong>解</strong> 以 <span class="math notranslate nohighlight">\(p \)</span>表示每组信号灯禁止汽车通过的概率，易知 <span class="math notranslate nohighlight">\(X \)</span>的分布律为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+\begin{equation}  
+\begin{array}{cccccc}  
+X &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 \\  
+p_k &amp; p &amp; (1-p) p &amp; (1-p)^2 p &amp; (1-p)^3 &amp; (1-p)^4 \\  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>或写成</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X=k) = (1-p)^k p, \quad k=0,1,2,3, \quad P(X=4) = (1-p)^4. \end{equation}  
+ \]</div>
+<p>以 <span class="math notranslate nohighlight">\(p = 1/2 \)</span>代入得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}  
+\begin{array}{cccccc}  
+X &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 \\  
+p_k &amp; 0.5 &amp; 0.25 &amp; 0.125 &amp; 0.0625 &amp; 0.0625 \\  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<section id="id2">
+<h2>知识点扩展与讲解：<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p><strong>一、离散型随机变量的定义</strong></p>
+<p>随机变量是对随机试验结果的数值描述。有些随机变量，它全部可能取到的值是有限个或可列无限多个，这种随机变量就称为离散型随机变量。</p>
+<p>比如在之前提到的§1例1中的随机变量 <span class="math notranslate nohighlight">\(X \)</span>，它只可能取 <span class="math notranslate nohighlight">\(0, 1, 2, 3 \)</span>这四个值，这就是一个典型的离散型随机变量的例子。再如某城市的 <span class="math notranslate nohighlight">\(120 \)</span>急救电话台一昼夜收到的呼唤次数，这个次数也是可以逐个列举出来的，可能是0次、1次、2次等等，所以它也是离散型随机变量。</p>
+<p>而与之相对的，像以 <span class="math notranslate nohighlight">\(T \)</span>记某元件的寿命，它所可能取的值充满一个区间，没办法按照一定的次序一一列举出来，这种就是非离散型的随机变量。在本节中，我们重点关注的是离散型随机变量。</p>
+<p><strong>二、掌握离散型随机变量的统计规律所需条件</strong></p>
+<p>要全面掌握一个离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的统计规律，必须且只需知道两件事：一是 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值，二是取每一个可能值的概率。</p>
+<p><strong>三、离散型随机变量的分布律</strong></p>
+<p>设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(x_k (k = 1, 2, \cdots ) \)</span>， <span class="math notranslate nohighlight">\(X \)</span>取各个可能值的概率，也就是事件 <span class="math notranslate nohighlight">\(\lbrace X = x_k\rbrace \)</span>的概率，记为 <span class="math notranslate nohighlight">\(P(X = x_k) = p_k, \quad k = 1, 2, \cdots \)</span>，这就是离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律的表达式（2.1）。</p>
+<p>这里的 <span class="math notranslate nohighlight">\(p_k \)</span>需要满足两个条件：</p>
+<ol class="arabic simple">
+<li><p>由概率的定义可知， <span class="math notranslate nohighlight">\(p_k \geq 0, \quad k = 1, 2, \cdots \)</span>（条件2.2），因为概率值是不能为负的，它表示某个事件发生的可能性大小，最小就是0，表示不可能发生。</p></li>
+<li><p>由于 <span class="math notranslate nohighlight">\(\lbrace X = x_1\rbrace \cup \lbrace X = x_2\rbrace \cup \cdots \)</span>是必然事件（也就是说 <span class="math notranslate nohighlight">\(X \)</span>肯定会取到它所有可能取值中的某一个），且 <span class="math notranslate nohighlight">\(\lbrace X = x_j\rbrace \cap \lbrace X = x_k\rbrace = \emptyset, \quad k \neq j \)</span>（即 <span class="math notranslate nohighlight">\(X \)</span>每次只能取一个值，不同取值对应的事件是互斥的），所以根据概率的可加性，就有 <span class="math notranslate nohighlight">\(1 = P[\bigcup_{k=1}^{\infty} \lbrace X = x_k\rbrace] = \sum_{k=1}^{\infty} P\lbrace X = x_k\rbrace \)</span>，也就是 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span>（条件2.3）。</p></li>
+</ol>
+<p>分布律还可以用表格的形式（2.4）来表示，这种表格形式很直观地展示了随机变量 <span class="math notranslate nohighlight">\(X \)</span>取各个值的概率的规律。可以想象成概率 <span class="math notranslate nohighlight">\(1 \)</span>按照一定的规律分布在各个可能值上，这就是它被称为分布律的原因。</p>
+<p><strong>四、例题讲解</strong></p>
+<p>在例1中，设一汽车在开往目的地的道路上需经过四组信号灯，每组信号灯以 <span class="math notranslate nohighlight">\(1/2 \)</span>的概率允许或禁止汽车通过。以 <span class="math notranslate nohighlight">\(X \)</span>表示汽车首次停下时，它已通过的信号灯的组数（且每组信号灯的工作是相互独立的），来求 <span class="math notranslate nohighlight">\(X \)</span>的分布律。</p>
+<p>解题思路是这样的：首先确定以 <span class="math notranslate nohighlight">\(p \)</span>表示每组信号灯禁止汽车通过的概率，这里已知每组信号灯禁止通过的概率为 <span class="math notranslate nohighlight">\(1/2 \)</span>，即 <span class="math notranslate nohighlight">\(p = 1/2 \)</span>。</p>
+<p>当 <span class="math notranslate nohighlight">\(X = 0 \)</span>时，就是第一组信号灯就禁止汽车通过了，所以其概率就是 <span class="math notranslate nohighlight">\(p \)</span>。</p>
+<p>当 <span class="math notranslate nohighlight">\(X = 1 \)</span>时，意味着第一组信号灯允许通过（概率为 <span class="math notranslate nohighlight">\(1- p \)</span>），然后第二组信号灯禁止通过（概率为 <span class="math notranslate nohighlight">\(p \)</span>），由于每组信号灯工作相互独立，所以这种情况发生的概率就是 <span class="math notranslate nohighlight">\((1- p) p \)</span>。</p>
+<p>同理，当 <span class="math notranslate nohighlight">\(X = 2 \)</span>时，就是前两组信号灯允许通过（概率都是 <span class="math notranslate nohighlight">\(1- p \)</span>），第三组信号灯禁止通过（概率为 <span class="math notranslate nohighlight">\(p \)</span>），其概率为 <span class="math notranslate nohighlight">\((1- p)^2 p \)</span>。</p>
+<p>当 <span class="math notranslate nohighlight">\(X = 3 \)</span>时，前三组信号灯都允许通过（概率都是 <span class="math notranslate nohighlight">\(1- p \)</span>），第四组信号灯禁止通过（概率为 <span class="math notranslate nohighlight">\(p \)</span>），概率为 <span class="math notranslate nohighlight">\((1- p)^3 p \)</span>。</p>
+<p>当 <span class="math notranslate nohighlight">\(X = 4 \)</span>时，就是四组信号灯都允许汽车通过，其概率为 <span class="math notranslate nohighlight">\((1- p)^4 \)</span>。</p>
+<p>最后把 <span class="math notranslate nohighlight">\(p = 1/2 \)</span>代入，就得到了具体的分布律表格形式的结果。</p>
+<p><strong>一、选择题题目</strong></p>
+<ol class="arabic simple">
+<li><p>以下关于离散型随机变量的说法，正确的是（  ）</p>
+<ul class="simple">
+<li><p>A. 其可能取值一定是有限个</p></li>
+<li><p>B. 其可能取值一定是可列无限多个</p></li>
+<li><p>C. 其可能取值是有限个或可列无限多个</p></li>
+<li><p>D. 其可能取值是任意实数</p></li>
+</ul>
+</li>
+</ol>
+<p>答案：C<br />
+解析：离散型随机变量全部可能取到的值是有限个或可列无限多个，这是离散型随机变量的定义内容，所以C选项正确，A、B选项说法太片面，D选项描述的是一般随机变量的取值范围，不符合离散型随机变量的特点。</p>
+<ol class="arabic simple" start="2">
+<li><p>若离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值为 <span class="math notranslate nohighlight">\(x_k (k = 1, 2, \cdots ) \)</span>，那么事件 <span class="math notranslate nohighlight">\(\lbrace X = x_k\rbrace \)</span>的概率记为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X \neq x_k) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X = x_k) = p_k \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X \geq x_k) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(P(X \leq x_k) \)</span></p></li>
+</ul>
+</li>
+</ol>
+<p>答案：B<br />
+解析：根据离散型随机变量分布律的定义，设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(x_k (k = 1, 2, \cdots ) \)</span>， <span class="math notranslate nohighlight">\(X \)</span>取各个可能值的概率，即事件 <span class="math notranslate nohighlight">\(\lbrace X = x_k\rbrace \)</span>的概率，记为 <span class="math notranslate nohighlight">\(P(X = x_k) = p_k, \quad k = 1, 2, \cdots \)</span>，所以B选项正确。</p>
+<ol class="arabic simple" start="3">
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律中， <span class="math notranslate nohighlight">\(p_k \)</span>满足的条件不包括（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p_k \geq 0, \quad k = 1, 2, \cdots \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p_k \leq 1, \quad k = 1, 2, \cdots \)</span></p></li>
+<li><p>D. 以上选项都是分布律中 <span class="math notranslate nohighlight">\(p_k \)</span>满足的条件</p></li>
+</ul>
+</li>
+</ol>
+<p>答案：C<br />
+解析：离散型随机变量的分布律中，由概率的定义， <span class="math notranslate nohighlight">\(p_k \)</span>满足 <span class="math notranslate nohighlight">\(p_k \geq 0, \quad k = 1, 2, \cdots \)</span>以及 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span>，并没有 <span class="math notranslate nohighlight">\(p_k \leq 1 \)</span>这个单独作为必须满足的条件（虽然概率本身是小于等于1的，但在分布律里强调的是前面两个条件），所以C选项符合题意。</p>
+<ol class="arabic simple" start="4">
+<li><p>对于离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>，若其分布律用表格表示，表格中的行分别表示（  ）</p>
+<ul class="simple">
+<li><p>A. 随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值和对应的概率</p></li>
+<li><p>B. 仅随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值</p></li>
+<li><p>C. 仅随机变量 <span class="math notranslate nohighlight">\(X \)</span>取各个值的概率</p></li>
+<li><p>D. 随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围和概率范围</p></li>
+</ul>
+</li>
+</ol>
+<p>答案：A<br />
+解析：离散型随机变量的分布律用表格表示时，一行是随机变量 <span class="math notranslate nohighlight">\(X \)</span>的各个可能取值，另一行是对应的取各个值的概率，所以表格中的行分别表示随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值和对应的概率，A选项正确。</p>
+<ol class="arabic simple" start="5">
+<li><p>已知离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+\begin{equation}  
+\begin{array}{c|cccc}  
+X &amp; 1 &amp; 2 &amp; 3 &amp; 4 \\  
+\hline  
+p_k &amp; 0.2 &amp; 0.3 &amp; 0.4 &amp; 0.1  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>那么 <span class="math notranslate nohighlight">\(P(X = 3) \)</span>的值为（  ）<br />
+-   A. 0.2<br />
+-   B. 0.3<br />
+-   C. 0.4<br />
+-   D. 0.1</p>
+<p>答案：C<br />
+解析：根据所给的离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律表格，表格中对应 <span class="math notranslate nohighlight">\(X = 3 \)</span>这一列的概率值就是 <span class="math notranslate nohighlight">\(P(X = 3) \)</span>的值，从表格中可以看出为0.4，所以C选项正确。</p>
+<ol class="arabic simple" start="6">
+<li><p>设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值为 <span class="math notranslate nohighlight">\(x_1, x_2, x_3 \)</span>，其分布律为 <span class="math notranslate nohighlight">\(P(X = x_1) = 0.3 \)</span>， <span class="math notranslate nohighlight">\(P(X = x_2) = 0.5 \)</span>，那么 <span class="math notranslate nohighlight">\(P(X = x_3) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. 0.1</p></li>
+<li><p>B. 0.2</p></li>
+<li><p>C. 0.3</p></li>
+<li><p>D. 0.4</p></li>
+</ul>
+</li>
+</ol>
+<p>答案：B<br />
+解析：因为离散型随机变量的分布律满足 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span>，这里 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值为 <span class="math notranslate nohighlight">\(x_1, x_2, x_3 \)</span>，已知 <span class="math notranslate nohighlight">\(P(X = x_1) = 0.3 \)</span>， <span class="math notranslate nohighlight">\(P(X = x_2) = 0.5 \)</span>，那么 <span class="math notranslate nohighlight">\(P(X = x_3)=1- P(X = x_1)-P(X = x_2)=1- 0.3- 0.5 = 0.2 \)</span>，所以B选项正确。</p>
+<ol class="arabic simple" start="7">
+<li><p>下列哪个随机变量是离散型随机变量（  ）</p>
+<ul class="simple">
+<li><p>A. 某水库的水位高度</p></li>
+<li><p>B. 某电子元件的使用寿命</p></li>
+<li><p>C. 某超市一天内顾客的人数</p></li>
+<li><p>D. 某地区一天内的气温变化</p></li>
+</ul>
+</li>
+</ol>
+<p>答案：C<br />
+解析：离散型随机变量是其全部可能取到的值是有限个或可列无限多个的随机变量。某超市一天内顾客的人数是可以逐个列举出来的，比如0人、1人、2人等等，是离散型随机变量。而某水库的水位高度、某电子元件的使用寿命、某地区一天内的气温变化所可能取的值充满一个区间，无法按一定次序一一列举出来，属于非离散型随机变量，所以C选项正确。</p>
+<ol class="arabic simple" start="8">
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律中，若 <span class="math notranslate nohighlight">\(p_1 = 0.2 \)</span>， <span class="math notranslate nohighlight">\(p_2 = 0.3 \)</span>，且 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span>，那么除了 <span class="math notranslate nohighlight">\(p_1 \)</span>和 <span class="math notranslate nohighlight">\(p_2 \)</span>之外的其他 <span class="math notranslate nohighlight">\(p_k \)</span>（ <span class="math notranslate nohighlight">\(k \geq 3 \)</span>）的和为（  ）</p>
+<ul class="simple">
+<li><p>A. 0.5</p></li>
+<li><p>B. 0.4</p></li>
+<li><p>C. 0.6</p></li>
+<li><p>D. 0.3</p></li>
+</ul>
+</li>
+</ol>
+<p>答案：A<br />
+解析：已知离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律满足 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span>，现在已知 <span class="math notranslate nohighlight">\(p_1 = 0.2 \)</span>， <span class="math notranslate nohighlight">\(p_2 = 0.3 \)</span>，那么除了 <span class="math notranslate nohighlight">\(p_1 \)</span>和 <span class="math notranslate nohighlight">\(p_2 \)</span>之外的其他 <span class="math notranslate nohighlight">\(p_k \)</span>（ <span class="math notranslate nohighlight">\(k \geq 3 \)</span>）的和为 <span class="math notranslate nohighlight">\(1- p_1- p_2 = 1- 0.2- 0.3 = 0.5 \)</span>，所以A选项正确。</p>
+<ol class="arabic simple" start="9">
+<li><p>对于离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>，其分布律为 <span class="math notranslate nohighlight">\(P(X = k) = \frac{1}{k(k + 1)}, k = 1, 2, \cdots \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 3) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{1}{2} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{3}{4} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{11}{12} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{2}{3} \)</span></p></li>
+</ul>
+</li>
+</ol>
+<p>答案：B<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X \leq 3) \)</span>，即求 <span class="math notranslate nohighlight">\(P(X = 1)+P(X = 2)+P(X = 3) \)</span>。已知 <span class="math notranslate nohighlight">\(P(X = k) = \frac{1}{k(k + 1)}=\frac{1}{k}-\frac{1}{k + 1} \)</span>，所以 <span class="math notranslate nohighlight">\(P(X = 1)=\frac{1}{1\times(1 + 1)}=\frac{1}{2} \)</span>， <span class="math notranslate nohighlight">\(P(X = 2)=\frac{1}{2\times(2 + 1)}=\frac{1}{6} \)</span>， <span class="math notranslate nohighlight">\(P(X = 3)=\frac{1}{3\times(3 + 1)}=\frac{1}{12} \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 3)=\frac{1}{2}+\frac{1}{6}+\frac{1}{12}=\frac{6 + 2 + 1}{12}=\frac{9}{12}=\frac{3}{4} \)</span>，所以B选项正确。</p>
+<ol class="arabic simple" start="10">
+<li><p>设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+\begin{equation}  
+\begin{array}{c|cccc}  
+X &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\  
+\hline  
+p_k &amp; 0.1 &amp; 0.3 &amp; 0.4 &amp; 0.2  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>那么 <span class="math notranslate nohighlight">\(P(X \geq 2) \)</span>的值为（  ）<br />
+-   A. 0.4<br />
+-   B. 0.6<br />
+-   C. 0.7<br />
+-   D. 0.8</p>
+<p>答案：B<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X \geq 2) \)</span>，即求 <span class="math notranslate nohighlight">\(P(X = 2)+P(X = 3) \)</span>，从分布律表格中可知 <span class="math notranslate nohighlight">\(P(X = 2)=0.4 \)</span>， <span class="math notranslate nohighlight">\(P(X = 3)=0.2 \)</span>，所以 <span class="math notranslate nohighlight">\(P(X \geq 2)=0.4 + 0.2 = 0.6 \)</span>，所以B选项正确。</p>
+<ol class="arabic simple" start="11">
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律中，若 <span class="math notranslate nohighlight">\(p_3 = 0.1 \)</span>，且 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span>，已知 <span class="math notranslate nohighlight">\(p_1 = 0.3 \)</span>， <span class="math notranslate nohighlight">\(p_2 = 0.4 \)</span>，那么除了 <span class="math notranslate nohighlight">\(p_1 \)</span>、 <span class="math notranslate nohighlight">\(p_2 \)</span>和 <span class="math notranslate nohighlight">\(p_3 \)</span>之外的其他 <span class="math notranslate nohighlight">\(p_k \)</span>（ <span class="math notranslate nohighlight">\(k \geq 4 \)</span>）的和为（  ）</p>
+<ul class="simple">
+<li><p>A. 0.2</p></li>
+<li><p>B. 0.3</p></li>
+<li><p>C. 0.1</p></li>
+<li><p>D. 0.4</p></li>
+</ul>
+</li>
+</ol>
+<p>答案：A<br />
+解析：因为离散型随机变量的分布律满足 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span>，已知 <span class="math notranslate nohighlight">\(p_1 = 0.3 \)</span>， <span class="math notranslate nohighlight">\(p_2 = 0.4 \)</span>， <span class="math notranslate nohighlight">\(p_3 = 0.1 \)</span>，那么除了 <span class="math notranslate nohighlight">\(p_1 \)</span>、 <span class="math notranslate nohighlight">\(p_2 \)</span>和 <span class="math notranslate nohighlight">\(p_3 \)</span>之外的其他 <span class="math notranslate nohighlight">\(p_k \)</span>（ <span class="math notranslate nohighlight">\(k \geq 4 \)</span>）的和为 <span class="math notranslate nohighlight">\(1- p_1- p_2- p_3 = 1- 0.3- 0.4- 0.1 = 0.2 \)</span>，所以A选项正确。</p>
+<ol class="arabic simple" start="12">
+<li><p>以下关于离散型随机变量分布律用表格表示的说法，错误的是（  ）</p>
+<ul class="simple">
+<li><p>A. 表格的第一行列出随机变量 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值</p></li>
+<li><p>B. 表格的第二行列出对应取值的概率</p></li>
+<li><p>C. 表格中随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值必须按从小到大的顺序排列</p></li>
+<li><p>D. 表格可以直观地表示随机变量 <span class="math notranslate nohighlight">\(X \)</span>取各个值的概率规律</p></li>
+</ul>
+</li>
+</ol>
+<p>答案：C<br />
+解析：离散型随机变量分布律用表格表示时，表格的第一行列出随机变量 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值，第二行列出对应取值的概率，表格可以直观地表示随机变量 <span class="math notranslate nohighlight">\(X \)</span>取各个值的概率规律。但是表格中随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值并不一定非要按从小到大的顺序排列，也可以按其他顺序，只要能明确对应关系即可，所以C选项说法错误。</p>
+<ol class="arabic simple" start="13">
+<li><p>设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为 <span class="math notranslate nohighlight">\(P(X = k) = \frac{1}{2^k}, k = 1, 2, \cdots \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 2) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{3}{4} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{5}{8} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{7}{8} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{1}{2} \)</span></p></li>
+</ul>
+</li>
+</ol>
+<p>答案：A<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X \leq 2) \)</span>，即求 <span class="math notranslate nohighlight">\(P(X = 1)+P(X = 2) \)</span>。已知 <span class="math notranslate nohighlight">\(P(X = k) = \frac{1}{2^k} \)</span>，所以 <span class="math notranslate nohighlight">\(P(X = 1)=\frac{1}{2^1}=\frac{1}{2} \)</span>， <span class="math notranslate nohighlight">\(P(X = 2)=\frac{1}{2^2}=\frac{1}{4} \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 2)=\frac{1}{2}+\frac{1}{4}=\frac{2 + 1}{4}=\frac{3}{4} \)</span>，所以A选项正确。</p>
+<ol class="arabic simple" start="14">
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+\begin{equation}  
+\begin{array}{c|cccc}  
+X &amp;-1 &amp; 0 &amp; 1 &amp; 2 \\  
+\hline  
+p_k &amp; 0.1 &amp; 0.3 &amp; 0.4 &amp; 0.2  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>那么 <span class="math notranslate nohighlight">\(P(X \neq 0) \)</span>的值为（  ）<br />
+-   A. 0.1<br />
+-   B. 0.3<br />
+-   C. 0.7<br />
+-   D. 0.9</p>
+<p>答案：C<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X \neq 0) \)</span>，即求 <span class="math notranslate nohighlight">\(1- P(X = 0) \)</span>，从分布律表格中可知 <span class="math notranslate nohighlight">\(P(X = 0)=0.3 \)</span>，所以 <span class="math notranslate nohighlight">\(P(X \neq 0)=1- 0.3 = 0.7 \)</span>，所以C选项正确。</p>
+<ol class="arabic simple" start="16">
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+\begin{equation}  
+\begin{array}{c|cccc}  
+X &amp; 1 &amp; 2 &amp; 3 &amp; 4 \\  
+\hline  
+p_k &amp; 0.2 &amp; 0.3 &amp; 0.4 &amp; 0.1  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>那么 <span class="math notranslate nohighlight">\(P(X \geq 1) \)</span>的值为（  ）<br />
+-   A. 0.2<br />
+-   B. 0.3<br />
+-   C. 0.4<br />
+-   D. 1</p>
+<p>答案：D<br />
+解析：因为 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值为 <span class="math notranslate nohighlight">\(1, 2, 3, 4 \)</span>，所以 <span class="math notranslate nohighlight">\(P(X \geq 1) \)</span>就是 <span class="math notranslate nohighlight">\(X \)</span>取到任何一个可能值的概率，其必然等于1，所以D选项正确。</p>
+<ol class="arabic simple" start="17">
+<li><p>设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为 <span class="math notranslate nohighlight">\(P(X = k) = \frac{1}{3^k}, k = 1, 2, \cdots \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 4) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{40}{81} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{120}{121} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{160}{161} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{200}{201} \)</span></p></li>
+</ul>
+</li>
+</ol>
+<p>答案：A<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X \leq 4) \)</span>，即求 <span class="math notranslate nohighlight">\(P(X = 1)+P(X = 2)+P(X = 3)+P(X = 4) \)</span>。已知 <span class="math notranslate nohighlight">\(P(X = k) = \frac{1}{3^k} \)</span>，所以 <span class="math notranslate nohighlight">\(P(X = 1)=\frac{1}{3^1}=\frac{1}{3} \)</span>， <span class="math notranslate nohighlight">\(P(X = 2)=\frac{1}{3^2}=\frac{1}{9} \)</span>， <span class="math notranslate nohighlight">\(P(X = 3)=\frac{1}{3^3}=\frac{1}{27} \)</span>， <span class="math notranslate nohighlight">\(P(X = 4)=\frac{1}{3^4}=\frac{1}{81} \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 4)=\frac{1}{3}+\frac{1}{9}+\frac{1}{27}+\frac{1}{81}=\frac{27 + 9 + 3 + 1}{81}=\frac{40}{81} \)</span>，所以A选项正确。</p>
+<ol class="arabic simple" start="18">
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+\begin{equation}  
+\begin{array}{c|cccc}  
+X &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\  
+\hline  
+p_k &amp; 0.1 &amp; 0.3 &amp; 0.4 &amp; 0.2  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>那么 <span class="math notranslate nohighlight">\(P(X = 1 \text{或 } X = 3) \)</span>的值为（  ）<br />
+-   A. 0.1<br />
+-   B. 0.3<br />
+-   C. 0.5<br />
+-   D. 0.6</p>
+<p>答案：C<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X = 1 \text{或 } X = 3) \)</span>，即求 <span class="math notranslate nohighlight">\(P(X = 1)+P(X = 3) \)</span>，从分布律表格中可知 <span class="math notranslate nohighlight">\(P(X = 1)=0.3 \)</span>， <span class="math notranslate nohighlight">\(P(X = 3)=0.2 \)</span>，所以 <span class="math notranslate nohighlight">\(P(X = 1 \text{或 } X = 3)=0.3 + 0.2 = 0.5 \)</span>，所以C选项正确。</p>
+<ol class="arabic simple" start="19">
+<li><p>设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为 <span class="math notranslate nohighlight">\(P(X = k) = \frac{2}{k(k + 1)}, k = 2, 3, \cdots \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 5) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{9}{5} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{19}{15} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{2}{3} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{9}{10} \)</span></p></li>
+</ul>
+</li>
+</ol>
+<p>答案：C<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X \leq 5) \)</span>，即求 <span class="math notranslate nohighlight">\(P(X = 2)+P(X = 3)+P(X = 4)+P(X = 5) \)</span>。</p>
+<p>已知 <span class="math notranslate nohighlight">\(P(X = k) = \frac{2}{k(k + 1)} = 2(\frac{1}{k}- \frac{1}{k + 1}) \)</span>，则：</p>
+<p><span class="math notranslate nohighlight">\(P(X = 2)=2(\frac{1}{2}- \frac{1}{2 + 1}) = 2\times(\frac{1}{2}- \frac{1}{3}) = 2\times\frac{1}{6} = \frac{1}{3} \)</span>；</p>
+<p><span class="math notranslate nohighlight">\(P(X = 3)=2(\frac{1}{3}- \frac{1}{3 + 1}) = 2\times(\frac{1}{3}- \frac{1}{4}) = 2\times\frac{1}{12} = \frac{1}{6} \)</span>；</p>
+<p><span class="math notranslate nohighlight">\(P(X = 4)=2(\frac{1}{4}- \frac{1}{4 + 1}) = 2\times(\frac{1}{4}- \frac{1}{5}) = 2\times\frac{1}{20} = \frac{1}{10} \)</span>；</p>
+<p><span class="math notranslate nohighlight">\(P(X = 5)=2(\frac{1}{5}- \frac{1}{5 + 1}) = 2\times(\frac{1}{5}- \frac{1}{6}) = 2\times\frac{1}{30} = \frac{1}{15} \)</span>。</p>
+<p>所以 <span class="math notranslate nohighlight">\(P(X \leq 5)=\frac{1}{3} + \frac{1}{6} + \frac{1}{10} + \frac{1}{15} \)</span><br />
+<span class="math notranslate nohighlight">\(=\frac{10 + 5 + 3 + 2}{30}=\frac{20}{30}=\frac{2}{3} \)</span>（约分得到），故C选项正确。</p>
+<ol class="arabic simple" start="20">
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+\begin{equation}  
+\begin{array}{c|cccc}  
+X &amp;-2 &amp;-1 &amp; 0 &amp; 1 \\  
+\hline  
+p_k &amp; 0.1 &amp; 0.2 &amp; 0.3 &amp; 0.4  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>那么 <span class="math notranslate nohighlight">\(P(X \geq-1) \)</span>的值为（  ）<br />
+-   A. 0.2<br />
+-   B. 0.3<br />
+-   C. 0.6<br />
+-   D. 0.9</p>
+<p>答案：D<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X \geq-1) \)</span>，即求 <span class="math notranslate nohighlight">\(P(X =-1)+P(X = 0)+P(X = 1) \)</span>。</p>
+<p>从分布律表格中可知 <span class="math notranslate nohighlight">\(P(X =-1)=0.2 \)</span>， <span class="math notranslate nohighlight">\(P(X = 0)=0.3 \)</span>， <span class="math notranslate nohighlight">\(P(X = 1)=0.4 \)</span>，</p>
+<p>所以 <span class="math notranslate nohighlight">\(P(X \geq-1)=0.2 + 0.3 + 0.4 = 0.9 \)</span>，故D选项正确。</p>
+</section>
+<section id="id3">
+<h2>扩展讲解<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>离散型随机变量是指其所有可能取值是有限个或可列无限多个的随机变量。这类随机变量的特点是可以将其所有可能取值一一列举出来。例如，掷一枚硬币的结果（正面或反面）、某城市的120急救电话台一昼夜收到的呼唤次数等都是离散型随机变量的例子。</p>
+<p>要掌握一个离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的统计规律，必须知道 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值以及取每一个可能值的概率。设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(x_k (k = 1, 2, \cdots ) \)</span>， <span class="math notranslate nohighlight">\(X \)</span>取各个可能值的概率，即事件 <span class="math notranslate nohighlight">\(\lbrace X = x_k\rbrace \)</span>的概率，为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X = x_k) = p_k, \quad k = 1, 2, \cdots \end{equation}  
+ \]</div>
+<p>其中， <span class="math notranslate nohighlight">\(p_k \)</span>满足以下两个条件：</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(p_k \geq 0, \quad k = 1, 2, \cdots \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span></p></li>
+</ol>
+<p>第二个条件是由于 <span class="math notranslate nohighlight">\(\lbrace X = x_1\rbrace \cup \lbrace X = x_2\rbrace \cup \cdots \)</span>是必然事件，且 <span class="math notranslate nohighlight">\(\lbrace X = x_j\rbrace \cap \lbrace X = x_k\rbrace = \emptyset, \quad k \neq j \)</span>，故</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} 1 = P[\bigcup_{k=1}^{\infty} \lbrace X = x_k\rbrace] = \sum_{k=1}^{\infty} P\lbrace X = x_k\rbrace, \text{即} \sum_{k=1}^{\infty} p_k = 1 \end{equation}  
+ \]</div>
+<p>我们称上述公式为离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律。分布律也可以用表格的形式来表示：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}  
+\begin{array}{c|cccc}  
+X &amp; x_1 &amp; x_2 &amp; \cdots &amp; x_n &amp; \cdots \\  
+\hline  
+p_k &amp; p_1 &amp; p_2 &amp; \cdots &amp; p_n &amp; \cdots 
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+</section>
+<section id="id4">
+<h2>例题<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p><strong>例1</strong> 设一汽车在开往目的地的道路上需经过四组信号灯，每组信号灯以 <span class="math notranslate nohighlight">\(1/2 \)</span>的概率允许或禁止汽车通过。以 <span class="math notranslate nohighlight">\(X \)</span>表示汽车首次停下时，它已通过的信号灯的组数（设备组信号灯的工作是相互独立的），求 <span class="math notranslate nohighlight">\(X \)</span>的分布律。</p>
+<p><strong>解</strong> 以 <span class="math notranslate nohighlight">\(p \)</span>表示每组信号灯禁止汽车通过的概率，易知 <span class="math notranslate nohighlight">\(X \)</span>的分布律为：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}  
+\begin{array}{cccccc}  
+X &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 \\  
+p_k &amp; p &amp; (1-p)p &amp; (1-p)^2 p &amp; (1-p)^3 &amp; (1-p)^4 \\  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>或写成：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X=k) = (1-p)^k p, \quad k=0,1,2,3, \quad P(X=4) = (1-p)^4 \end{equation}  
+ \]</div>
+<p>以 <span class="math notranslate nohighlight">\(p = 1/2 \)</span>代入得：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}  
+\begin{array}{cccccc}  
+X &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 \\  
+p_k &amp; 0.5 &amp; 0.25 &amp; 0.125 &amp; 0.0625 &amp; 0.0625 \\  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+</section>
+<section id="id5">
+<h2>选择题<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的所有可能取值是有限个或可列无限多个，以下哪个选项不是离散型随机变量的例子？</p>
+<ul class="simple">
+<li><p>A. 掷一枚硬币的结果</p></li>
+<li><p>B. 某城市的 120 急救电话台一昼夜收到的呼唤次数</p></li>
+<li><p>C. 某元件的寿命</p></li>
+<li><p>D. 掷一个六面骰子的结果</p></li>
+</ul>
+<p><strong>答案</strong>：C</p>
+<p><strong>解释</strong>：某元件的寿命是一个连续型随机变量，因为它可能取值充满一个区间，无法按一定次序一一列举出来。</p>
+</li>
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律满足以下哪个条件？</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p_k \leq 0, \quad k = 1, 2, \cdots \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 0 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p_k \geq 0, \quad k = 1, 2, \cdots \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 2 \)</span></p></li>
+</ul>
+<p><strong>答案</strong>：C</p>
+<p><strong>解释</strong>：离散型随机变量的分布律要求 <span class="math notranslate nohighlight">\(p_k \geq 0 \)</span>且 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span>。</p>
+</li>
+<li><p>设离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律为 <span class="math notranslate nohighlight">\(P(X=k) = (1-p)^k p, \quad k=0,1,2,3 \)</span>，则 <span class="math notranslate nohighlight">\(P(X=4) \)</span>等于多少？</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\((1-p)^4 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p^4 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\((1-p)^3 p \)</span></p></li>
+</ul>
+<p><strong>答案</strong>：B</p>
+<p><strong>解释</strong>：根据分布律的定义， <span class="math notranslate nohighlight">\(P(X=4) = (1-p)^4 \)</span>。</p>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>是一个离散型随机变量，其分布律为 <span class="math notranslate nohighlight">\(P(X=k) = \frac{1}{2^k}, \quad k=1,2,3,\cdots \)</span>，则 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} P(X=k) \)</span>等于多少？</p>
+<ul class="simple">
+<li><p>A. 0</p></li>
+<li><p>B. 1</p></li>
+<li><p>C. 2</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\infty \)</span></p></li>
+</ul>
+<p><strong>答案</strong>：B</p>
+<p><strong>解释</strong>：这是一个几何级数求和问题， <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} \frac{1}{2^k} = 1 \)</span>。</p>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>是一个离散型随机变量，其分布律为 <span class="math notranslate nohighlight">\(P(X=k) = \frac{1}{k(k+1)}, \quad k=1,2,3,\cdots \)</span>，则 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} P(X=k) \)</span>等于多少？</p>
+<ul class="simple">
+<li><p>A. 0</p></li>
+<li><p>B. 1</p></li>
+<li><p>C. 2</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\infty \)</span></p></li>
+</ul>
+<p><strong>答案</strong>：B</p>
+<p><strong>解释</strong>：这是一个部分分式分解问题， <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} \frac{1}{k(k+1)} = 1 \)</span>。</p>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>是一个离散型随机变量，其分布律为 <span class="math notranslate nohighlight">\(P(X=k) = \frac{1}{k!}, \quad k=0,1,2,\cdots \)</span>，则 <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X=k) \)</span>等于多少？</p>
+<ul class="simple">
+<li><p>A. 0</p></li>
+<li><p>B. 1</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(e \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\infty \)</span></p></li>
+</ul>
+<p><strong>答案</strong>：C</p>
+<p><strong>解释</strong>：这是一个指数级数求和问题， <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} \frac{1}{k!} = e \)</span>。</p>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>是一个离散型随机变量，其分布律为 <span class="math notranslate nohighlight">\(P(X=k) = \frac{1}{2^k}, \quad k=1,2,3,\cdots \)</span>，则 <span class="math notranslate nohighlight">\(P(X=1) \)</span>等于多少？</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{1}{2} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{1}{4} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{1}{8} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{1}{16} \)</span></p></li>
+</ul>
+<p><strong>答案</strong>：A</p>
+<p><strong>解释</strong>：根据分布律的定义， <span class="math notranslate nohighlight">\(P(X=1) = \frac{1}{2} \)</span>。</p>
+</li>
+</ol>
+</section>
+<section id="id6">
+<h2>知识点扩展讲解<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>离散型随机变量是概率论中的一种基本类型，它与连续型随机变量相对。离散型随机变量的特点在于其可能取的值是可数的，这包括有限个值或可列无限多个值。例如，抛硬币的结果（正面或反面）、掷骰子的结果（1到6的点数）都是离散型随机变量的例子。</p>
+<p>离散型随机变量的分布律可以通过概率质量函数（PMF）来描述，该函数为每个可能的值分配一个概率。这些概率必须满足两个条件：每个概率值非负，且所有概率值的和为1。</p>
+</section>
+<section id="id7">
+<h2>选择题<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>离散型随机变量的定义是：</p>
+<ul class="simple">
+<li><p>A. 只能取有限个值</p></li>
+<li><p>B. 值可以是任何实数</p></li>
+<li><p>C. 取值可以一一列举</p></li>
+<li><p>D. 取值充满一个区间<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> 离散型随机变量的特点是其所有可能的取值可以一一列举出来，无论是有限个还是可列无限多个。</p></li>
+</ul>
+</li>
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的概率质量函数 <span class="math notranslate nohighlight">\(P(X = x_k) \)</span>必须满足的条件是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p_k &lt; 0 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k &lt; 1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p_k \geq 0 \)</span>且 <span class="math notranslate nohighlight">\(\sum_{k=1}^{\infty} p_k = 1 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(p_k \)</span>可以是任何实数<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> 概率质量函数的值必须非负，且所有可能值的概率之和必须等于1。</p></li>
+</ul>
+</li>
+<li><p>如果离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>可以取值 <span class="math notranslate nohighlight">\(x_1, x_2, \ldots \)</span>，则 <span class="math notranslate nohighlight">\(X \)</span>的分布律可以表示为：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X = x_k) = p_k \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X \leq x_k) = p_k \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X &gt; x_k) = p_k \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(P(X \geq x_k) = p_k \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 分布律直接给出了随机变量取每个特定值的概率。</p></li>
+</ul>
+</li>
+<li><p>对于离散型随机变量，以下哪个条件是正确的：</p>
+<ul class="simple">
+<li><p>A. 所有可能值的概率之和可以大于1</p></li>
+<li><p>B. 可以有多个值的概率为0</p></li>
+<li><p>C. 所有可能值的概率之和必须等于1</p></li>
+<li><p>D. 每个值的概率可以是负数<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> 离散型随机变量的所有可能值的概率之和必须等于1，这是概率的基本规则。</p></li>
+</ul>
+</li>
+<li><p>如果离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的所有可能值的概率之和不等于1，那么：</p>
+<ul class="simple">
+<li><p>A. 这是可能的，因为概率可以超过1</p></li>
+<li><p>B. 这是不可能的，因为违反了概率的基本规则</p></li>
+<li><p>C. 这是可能的，因为概率可以是负数</p></li>
+<li><p>D. 这是可能的，因为概率可以是任何实数<br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> 所有可能值的概率之和必须等于1，这是概率论的基本规则。</p></li>
+</ul>
+</li>
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值 <span class="math notranslate nohighlight">\(E(X) \)</span>可以通过以下公式计算：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(E(X) = \sum_{k=1}^{\infty} x_k p_k \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(E(X) = \prod_{k=1}^{\infty} x_k p_k \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(E(X) = \max(x_k) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(E(X) = \min(x_k) \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 期望值是每个可能值乘以其概率的总和。</p></li>
+</ul>
+</li>
+<li><p>如果离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的分布律是 <span class="math notranslate nohighlight">\(P(X = x_k) = p_k \)</span>，那么 <span class="math notranslate nohighlight">\(X \)</span>的方差 <span class="math notranslate nohighlight">\(\text{Var}(X) \)</span>可以通过以下公式计算：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\text{Var}(X) = \sum_{k=1}^{\infty} [x_k- E(X)]^2 p_k \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\text{Var}(X) = E\lbrace [X- E(X)]^2 \rbrace \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\text{Var}(X) = E(X^2)- [E(X)]^2 \)</span></p></li>
+<li><p>D. 所有上述公式都是正确的</p></li>
+</ul>
+<p><strong>答案：D</strong><br />
+<strong>解析：</strong> 方差可以通过直接计算 <span class="math notranslate nohighlight">\((x_k- E(X))^2 \)</span>的期望值或通过 <span class="math notranslate nohighlight">\(E(X^2)- [E(X)]^2 \)</span>来计算。</p>
+</li>
+<li><p>离散型随机变量 <span class="math notranslate nohighlight">\(X \)</span>的累积分布函数 <span class="math notranslate nohighlight">\(F(x) \)</span>定义为：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(F(x) = P(X \leq x) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(F(x) = P(X &gt; x) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(F(x) = P(X = x) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(F(x) = 1- P(X \leq x) \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 累积分布函数 <span class="math notranslate nohighlight">\(F(x) \)</span>给出了随机变量 <span class="math notranslate nohighlight">\(X \)</span>取值小于或等于 <span class="math notranslate nohighlight">\(x \)</span>的概率。</p></li>
+</ul>
+</li>
+</ol>
+<p>下面介绍三种重要的离散型随机变量。</p>
+</section>
+<section id="id8">
+<h2>（一）（0-1）分布<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>设随机变量 <span class="math notranslate nohighlight">\(X \)</span>只可能取 <span class="math notranslate nohighlight">\(0 \)</span>与 <span class="math notranslate nohighlight">\(1 \)</span>两个值，它的分布律是</p>
+<div class="math notranslate nohighlight">
+\[  
+ \begin{equation} P\lbrace X=k\rbrace = p^k (1-p)^{1-k}, \quad k=0,1 \quad (0&lt;p&lt;1),  
+ \end{equation}  
+ \]</div>
+<p>则称 <span class="math notranslate nohighlight">\(X \)</span>服从以 <span class="math notranslate nohighlight">\(p \)</span>为参数的（0-1）分布或两点分布。<br />
+（0-1）分布的分布律也可写成</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}  
+ \begin{equation}  
+\begin{array}{c|cc}  
+X &amp; 0 &amp; 1 \\  
+\hline  
+p_k &amp; 1-p &amp; p  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>对于一个随机试验，如果它的样本空间只包含两个元素，即 <span class="math notranslate nohighlight">\(S=\lbrace e_1, e_2\rbrace \)</span>，我们总能在 <span class="math notranslate nohighlight">\(S \)</span>上定义一个服从（0-1）分布的随机变量</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation} X=X(e)=\left\lbrace \begin{array}{ll}  
+0, &amp; \text{当 } e=e_1, \\  
+1, &amp; \text{当 } e=e_2  
+\end{array}\right. \end{equation}  
+ \end{split}\]</div>
+<p>来描述这个随机试验的结果。例如，对新生婴儿的性别进行登记，检查产品的质量是否合格，某车间的电力消耗是否超过负荷以及前面多次讨论过的“抛硬币”试验等都可以用（0-1）分布的随机变量来描述。（0-1）分布是经常遇到的一种分布。</p>
+</section>
+<section id="id9">
+<h2>（二）伯努利试验、二项分布<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p>设试验 <span class="math notranslate nohighlight">\(E \)</span>只有两个可能结果： <span class="math notranslate nohighlight">\(A \)</span>及 <span class="math notranslate nohighlight">\(\overline{A} \)</span>，则称 <span class="math notranslate nohighlight">\(E \)</span>为伯努利（Bernoulli）试验。设 <span class="math notranslate nohighlight">\(P(A)=p \quad (0&lt;p&lt;1) \)</span>，此时 <span class="math notranslate nohighlight">\(P(\overline{A})=1-p \)</span>。将 <span class="math notranslate nohighlight">\(E \)</span>独立重复地进行 <span class="math notranslate nohighlight">\(n \)</span>次，则称这一串重复的独立试验为 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验。<br />
+这里“重复”是指在每次试验中 <span class="math notranslate nohighlight">\(P(A)=p \)</span>保持不变；“独立”是指各次试验</p>
+<p>的结果互不影响，即若以 <span class="math notranslate nohighlight">\(C_i \)</span>记第 <span class="math notranslate nohighlight">\(i \)</span>次试验的结果， <span class="math notranslate nohighlight">\(C_i \)</span>为 <span class="math notranslate nohighlight">\(A \)</span>或 <span class="math notranslate nohighlight">\(\overline{A} \)</span>， <span class="math notranslate nohighlight">\(i=1,2,\cdots ,n \)</span>。 “独立”是指</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(C_1C_2\cdots C_n) = P(C_1)P(C_2)\cdots P(C_n). \tag{2.5} \end{equation}  
+ \]</div>
+<p><span class="math notranslate nohighlight">\(n \)</span>重伯努利试验是一种很重要的数学模型，它有广泛的应用，是研究最多的模型之一。</p>
+<p>例如， <span class="math notranslate nohighlight">\(E \)</span>是抛一枚硬币观察得到正面或反面。 <span class="math notranslate nohighlight">\(A \)</span>表示得正面，这是一个伯努利试验。如将硬币抛 <span class="math notranslate nohighlight">\(n \)</span>次，就是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验。又如抛一颗骰子，若 <span class="math notranslate nohighlight">\(A \)</span>表示得到“1点”， <span class="math notranslate nohighlight">\(\overline{A} \)</span>表示得到“非 1 点”。将骰子抛 <span class="math notranslate nohighlight">\(n \)</span>次，就是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验。再如在袋中装有 <span class="math notranslate nohighlight">\(a \)</span>只白球， <span class="math notranslate nohighlight">\(b \)</span>只黑球。试验 <span class="math notranslate nohighlight">\(E \)</span>是在袋中任取一只球，观察其颜色。以 <span class="math notranslate nohighlight">\(A \)</span>表示“取到白球”， <span class="math notranslate nohighlight">\(P(A)=a/(a+b) \)</span>。若连续取球 <span class="math notranslate nohighlight">\(n \)</span>次作放回抽样，这就是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验。然而，若作不放回抽样，虽则每次试验都有 <span class="math notranslate nohighlight">\(P(A)=a/(a+b) \)</span>（见第一章 §4 例 5），但各次试验不再相互独立③，因而不再是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验了。</p>
+<p>以 <span class="math notranslate nohighlight">\(X \)</span>表示 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数， <span class="math notranslate nohighlight">\(X \)</span>是一个随机变量，我们来求它的分布律。 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots , n \)</span>。由于各次试验是相互独立的，因此事件 <span class="math notranslate nohighlight">\(A \)</span>在指定的 <span class="math notranslate nohighlight">\(k \)</span>( <span class="math notranslate nohighlight">\(0 \leq k \leq n \)</span>) 次试验中发生，在其他 <span class="math notranslate nohighlight">\(n-k \)</span>次试验中 <span class="math notranslate nohighlight">\(A \)</span>不发生（例如在前 <span class="math notranslate nohighlight">\(k \)</span>次试验中 <span class="math notranslate nohighlight">\(A \)</span>发生，而后 <span class="math notranslate nohighlight">\(n-k \)</span>次试验中 <span class="math notranslate nohighlight">\(A \)</span>不发生）的概率为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \frac{p \cdot p \cdot \cdots \cdot p}{k 个} \cdot \frac{(1-p) \cdot (1-p) \cdot \cdots \cdot (1-p)}{n-k 个} = p^k(1-p)^{n-k}. \end{equation}  
+ \]</div>
+<p>这种指定的方式共有 <span class="math notranslate nohighlight">\(\binom{n}{k} \)</span>种，它们是两两互不相容的，故在 <span class="math notranslate nohighlight">\(n \)</span>次试验中 <span class="math notranslate nohighlight">\(A \)</span>发生 <span class="math notranslate nohighlight">\(k \)</span>次的概率为 <span class="math notranslate nohighlight">\(\binom{n}{k}p^k(1-p)^{n-k} \)</span>，记 <span class="math notranslate nohighlight">\(q=1-p \)</span>，即有</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X=k) = \binom{n}{k}p^kq^{n-k}, \quad k=0,1,2,\cdots ,n. \tag{2.6} \end{equation}  
+ \]</div>
+<p>显然</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X = k) \geq 0, \quad k = 0, 1, 2, \cdots , n; \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \sum_{k=0}^{n} P(X = k) = \sum_{k=0}^{n} \binom{n}{k} p^k q^{n-k} = (p + q)^n = 1. \end{equation}  
+ \]</div>
+<p>③ 对于不放回抽样，以 <span class="math notranslate nohighlight">\(A_1,A_2 \)</span>分别记第一次、第二次取到白球，则有 <span class="math notranslate nohighlight">\(P(A_2|A_1) = \frac{a-1}{a+b-1} \)</span>，而</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(A_2) = \frac{a}{a+b}, \quad P(A_2|A_1) \neq P(A_2), \end{equation}  
+ \]</div>
+<p>故第一次、第二次试验不相独立。即知(2.5)不成立。</p>
+<p>即 <span class="math notranslate nohighlight">\(P\lbrace X=k\rbrace \)</span>满足条件 (2.2)、(2.3). 注意到 <span class="math notranslate nohighlight">\(\binom{n}{k} p^k q^{n-k} \)</span>刚好是二项式 <span class="math notranslate nohighlight">\((p+q)^n \)</span>的展开式中出现 <span class="math notranslate nohighlight">\(p^k \)</span>的那一项, 我们称随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(n \)</span>, <span class="math notranslate nohighlight">\(p \)</span>的二项分布, 并记为 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>. 特别, 当 <span class="math notranslate nohighlight">\(n=1 \)</span>时二项分布 (2.6) 化为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P\lbrace X=k\rbrace = p^k q^{1-k}, \quad k=0,1. \end{equation}  
+ \]</div>
+<p>这就是 (0-1) 分布.</p>
+</section>
+<section id="id10">
+<h2>知识点扩展与讲解：<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<p><strong>（一）（0- 1）分布</strong></p>
+<p><strong>1. 定义</strong>：<br />
+设随机变量 <span class="math notranslate nohighlight">\(X \)</span>只可能取 <span class="math notranslate nohighlight">\(0 \)</span>与 <span class="math notranslate nohighlight">\(1 \)</span>两个值，它的分布律是 <span class="math notranslate nohighlight">\(P\lbrace X = k\rbrace = p^k(1- p)^{1- k}, \quad k = 0, 1 \quad (0 &lt; p &lt; 1) \)</span>，此时称 <span class="math notranslate nohighlight">\(X \)</span>服从以 <span class="math notranslate nohighlight">\(p \)</span>为参数的（0- 1）分布或两点分布。其分布律还可写成表格形式：<br />
+$<span class="math notranslate nohighlight">\(  
+\begin{equation}  
+\begin{array}{c|cc}  
+X &amp; 0 &amp; 1 \\  
+\hline  
+p_k &amp; 1- p &amp; p  
+\end{array}  
+\end{equation}  
+ \)</span>$</p>
+<p><strong>2. 实际意义</strong>：<br />
+对于一个随机试验，如果它的样本空间只包含两个元素，比如 <span class="math notranslate nohighlight">\(S = \lbrace e_1, e_2\rbrace \)</span>，我们就能在这个样本空间上定义一个服从（0- 1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>。例如，当对新生婴儿的性别进行登记时，可令 <span class="math notranslate nohighlight">\(X = 0 \)</span>表示女婴， <span class="math notranslate nohighlight">\(X = 1 \)</span>表示男婴；检查产品的质量是否合格，可令 <span class="math notranslate nohighlight">\(X = 0 \)</span>表示不合格， <span class="math notranslate nohighlight">\(X = 1 \)</span>表示合格；某车间的电力消耗是否超过负荷， <span class="math notranslate nohighlight">\(X = 0 \)</span>表示未超过， <span class="math notranslate nohighlight">\(X = 1 \)</span>表示超过；以及抛硬币试验， <span class="math notranslate nohighlight">\(X = 0 \)</span>表示反面， <span class="math notranslate nohighlight">\(X = 1 \)</span>表示正面等。这些情况都可以用（0- 1）分布的随机变量来描述，它是一种很常见的分布类型，能简洁地刻画只有两种可能结果的随机现象。</p>
+<p><strong>（二）伯努利试验、二项分布</strong></p>
+<p><strong>1. 伯努利试验</strong>：<br />
+设试验 <span class="math notranslate nohighlight">\(E \)</span>只有两个可能结果： <span class="math notranslate nohighlight">\(A \)</span>及 <span class="math notranslate nohighlight">\(\overline{A} \)</span>，则称 <span class="math notranslate nohighlight">\(E \)</span>为伯努利（Bernoulli）试验。设 <span class="math notranslate nohighlight">\(P(A) = p \quad (0 &lt; p &lt; 1) \)</span>，那么 <span class="math notranslate nohighlight">\(P(\overline{A}) = 1- p \)</span>。</p>
+<p><strong>2. <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验</strong>：<br />
+将伯努利试验 <span class="math notranslate nohighlight">\(E \)</span>独立重复地进行 <span class="math notranslate nohighlight">\(n \)</span>次，则称这一串重复的独立试验为 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验。这里“重复”意味着在每次试验中 <span class="math notranslate nohighlight">\(P(A) = p \)</span>保持不变；“独立”是指各次试验的结果互不影响，即若以 <span class="math notranslate nohighlight">\(C_i \)</span>记第 <span class="math notranslate nohighlight">\(i \)</span>次试验的结果（ <span class="math notranslate nohighlight">\(C_i \)</span>为 <span class="math notranslate nohighlight">\(A \)</span>或 <span class="math notranslate nohighlight">\(\overline{A} \)</span>， <span class="math notranslate nohighlight">\(i = 1, 2, \cdots , n \)</span>），满足 <span class="math notranslate nohighlight">\(P(C_1C_2\cdots C_n) = P(C_1)P(C_2)\cdots P(C_n) \)</span>。例如抛一枚硬币观察得到正面或反面是一个伯努利试验，将硬币抛 <span class="math notranslate nohighlight">\(n \)</span>次就是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验；抛一颗骰子，若 <span class="math notranslate nohighlight">\(A \)</span>表示得到“1点”， <span class="math notranslate nohighlight">\(\overline{A} \)</span>表示得到“非1点”，抛 <span class="math notranslate nohighlight">\(n \)</span>次骰子也是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验；在袋中装有 <span class="math notranslate nohighlight">\(a \)</span>只白球， <span class="math notranslate nohighlight">\(b \)</span>只黑球，试验 <span class="math notranslate nohighlight">\(E \)</span>是在袋中任取一只球，观察其颜色，以 <span class="math notranslate nohighlight">\(A \)</span>表示“取到白球”，若连续取球 <span class="math notranslate nohighlight">\(n \)</span>次作放回抽样，这就是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验，而不放回抽样时各次试验不再相互独立，就不是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验了。</p>
+<p><strong>3. 二项分布</strong>：<br />
+以 <span class="math notranslate nohighlight">\(X \)</span>表示 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数， <span class="math notranslate nohighlight">\(X \)</span>是一个随机变量。由于各次试验是相互独立的，通过分析可知在 <span class="math notranslate nohighlight">\(n \)</span>次试验中 <span class="math notranslate nohighlight">\(A \)</span>发生 <span class="math notranslate nohighlight">\(k \)</span>次（ <span class="math notranslate nohighlight">\(0 \leq k \leq n \)</span>）的概率为 <span class="math notranslate nohighlight">\(\binom{n}{k}p^k(1- p)^{n- k} \)</span>，记 <span class="math notranslate nohighlight">\(q = 1- p \)</span>，即有 <span class="math notranslate nohighlight">\(P(X = k) = \binom{n}{k}p^kq^{n- k}, \quad k = 0, 1, 2, \cdots , n \)</span>。并且满足 <span class="math notranslate nohighlight">\(P(X = k) \geq 0, \quad k = 0, 1, 2, \cdots , n \)</span>以及 <span class="math notranslate nohighlight">\(\sum_{k = 0}^{n} P(X = k) = \sum_{k = 0}^{n} \binom{n}{k}p^kq^{n- k} = (p + q)^n = 1 \)</span>。我们称随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(n \)</span>， <span class="math notranslate nohighlight">\(p \)</span>的二项分布，并记为 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>。特别地，当 <span class="math notranslate nohighlight">\(n = 1 \)</span>时，二项分布就化为（0- 1）分布，即 <span class="math notranslate nohighlight">\(P\lbrace X = k\rbrace = p^kq^{1- k}, \quad k = 0, 1 \)</span>。</p>
+</section>
+<section id="id11">
+<h2>选择题及答案：<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<p><strong>一、选择题题目</strong></p>
+<ol class="arabic simple">
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从以 <span class="math notranslate nohighlight">\(p \)</span>为参数的（0- 1）分布，那么 <span class="math notranslate nohighlight">\(P(X = 0) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1- p \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p^2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\((1- p)^2 \)</span></p></li>
+</ul>
+</li>
+<li><p>对于（0- 1）分布，以下哪种情况不适合用其来描述（  ）</p>
+<ul class="simple">
+<li><p>A. 抛一枚骰子，观察得到的点数</p></li>
+<li><p>B. 检查一盏灯是否亮着</p></li>
+<li><p>C. 记录一次投篮是否命中</p></li>
+<li><p>D. 判断一个人是否感染某种病毒（只有感染和未感染两种情况）</p></li>
+</ul>
+</li>
+<li><p>在（0- 1）分布中，若 <span class="math notranslate nohighlight">\(P(X = 1) = 0.6 \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 0) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. 0.4</p></li>
+<li><p>B. 0.6</p></li>
+<li><p>C. 0.2</p></li>
+<li><p>D. 0.8</p></li>
+</ul>
+</li>
+<li><p>设试验 <span class="math notranslate nohighlight">\(E \)</span>只有两个可能结果： <span class="math notranslate nohighlight">\(A \)</span>及 <span class="math notranslate nohighlight">\(\overline{A} \)</span>，且 <span class="math notranslate nohighlight">\(P(A) = p \)</span>，将 <span class="math notranslate nohighlight">\(E \)</span>独立重复地进行 <span class="math notranslate nohighlight">\(n \)</span>次，这属于（  ）</p>
+<ul class="simple">
+<li><p>A. 一次伯努利试验</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验</p></li>
+<li><p>C. 二项分布试验</p></li>
+<li><p>D. 普通试验</p></li>
+</ul>
+</li>
+<li><p>下列关于 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验的说法，错误的是（  ）</p>
+<ul class="simple">
+<li><p>A. 每次试验结果只有两种可能</p></li>
+<li><p>B. 各次试验相互独立</p></li>
+<li><p>C. 每次试验中事件发生的概率会改变</p></li>
+<li><p>D. 是一种常见的数学模型</p></li>
+</ul>
+</li>
+<li><p>在抛硬币试验中，设正面朝上为事件 <span class="math notranslate nohighlight">\(A \)</span>，抛 <span class="math notranslate nohighlight">\(5 \)</span>次硬币属于（  ）</p>
+<ul class="simple">
+<li><p>A. 一次伯努利试验</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(5 \)</span>重伯努利试验</p></li>
+<li><p>C. 二项分布试验</p></li>
+<li><p>D. 普通试验</p></li>
+</ul>
+</li>
+<li><p>若随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(n = 3 \)</span>， <span class="math notranslate nohighlight">\(p = 0.5 \)</span>的二项分布，那么 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(0, 1, 2, 3 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(-1, 0, 1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(0, 1, 2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1, 2, 3 \)</span></p></li>
+</ul>
+</li>
+<li><p>对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>， <span class="math notranslate nohighlight">\(P(X = k) \)</span>的计算公式为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p^k(1- p)^{n- k} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\binom{n}{k}p^k(1- p)^{n- k} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p^k(1- p)^{1- k} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\binom{n}{k}p^{n- k}(1- p)^{k} \)</span></p></li>
+</ul>
+</li>
+<li><p>在二项分布中，若 <span class="math notranslate nohighlight">\(n = 4 \)</span>， <span class="math notranslate nohighlight">\(p = 0.3 \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 2) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\binom{4}{2} \times 0.3^2 \times 0.7^2 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\binom{4}{2} \times 0.3^2 \times 0.7^4 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\binom{4}{2} \times 0.3^4 \times 0.7^2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\binom{4}{2} \times 0.3^4 \times 0.7^4 \)</span></p></li>
+</ul>
+</li>
+<li><p>设随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从二项分布 <span class="math notranslate nohighlight">\(X \sim b(6, 0.4) \)</span>，那么 <span class="math notranslate nohighlight">\(P(X \leq 3) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X = 3) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X = 4) + P(X = 5) + P(X = 6) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1- P(X = 0)- P(X = 1)- P(X = 2) \)</span></p></li>
+</ul>
+</li>
+<li><p>下列关于（0- 1）分布和二项分布关系的说法，正确的是（  ）</p>
+<ul class="simple">
+<li><p>A. 二项分布是（0- 1）分布的一种特殊情况</p></li>
+<li><p>B. （0- 1）分布是二项分布的一种特殊情况</p></li>
+<li><p>C. 二者毫无关系</p></li>
+<li><p>D. 它们只是形式上相似</p></li>
+</ul>
+</li>
+<li><p>在袋中装有 <span class="math notranslate nohighlight">\(5 \)</span>只白球， <span class="math notranslate nohighlight">\(3 \)</span>只黑球，试验 <span class="math notranslate nohighlight">\(E \)</span>是在袋中任取一只球，观察其颜色，以 <span class="math notranslate nohighlight">\(A \)</span>表示“取到白球”，若连续取球 <span class="math notranslate nohighlight">\(4 \)</span>次作放回抽样，设 <span class="math notranslate nohighlight">\(X \)</span>表示取到白球的次数，则 <span class="math notranslate nohighlight">\(X \)</span>服从（  ）</p>
+<ul class="simple">
+<li><p>A. （0- 1）分布</p></li>
+<li><p>B. 二项分布</p></li>
+<li><p>C. 既不服从（0- 1）分布也不服从二项分布</p></li>
+<li><p>D. 均匀分布</p></li>
+</ul>
+</li>
+<li><p>对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>，若 <span class="math notranslate nohighlight">\(p = 0.2 \)</span>， <span class="math notranslate nohighlight">\(n = 5 \)</span>，则 <span class="math notranslate nohighlight">\(P(X \geq 3) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X = 3) + P(X = 4) + P(X = 5) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X = 0) + P(X = 1) + P(X = 2) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(1- P(X = 0)- P(X = 1)- P(X = 2) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1- P(X = 3)- P(X = 4)- P(X = 5) \)</span></p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从（0- 1）分布，设 <span class="math notranslate nohighlight">\(p = 0.7 \)</span>，则 <span class="math notranslate nohighlight">\(P(X \neq 0) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. 0.3</p></li>
+<li><p>B. 0.7</p></li>
+<li><p>C. 0.2</p></li>
+<li><p>D. 0.8</p></li>
+</ul>
+</li>
+<li><p>在抛骰子试验中，设得到奇数点为事件 <span class="math notranslate nohighlight">\(A \)</span>，抛 <span class="math notranslate nohighlight">\(3 \)</span>次骰子，设 <span class="math notranslate nohighlight">\(X \)</span>表示事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数，则 <span class="math notranslate nohighlight">\(X \)</span>服从（  ）</p>
+<ul class="simple">
+<li><p>A. （0- 1）分布</p></li>
+<li><p>B. 二项分布</p></li>
+<li><p>C. 既不服从（0- 1）分布也不服从二项分布</p></li>
+<li><p>D. 均匀分布</p></li>
+</ul>
+</li>
+<li><p>对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>，当 <span class="math notranslate nohighlight">\(n \)</span>增大时，以下说法正确的是（  ）</p>
+<ul class="simple">
+<li><p>A. 随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围变小</p></li>
+<li><p>B. 随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围变大</p></li>
+<li><p>C. 随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围不变</p></li>
+<li><p>D. 不确定</p></li>
+</ul>
+</li>
+<li><p>若随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从二项分布 <span class="math notranslate nohighlight">\(X \sim b(8, 0.6) \)</span>，那么 <span class="math notranslate nohighlight">\(P(X = 4) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\binom{8}{4} \times 0.6^4 \times 0.4^4 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\binom{8}{4} \times 0.6^4 \times 0.4^8 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\binom{8}{4} \times 0.6^8 \times 0.4^4 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\binom{8}{4} \times 0.6^8 \times 0.4^8 \)</span></p></li>
+</ul>
+</li>
+<li><p>在检查产品质量时，设合格产品为事件 <span class="math notranslate nohighlight">\(A \)</span>，每次检查产品合格的概率为 <span class="math notranslate nohighlight">\(0.9 \)</span>，检查 <span class="math notranslate nohighlight">\(5 \)</span>次产品，设 <span class="math notranslate nohighlight">\(X \)</span>表示合格产品的次数，则 <span class="math notranslate nohighlight">\(X \)</span>服从（  ）</p>
+<ul class="simple">
+<li><p>A. （0- 1）分布</p></li>
+<li><p>B. 二项分布</p></li>
+<li><p>C. 既不服从（0- 1）分布也不服从二项分布</p></li>
+<li><p>D. 均匀分布</p></li>
+</ul>
+</li>
+<li><p>对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>，若 <span class="math notranslate nohighlight">\(n = 6 \)</span>， <span class="math notranslate nohighlight">\(p = 0.5 \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 2) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X = 0) + P(X = 1) + P(X = 2) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X = 2) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X = 3) + P(X = 4) + P(X = 5) + P(X = 6) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1- P(X = 0)- P(X = 1)- P(X = 2) \)</span></p></li>
+</ul>
+</li>
+<li><p>随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从（0- 1）分布，设 <span class="math notranslate nohighlight">\(p = 0.4 \)</span>，则 <span class="math notranslate nohighlight">\(P(X \geq 1) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. 0.4</p></li>
+<li><p>B. 0.6</p></li>
+<li><p>C. 0.2</p></li>
+<li><p>D. 0.8</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>二、答案及解析</strong></p>
+<ol class="arabic simple">
+<li><p>答案：B<br />
+解析：对于（0- 1）分布，其分布律为 <span class="math notranslate nohighlight">\(P\lbrace X = k\rbrace = p^k(1- p)^{1- k}, \quad k = 0, 1 \quad (0 &lt; p &lt; 1) \)</span>，当 <span class="math notranslate nohighlight">\(k = 0 \)</span>时， <span class="math notranslate nohighlight">\(P(X = 0) = p^0(1- p)^{1- 0} = 1- p \)</span>，所以选B。</p></li>
+<li><p>答案：A<br />
+解析：（0- 1）分布适用于描述只有两种可能结果的随机试验。抛一枚骰子，观察得到的点数，其结果有6种可能，不适合用（0- 1）分布来描述；而检查一盏灯是否亮着（亮或不亮）、记录一次投篮是否命中（命中或未命中）、判断一个人是否感染某种病毒（感染或未感染）都只有两种可能结果，适合用（0- 1）分布描述，所以选A。</p></li>
+<li><p>答案：A<br />
+解析：在（0- 1）分布中， <span class="math notranslate nohighlight">\(P(X = 1) + P(X = 0) = 1 \)</span>，已知 <span class="math notranslate nohighlight">\(P(X = 1) = 0.6 \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 0) = 1- 0.6 = 0.4 \)</span>，所以选A。</p></li>
+<li><p>答案：B<br />
+解析：将只有两个可能结果的试验 <span class="math notranslate nohighlight">\(E \)</span>独立重复地进行 <span class="math notranslate nohighlight">\(n \)</span>次，这就是 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验的定义，所以选B。</p></li>
+<li><p>答案：C<br />
+解析： <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验的特点包括：每次试验结果只有两种可能；各次试验相互独立；每次试验中事件发生的概率保持不变；它是一种常见的数学模型。所以说每次试验中事件发生的概率会改变是错误的，选C。</p></li>
+<li><p>答案：B<br />
+解析：抛硬币试验只有正面和反面两种结果，抛 <span class="math notranslate nohighlight">\(5 \)</span>次硬币就是将这个只有两种结果的试验独立重复地进行了 <span class="math notranslate nohighlight">\(5 \)</span>次，属于 <span class="math notranslate nohighlight">\(5 \)</span>重伯努利试验，所以选B。</p></li>
+<li><p>答案：A<br />
+解析：若随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(n \)</span>， <span class="math notranslate nohighlight">\(p \)</span>的二项分布， <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots , n \)</span>，当 <span class="math notranslate nohighlight">\(n = 3 \)</span>时， <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(0, 1, 2, 3 \)</span>，所以选A。</p></li>
+<li><p>答案：B<br />
+解析：对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>， <span class="math notranslate nohighlight">\(P(X = k) \)</span>的计算公式为 <span class="math notranslate nohighlight">\(\binom{n}{k}p^k(1- p)^{n- k} \)</span>，所以选B。</p></li>
+<li><p>答案：A<br />
+解析：在二项分布中，若 <span class="math notranslate nohighlight">\(n = 4 \)</span>， <span class="math notranslate nohighlight">\(p = 0.3 \)</span>，根据公式 <span class="math notranslate nohighlight">\(P(X = k) = \binom{n}{k}p^k(1- p)^{n- k} \)</span>，当 <span class="math notranslate nohighlight">\(k = 2 \)</span>时， <span class="math notranslate nohighlight">\(P(X = 2)=\binom{4}{2} \times 0.3^2 \times 0.7^2 \)</span>，所以选A。</p></li>
+<li><p>答案：A<br />
+解析：要求 <span class="math notranslate nohighlight">\(P(X \leq 3) \)</span>，就是求 <span class="math notranslate nohighlight">\(X \)</span>取 <span class="math notranslate nohighlight">\(0 \)</span>、 <span class="math notranslate nohighlight">\(1 \)</span>、 <span class="math notranslate nohighlight">\(2 \)</span>、 <span class="math notranslate nohighlight">\(3 \)</span>时的概率之和，即 <span class="math notranslate nohighlight">\(P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3) \)</span>，所以选A。</p></li>
+<li><p>答案：B<br />
+解析：当二项分布中的 <span class="math notranslate nohighlight">\(n = 1 \)</span>时，二项分布就化为（0- 1）分布，所以（0- 1）分布是二项分布的一种特殊情况，选B。</p></li>
+<li><p>答案：B<br />
+解析：在袋中任取一只球观察其颜色，只有取到白球或黑球两种结果，连续取球 <span class="math notranslate nohighlight">\(4 \)</span>次作放回抽样，每次取球的概率不变且各次试验相互独立，以 <span class="math notranslate nohighlight">\(X \)</span>表示取到白球的次数，符合二项分布的定义，所以 <span class="math notranslate nohighlight">\(X \)</span>服从二项分布，选B。</p></li>
+<li><p>答案：A<br />
+解析：对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>，要求 <span class="math notranslate nohighlight">\(P(X \geq 3) \)</span>，就是求 <span class="math notranslate nohighlight">\(X \)</span>取 <span class="math notranslate nohighlight">\(3 \)</span>、 <span class="math notranslate nohighlight">\(4 \)</span>、 <span class="math notranslate nohighlight">\(5 \)</span>时的概率之和，即 <span class="math notranslate nohighlight">\(P(X = 3) + P(X = 4) + P(X = 5) \)</span>，所以选A。</p></li>
+<li><p>答案：B<br />
+解析：随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从（0- 1）分布，设 <span class="math notranslate nohighlight">\(p = 0.7 \)</span>， <span class="math notranslate nohighlight">\(P(X \neq 0) \)</span>就是 <span class="math notranslate nohighlight">\(P(X = 1) \)</span>，根据（0- 1）分布的分布律，当 <span class="math notranslate nohighlight">\(k = 1 \)</span>时， <span class="math notranslate nohighlight">\(P(X = 1) = p^1(1- p)^{1- 1} = p = 0.7 \)</span>，所以选B。</p></li>
+<li><p>答案：B<br />
+解析：抛骰子试验中，得到奇数点为事件 <span class="math notranslate nohighlight">\(A \)</span>，抛 <span class="math notranslate nohighlight">\(3 \)</span>次骰子，每次试验结果只有得到奇数点和得到偶数点两种可能，且各次试验相互独立，每次试验中事件 <span class="math notranslate nohighlight">\(A \)</span>发生的概率不变，设 <span class="math notranslate nohighlight">\(X \)</span>表示事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数，符合二项分布的定义，所以 <span class="math notranslate nohighlight">\(X \)</span>服从二项分布，选B。</p></li>
+<li><p>答案：B<br />
+解析：对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>，随机变量 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值是 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots , n \)</span>，当 <span class="math notranslate nohighlight">\(n \)</span>增大时，取值范围变大，且不同取值的概率分布会发生变化，所以选B。</p></li>
+<li><p>答案：A<br />
+解析：若随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从二项分布 <span class="math notranslate nohighlight">\(X \sim b(8, 0.6) \)</span>，根据二项分布 <span class="math notranslate nohighlight">\(P(X = k) \)</span>的计算公式 <span class="math notranslate nohighlight">\(P(X = k)=\binom{n}{k}p^k(1- p)^{n- k} \)</span>，当 <span class="math notranslate nohighlight">\(k = 4 \)</span>时， <span class="math notranslate nohighlight">\(P(X = 4)=\binom{8}{4} \times 0.6^4 \times 0.4^4 \)</span>，所以选A。</p></li>
+<li><p>答案：B<br />
+解析：在检查产品质量时，每次检查产品只有合格或不合格两种结果，每次检查产品合格的概率为 <span class="math notranslate nohighlight">\(0.9 \)</span>，检查 <span class="math notranslate nohighlight">\(5 \)</span>次产品，各次试验相互独立且每次试验中事件发生的概率不变，设 <span class="math notranslate nohighlight">\(X \)</span>表示合格产品的次数，符合二项分布的定义，所以 <span class="math notranslate nohighlight">\(X \)</span>服从二项分布，选B。</p></li>
+<li><p>答案：A<br />
+解析：对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>，要求 <span class="math notranslate nohighlight">\(P(X \leq 2) \)</span>，就是求 <span class="math notranslate nohighlight">\(X \)</span>取 <span class="math notranslate nohighlight">\(0 \)</span>、 <span class="math notranslate nohighlight">\(1 \)</span>、 <span class="math notranslate nohighlight">\(2 \)</span>时的概率之和，即 <span class="math notranslate nohighlight">\(P(X = 0) + P(X = 1) + P(X = 2) \)</span>，所以选A。</p></li>
+<li><p>答案：A<br />
+解析：随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从（0- 1）分布，设 <span class="math notranslate nohighlight">\(p = 0.4 \)</span>， <span class="math notranslate nohighlight">\(P(X \geq 1) \)</span>就是 <span class="math notranslate nohighlight">\(1- P(X = 0) \)</span>，根据（0- 1）分布的分布律，当 <span class="math notranslate nohighlight">\(k = 0 \)</span>时， <span class="math notranslate nohighlight">\(P(X = 0) = p^0(1- p)^{1- 0} = 1- p = 1- 0.4 = 0.6 \)</span>，所以 <span class="math notranslate nohighlight">\(P(X \geq 1)=1- 0.6 = 0.4 \)</span>，选A。</p></li>
+</ol>
+</section>
+<section id="id12">
+<h2>知识点扩展讲解<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<p>（0-1）分布，也称为伯努利分布或两点分布，是一种离散概率分布，用于描述只有两种可能结果的随机试验。这种分布以概率 <span class="math notranslate nohighlight">\(p \)</span>为参数，其中 <span class="math notranslate nohighlight">\(p \)</span>是成功（或事件发生）的概率，失败的概率为 <span class="math notranslate nohighlight">\(1-p \)</span>。（0-1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>可以取两个值：0（失败）和1（成功）。</p>
+<p>伯努利试验是一种只有两种可能结果的随机试验，通常标记为成功（A）和失败（ <span class="math notranslate nohighlight">\(\overline{A} \)</span>）。如果将伯努利试验独立重复 <span class="math notranslate nohighlight">\(n \)</span>次，这种重复的试验序列称为 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验。每次试验的成功概率相同，且各次试验之间相互独立。</p>
+<p>二项分布是伯努利试验的扩展，用于描述在 <span class="math notranslate nohighlight">\(n \)</span>次独立的伯努利试验中成功次数的概率分布。如果 <span class="math notranslate nohighlight">\(X \)</span>表示 <span class="math notranslate nohighlight">\(n \)</span>次试验中成功的次数，那么 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(n \)</span>和 <span class="math notranslate nohighlight">\(p \)</span>的二项分布，记作 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>。二项分布的概率质量函数为：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \end{equation}  
+ \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\binom{n}{k} \)</span>是组合数，表示从 <span class="math notranslate nohighlight">\(n \)</span>次试验中选择 <span class="math notranslate nohighlight">\(k \)</span>次成功的方式数。</p>
+</section>
+<section id="id13">
+<h2>选择题<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>（0-1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>可以取哪些值？</p>
+<ul class="simple">
+<li><p>A. 0 和 1</p></li>
+<li><p>B. 1 和 2</p></li>
+<li><p>C. 0 和 2</p></li>
+<li><p>D.-1 和 1<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> （0-1）分布的随机变量只能取两个值，0和1。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \)</span>服从（0-1）分布， <span class="math notranslate nohighlight">\(P(X=1) \)</span>表示什么？</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(X \)</span>为0的概率</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(X \)</span>为1的概率</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(X \)</span>小于1的概率</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(X \)</span>大于0的概率<br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> 在（0-1）分布中， <span class="math notranslate nohighlight">\(P(X=1) \)</span>表示成功的概率。</p></li>
+</ul>
+</li>
+<li><p>二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>中的 <span class="math notranslate nohighlight">\(n \)</span>代表什么？</p>
+<ul class="simple">
+<li><p>A. 成功的概率</p></li>
+<li><p>B. 失败的概率</p></li>
+<li><p>C. 试验的次数</p></li>
+<li><p>D. 可能的结果数<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> <span class="math notranslate nohighlight">\(n \)</span>表示在二项分布中进行的独立伯努利试验的次数。</p></li>
+</ul>
+</li>
+<li><p>在二项分布中， <span class="math notranslate nohighlight">\(p \)</span>的作用是什么？</p>
+<ul class="simple">
+<li><p>A. 试验次数</p></li>
+<li><p>B. 失败的概率</p></li>
+<li><p>C. 成功的概率</p></li>
+<li><p>D. 结果的数量<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> <span class="math notranslate nohighlight">\(p \)</span>是每次伯努利试验中成功的概率。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \sim b(3, 0.5) \)</span>， <span class="math notranslate nohighlight">\(P(X=2) \)</span>表示什么？</p>
+<ul class="simple">
+<li><p>A. 在3次试验中恰好有2次成功的概率</p></li>
+<li><p>B. 在3次试验中恰好有2次失败的概率</p></li>
+<li><p>C. 在3次试验中至少有2次成功的概率</p></li>
+<li><p>D. 在3次试验中至多有2次成功的概率<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> <span class="math notranslate nohighlight">\(P(X=2) \)</span>表示在3次独立试验中恰好有2次成功的概率。</p></li>
+</ul>
+</li>
+<li><p>二项分布的概率质量函数是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X = k) = p^k (1-p)^k \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X = k) = p^k (1-p)^{n} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(P(X = k) = (1-p)^k p^{n-k} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 二项分布的概率质量函数由公式 <span class="math notranslate nohighlight">\(P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \)</span>给出。</p></li>
+</ul>
+</li>
+<li><p>在二项分布中，如果 <span class="math notranslate nohighlight">\(p = 0.5 \)</span>，则：</p>
+<ul class="simple">
+<li><p>A. 成功和失败的概率相等</p></li>
+<li><p>B. 成功的概率是失败的两倍</p></li>
+<li><p>C. 失败的概率是成功的两倍</p></li>
+<li><p>D. 成功和失败的概率无关<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(p = 0.5 \)</span>时，成功和失败的概率相等。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \)</span>服从二项分布 <span class="math notranslate nohighlight">\(b(5, 0.3) \)</span>，则 <span class="math notranslate nohighlight">\(P(X=3) \)</span>的值：</p>
+<ul class="simple">
+<li><p>A. 大于 <span class="math notranslate nohighlight">\(P(X=4) \)</span></p></li>
+<li><p>B. 小于 <span class="math notranslate nohighlight">\(P(X=4) \)</span></p></li>
+<li><p>C. 等于 <span class="math notranslate nohighlight">\(P(X=4) \)</span></p></li>
+<li><p>D. 无法确定<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 在二项分布中，随着 <span class="math notranslate nohighlight">\(k \)</span>的增加，概率 <span class="math notranslate nohighlight">\(P(X=k) \)</span>先增加后减少。</p></li>
+</ul>
+</li>
+<li><p>二项分布的期望值 <span class="math notranslate nohighlight">\(E(X) \)</span>是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(np \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(n(1-p) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1-p \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 二项分布的期望值 <span class="math notranslate nohighlight">\(E(X) = np \)</span>。</p></li>
+</ul>
+</li>
+<li><p>二项分布的方差 <span class="math notranslate nohighlight">\(\text{Var}(X) \)</span>是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(np \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(n(1-p) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(np(1-p) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\((1-p)^2 \)</span><br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> 二项分布的方差 <span class="math notranslate nohighlight">\(\text{Var}(X) = np(1-p) \)</span>。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \sim b(10, 0.2) \)</span>，则 <span class="math notranslate nohighlight">\(P(X=0) \)</span>表示什么？</p>
+<ul class="simple">
+<li><p>A. 在10次试验中恰好有0次成功的概率</p></li>
+<li><p>B. 在10次试验中恰好有1次成功的概率</p></li>
+<li><p>C. 在10次试验中至少有1次成功的概率</p></li>
+<li><p>D. 在10次试验中至多有1次成功的概率<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> <span class="math notranslate nohighlight">\(P(X=0) \)</span>表示在10次试验中没有成功的概率。</p></li>
+</ul>
+</li>
+<li><p>在二项分布中，如果 <span class="math notranslate nohighlight">\(n \)</span>增加而 <span class="math notranslate nohighlight">\(p \)</span>保持不变， <span class="math notranslate nohighlight">\(P(X=k) \)</span>的变化趋势是：</p>
+<ul class="simple">
+<li><p>A. 增加</p></li>
+<li><p>B. 减少</p></li>
+<li><p>C. 先增加后减少</p></li>
+<li><p>D. 保持不变<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> 随着试验次数 <span class="math notranslate nohighlight">\(n \)</span>的增加，二项分布的概率分布会变得更加分散，概率先增加后减少。</p></li>
+</ul>
+</li>
+<li><p>二项分布的概率质量函数中， <span class="math notranslate nohighlight">\(\binom{n}{k} \)</span>表示什么？</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(n \)</span>次试验中恰好有 <span class="math notranslate nohighlight">\(k \)</span>次成功的概率</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(n \)</span>次试验中成功次数的期望值</p></li>
+<li><p>C. 从 <span class="math notranslate nohighlight">\(n \)</span>次试验中选择 <span class="math notranslate nohighlight">\(k \)</span>次成功的方式数</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(n \)</span>次试验中失败次数的期望值<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> <span class="math notranslate nohighlight">\(\binom{n}{k} \)</span>是组合数，表示从 <span class="math notranslate nohighlight">\(n \)</span>次试验中选择 <span class="math notranslate nohighlight">\(k \)</span>次成功的方式数。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \sim b(4, 0.5) \)</span>，则 <span class="math notranslate nohighlight">\(P(X=1) \)</span>的值：</p>
+<ul class="simple">
+<li><p>A. 等于 <span class="math notranslate nohighlight">\(P(X=3) \)</span></p></li>
+<li><p>B. 小于 <span class="math notranslate nohighlight">\(P(X=3) \)</span></p></li>
+<li><p>C. 大于 <span class="math notranslate nohighlight">\(P(X=3) \)</span></p></li>
+<li><p>D. 无法确定<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(p = 0.5 \)</span>时，二项分布的概率质量函数是对称的，所以 <span class="math notranslate nohighlight">\(P(X=1) = P(X=3) \)</span>。</p></li>
+</ul>
+</li>
+<li><p>在二项分布中，如果 <span class="math notranslate nohighlight">\(n = 10 \)</span>且 <span class="math notranslate nohighlight">\(p = 0.1 \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 0) \)</span>表示：</p>
+<ul class="simple">
+<li><p>A. 在10次试验中至少有一次成功的概率</p></li>
+<li><p>B. 在10次试验中没有成功的概率</p></li>
+<li><p>C. 在10次试验中恰好有一次成功的概率</p></li>
+<li><p>D. 在10次试验中成功次数超过一次的概率<br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> <span class="math notranslate nohighlight">\(P(X = 0) \)</span>表示在10次试验中没有成功的概率。</p></li>
+</ul>
+</li>
+<li><p>对于二项分布 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>，如果 <span class="math notranslate nohighlight">\(p \)</span>接近0，那么 <span class="math notranslate nohighlight">\(P(X = k) \)</span>随着 <span class="math notranslate nohighlight">\(k \)</span>的增加：</p>
+<ul class="simple">
+<li><p>A. 迅速增加</p></li>
+<li><p>B. 迅速减少</p></li>
+<li><p>C. 保持不变</p></li>
+<li><p>D. 先增加后减少<br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(p \)</span>接近0时，成功的概率非常小，因此随着 <span class="math notranslate nohighlight">\(k \)</span>（成功次数）的增加， <span class="math notranslate nohighlight">\(P(X = k) \)</span>迅速减少。</p></li>
+</ul>
+</li>
+<li><p>在二项分布中，如果 <span class="math notranslate nohighlight">\(n \)</span>很大而 <span class="math notranslate nohighlight">\(p \)</span>很小，那么 <span class="math notranslate nohighlight">\(X \)</span>的分布可以用正态分布来近似，这被称为二项分布的正态近似。这种近似成立的条件是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(n \)</span>必须非常大</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(p \)</span>必须非常小</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(np \)</span>和 <span class="math notranslate nohighlight">\(n(1-p) \)</span>都必须大于5</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(n \)</span>和 <span class="math notranslate nohighlight">\(p \)</span>可以是任意值<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(np \)</span>和 <span class="math notranslate nohighlight">\(n(1-p) \)</span>都大于5时，二项分布可以用正态分布近似。</p></li>
+</ul>
+</li>
+<li><p>二项分布的期望值 <span class="math notranslate nohighlight">\(E(X) \)</span>与方差 <span class="math notranslate nohighlight">\(\text{Var}(X) \)</span>之间的关系是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(E(X) = \text{Var}(X) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(E(X) = np \)</span>且 <span class="math notranslate nohighlight">\(\text{Var}(X) = np(1-p) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(E(X) = n \)</span>且 <span class="math notranslate nohighlight">\(\text{Var}(X) = p \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(E(X) = p \)</span>且 <span class="math notranslate nohighlight">\(\text{Var}(X) = n \)</span><br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> 二项分布的期望值 <span class="math notranslate nohighlight">\(E(X) = np \)</span>，方差 <span class="math notranslate nohighlight">\(\text{Var}(X) = np(1-p) \)</span>。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \sim b(20, 0.3) \)</span>，则 <span class="math notranslate nohighlight">\(P(X \leq 3) \)</span>表示：</p>
+<ul class="simple">
+<li><p>A. 在20次试验中成功次数小于或等于3的概率</p></li>
+<li><p>B. 在20次试验中成功次数大于3的概率</p></li>
+<li><p>C. 在20次试验中成功次数恰好为3的概率</p></li>
+<li><p>D. 在20次试验中成功次数至少为3的概率<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> <span class="math notranslate nohighlight">\(P(X \leq 3) \)</span>表示在20次试验中成功次数小于或等于3的概率。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id14">
+<h2>扩展讲解<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<section id="id15">
+<h3>（一）（0-1）分布<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p><strong>（0-1）分布</strong>是一种简单的离散概率分布，随机变量 <span class="math notranslate nohighlight">\(X \)</span>只可能取两个值：0 和 1。其分布律可以表示为：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P\lbrace X=k\rbrace = p^k (1-p)^{1-k}, \quad k=0,1 \quad (0&lt;p&lt;1) \end{equation}  
+ \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(p \)</span>是 <span class="math notranslate nohighlight">\(X = 1 \)</span>的概率， <span class="math notranslate nohighlight">\(1-p \)</span>是 <span class="math notranslate nohighlight">\(X = 0 \)</span>的概率。这种分布也称为两点分布。</p>
+<p><strong>分布律表</strong>可以写成：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation}  
+\begin{array}{c|cc}  
+X &amp; 0 &amp; 1 \\  
+\hline  
+p_k &amp; 1-p &amp; p  
+\end{array}  
+\end{equation}  
+ \end{split}\]</div>
+<p>在实际应用中，（0-1）分布常用于描述只有两种可能结果的随机试验，如新生婴儿的性别、产品质量是否合格、电力消耗是否超过负荷等。</p>
+</section>
+<section id="id16">
+<h3>（二）伯努利试验、二项分布<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<p><strong>伯努利试验</strong>是指只有两种可能结果的随机试验，记为 <span class="math notranslate nohighlight">\(A \)</span>和 <span class="math notranslate nohighlight">\(\overline{A} \)</span>，且 <span class="math notranslate nohighlight">\(P(A) = p \)</span>， <span class="math notranslate nohighlight">\(P(\overline{A}) = 1-p \)</span>。将伯努利试验独立重复进行 <span class="math notranslate nohighlight">\(n \)</span>次，称为 ** <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验**。</p>
+<p>在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>是一个随机变量，其分布律称为 <strong>二项分布</strong>，记为 <span class="math notranslate nohighlight">\(X \sim b(n, p) \)</span>。二项分布的分布律为：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k=0,1,2,\cdots ,n \end{equation}  
+ \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\binom{n}{k} \)</span>是组合数，表示从 <span class="math notranslate nohighlight">\(n \)</span>次试验中选出 <span class="math notranslate nohighlight">\(k \)</span>次发生事件 <span class="math notranslate nohighlight">\(A \)</span>的方式数。</p>
+<p><strong>二项分布</strong>的特点是：</p>
+<ol class="arabic simple">
+<li><p>各次试验是独立的。</p></li>
+<li><p>每次试验中事件 <span class="math notranslate nohighlight">\(A \)</span>发生的概率 <span class="math notranslate nohighlight">\(p \)</span>保持不变。</p></li>
+</ol>
+<p>当 <span class="math notranslate nohighlight">\(n = 1 \)</span>时，二项分布退化为（0-1）分布。</p>
+</section>
+</section>
+<section id="id17">
+<h2>选择题<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>（0-1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的可能取值是：</strong></p>
+<ul class="simple">
+<li><p>A. 0 和 1</p></li>
+<li><p>B. 0 到 1 之间的任意实数</p></li>
+<li><p>C. 0 到 1 之间的整数</p></li>
+<li><p>D. 任意整数</p></li>
+</ul>
+</li>
+<li><p><strong>（0-1）分布中， <span class="math notranslate nohighlight">\(X = 1 \)</span>的概率是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1-p \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p^2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>伯努利试验的特点是：</strong></p>
+<ul class="simple">
+<li><p>A. 只有两种可能结果</p></li>
+<li><p>B. 有多种可能结果</p></li>
+<li><p>C. 结果是连续的</p></li>
+<li><p>D. 结果是离散的</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>服从的分布是：</p>
+<ul class="simple">
+<li><p>A. 正态分布</p></li>
+<li><p>B. 泊松分布</p></li>
+<li><p>C. 二项分布</p></li>
+<li><p>D. 指数分布</p></li>
+</ul>
+</li>
+<li><p><strong>二项分布的参数是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(n \)</span>和 <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(n \)</span>和 <span class="math notranslate nohighlight">\(q \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p \)</span>和 <span class="math notranslate nohighlight">\(q \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(n \)</span>和 <span class="math notranslate nohighlight">\(k \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生 <span class="math notranslate nohighlight">\(k \)</span>次的概率是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\binom{n}{k} p^k (1-p)^{n-k} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\binom{n}{k} p^{n-k} (1-p)^k \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\binom{n}{k} p^k \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\binom{n}{k} (1-p)^k \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>当 <span class="math notranslate nohighlight">\(n = 1 \)</span>时，二项分布退化为：</strong></p>
+<ul class="simple">
+<li><p>A. 正态分布</p></li>
+<li><p>B. 泊松分布</p></li>
+<li><p>C. （0-1）分布</p></li>
+<li><p>D. 指数分布</p></li>
+</ul>
+</li>
+<li><p><strong>在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，各次试验的独立性意味着：</strong></p>
+<ul class="simple">
+<li><p>A. 各次试验的结果互不影响</p></li>
+<li><p>B. 各次试验的结果相互影响</p></li>
+<li><p>C. 各次试验的概率不同</p></li>
+<li><p>D. 各次试验的概率相同</p></li>
+</ul>
+</li>
+<li><p><strong>二项分布的概率和为：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1-p \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(n \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生 <span class="math notranslate nohighlight">\(k \)</span>次的组合数是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\binom{n}{k} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\binom{k}{n} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\binom{n}{p} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\binom{p}{k} \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>（0-1）分布的分布律表中， <span class="math notranslate nohighlight">\(X = 0 \)</span>的概率是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1-p \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p^2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>不发生的概率是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1-p \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p^2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>二项分布的期望值是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(np \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(n(1-p) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1-p \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>二项分布的方差是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(np(1-p) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(np \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p(1-p) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(n(1-p) \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>的可能取值是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(0, 1, 2, \cdots , n \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(1, 2, \cdots , n \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(0, 1 \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>（0-1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1-p \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p^2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>（0-1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的方差是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(p(1-p) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(1-p \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(p^2 \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>的分布律满足：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X=k) \geq 0 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X=k) \leq 0 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X=k) = 0 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(P(X=k) = 1 \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>二项分布的概率和为 1 是因为：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\((p + q)^n = 1 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(p + q = 1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p = q \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(n = 1 \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>的分布律满足：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\sum_{k=0}^{n} P(X=k) = 1 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\sum_{k=0}^{n} P(X=k) = 0 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\sum_{k=0}^{n} P(X=k) = p \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\sum_{k=0}^{n} P(X=k) = q \)</span></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id18">
+<h2>选择题答案及解释<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>A</strong>- （0-1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>只可能取 0 和 1 两个值。</p></li>
+<li><p><strong>A</strong>- （0-1）分布中， <span class="math notranslate nohighlight">\(X = 1 \)</span>的概率是 <span class="math notranslate nohighlight">\(p \)</span>。</p></li>
+<li><p><strong>A</strong>- 伯努利试验只有两种可能结果。</p></li>
+<li><p><strong>C</strong>- <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>服从二项分布。</p></li>
+<li><p><strong>A</strong>- 二项分布的参数是 <span class="math notranslate nohighlight">\(n \)</span>和 <span class="math notranslate nohighlight">\(p \)</span>。</p></li>
+<li><p><strong>A</strong>- 在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生 <span class="math notranslate nohighlight">\(k \)</span>次的概率是 <span class="math notranslate nohighlight">\(\binom{n}{k} p^k (1-p)^{n-k} \)</span>。</p></li>
+<li><p><strong>C</strong>- 当 <span class="math notranslate nohighlight">\(n = 1 \)</span>时，二项分布退化为（0-1）分布。</p></li>
+<li><p><strong>A</strong>- 在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，各次试验的结果互不影响。</p></li>
+<li><p><strong>C</strong>- 二项分布的概率和为 1。</p></li>
+<li><p><strong>A</strong>- 在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生 <span class="math notranslate nohighlight">\(k \)</span>次的组合数是 <span class="math notranslate nohighlight">\(\binom{n}{k} \)</span>。</p></li>
+<li><p><strong>B</strong>- （0-1）分布的分布律表中， <span class="math notranslate nohighlight">\(X = 0 \)</span>的概率是 <span class="math notranslate nohighlight">\(1-p \)</span>。</p></li>
+<li><p><strong>B</strong>- 伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>不发生的概率是 <span class="math notranslate nohighlight">\(1-p \)</span>。</p></li>
+<li><p><strong>A</strong>- 二项分布的期望值是 <span class="math notranslate nohighlight">\(np \)</span>。</p></li>
+<li><p><strong>A</strong>- 二项分布的方差是 <span class="math notranslate nohighlight">\(np(1-p) \)</span>。</p></li>
+<li><p><strong>A</strong>- 在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>的可能取值是 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots , n \)</span>。</p></li>
+<li><p><strong>A</strong>- （0-1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值是 <span class="math notranslate nohighlight">\(p \)</span>。</p></li>
+<li><p><strong>A</strong>- （0-1）分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的方差是 <span class="math notranslate nohighlight">\(p(1-p) \)</span>。</p></li>
+<li><p><strong>A</strong>- 在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>的分布律满足 <span class="math notranslate nohighlight">\(P(X=k) \geq 0 \)</span>。</p></li>
+<li><p><strong>A</strong>- 二项分布的概率和为 1 是因为 <span class="math notranslate nohighlight">\((p + q)^n = 1 \)</span>。</p></li>
+<li><p><strong>A</strong>- 在 <span class="math notranslate nohighlight">\(n \)</span>重伯努利试验中，事件 <span class="math notranslate nohighlight">\(A \)</span>发生的次数 <span class="math notranslate nohighlight">\(X \)</span>的分布律满足 <span class="math notranslate nohighlight">\(\sum_{k=0}^{n} P(X=k) = 1 \)</span>。</p></li>
+</ol>
+<p><strong>例 2</strong> 按规定, 某种型号电子元件的使用寿命超过 1500 小时的为一级品. 已知某一大批产品的一级品率为 0.2, 现在从中随机地抽查 20 只. 问 20 只元件中恰有 <span class="math notranslate nohighlight">\(k \)</span>只 ( <span class="math notranslate nohighlight">\(k=0,1,\cdots ,20 \)</span>) 为一级品的概率是多少?</p>
+<p><strong>解</strong> 这是不放回抽样. 但由于这批元件的总数很大, 且抽查的元件的数量相对于元件的总数来说又很小, 因而可以当作放回抽样来处理, 这样做会有一些误差, 但误差不大. 我们将检查一只元件看它是否为一级品看成是一次试验, 检查 20 只元件相当于做 20 重伯努利试验. 以 <span class="math notranslate nohighlight">\(X \)</span>记 20 只元件中一级品的只数, 那么, <span class="math notranslate nohighlight">\(X \)</span>是一个随机变量, 且有 <span class="math notranslate nohighlight">\(X \sim b(20, 0.2) \)</span>. 由 (2.6) 式即得所求概率为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P\lbrace X=k\rbrace = \binom{20}{k} (0.2)^k (0.8)^{20-k}, \quad k=0,1,\cdots ,20. \end{equation}  
+ \]</div>
+<p>将计算结果列表如下:</p>
+<p><img alt="表2-1" src="第二章-随机变量及其分布/pic/%E8%A1%A82-1.png" /></p>
+<p>为了对本题的结果有一个直观了解，我们作出上表的图形，如图 2-3 所示。从图 2-3 中看到，当 <span class="math notranslate nohighlight">\(k \)</span>增加时，概率 <span class="math notranslate nohighlight">\(P(X=k) \)</span>先是随之增加，直至达到最大值（本例中当 <span class="math notranslate nohighlight">\(k=4 \)</span>时取到最大值），随后单调减少。我们指出，一般，对于固定的 <span class="math notranslate nohighlight">\(n \)</span>及 <span class="math notranslate nohighlight">\(p \)</span>，二项分布 <span class="math notranslate nohighlight">\(b(n, p) \)</span>都具有这一性质。</p>
+<p><img alt="图2-3" src="第二章-随机变量及其分布/pic/%E5%9B%BE2-3.png" /></p>
+<p><strong>例 3</strong> 某人进行射击，设每次射击的命中率为 0.02，独立射击 400 次，试求至少击中两次的概率。</p>
+<p><strong>解</strong> 将一次射击看成是一次试验。设击中的次数为 <span class="math notranslate nohighlight">\(X \)</span>，则 <span class="math notranslate nohighlight">\(X \sim b(400, 0.02) \)</span>。 <span class="math notranslate nohighlight">\(X \)</span>的分布律为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X = k) = \binom{400}{k} (0.02)^k (0.98)^{400-k}, \quad k = 0, 1, \cdots , 400. \end{equation}  
+ \]</div>
+<p>于是所求概率为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X \geq 2) = 1- P(X = 0)- P(X = 1) \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} = 1- (0.98)^{400}- 400(0.02)(0.98)^{399} = 0.9972. \end{equation}  
+ \]</div>
+<p>这个概率很接近于 <span class="math notranslate nohighlight">\(1 \)</span>。我们从两方面来讨论这一结果的实际意义。其一，虽然每次射击的命中率很小（为 <span class="math notranslate nohighlight">\(0.02 \)</span>），但如果射击 <span class="math notranslate nohighlight">\(400 \)</span>次，则击中目标至少两次是几乎可以肯定的。这一事实说明，一个事件尽管在一次试验中发生的概率很小，但只要试验次数很多，而且试验是独立地进行的，那么这一事件的发生几乎是肯定的。这也告诉人们绝不能轻视小概率事件。其二，如果射手在 <span class="math notranslate nohighlight">\(400 \)</span>次射击中，击中目标的次数竟不到两次，由于概率 <span class="math notranslate nohighlight">\(P(X &lt; 2) \approx 0.003 \)</span>很小，根据实际推断原理，我们将怀疑“每次射击的命中率为 <span class="math notranslate nohighlight">\(0.02 \)</span>”这一假设，即认为该射手射击的命中率达不到 <span class="math notranslate nohighlight">\(0.02 \)</span>。</p>
+<p><strong>例 4</strong> 设有 <span class="math notranslate nohighlight">\(80 \)</span>台同类型设备，各台工作是相互独立的，发生故障的概率都是 <span class="math notranslate nohighlight">\(0.01 \)</span>，且一台设备的故障能由一个人处理。考虑两种配备维修工人的方法，其一是由 <span class="math notranslate nohighlight">\(4 \)</span>人维护，每人负责 <span class="math notranslate nohighlight">\(20 \)</span>台；其二是由 <span class="math notranslate nohighlight">\(3 \)</span>人共同维护 <span class="math notranslate nohighlight">\(80 \)</span>台。试比较这两种方法在设备发生故障时不能及时维修的概率的大小。</p>
+<p><strong>解</strong> 按第一种方法。以 <span class="math notranslate nohighlight">\(X \)</span>记“第 <span class="math notranslate nohighlight">\(1 \)</span>人维护的 <span class="math notranslate nohighlight">\(20 \)</span>台中同一时刻发生故障的台数”，以 <span class="math notranslate nohighlight">\(A_i (i=1,2,3,4) \)</span>表示事件“第 <span class="math notranslate nohighlight">\(i \)</span>人维护的 <span class="math notranslate nohighlight">\(20 \)</span>台中发生故障不能及时维修”，则知 <span class="math notranslate nohighlight">\(80 \)</span>台中发生故障而不能及时维修的概率为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(A_1 \cup A_2 \cup A_3 \cup A_4) \geq P(A_1) = P(X \geq 2). \end{equation}  
+ \]</div>
+<p>而 <span class="math notranslate nohighlight">\(X \sim b(20, 0.01) \)</span>，故有</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X \geq 2) = 1- \sum_{k=0}^{1} P(X = k) \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} = 1- \sum_{k=0}^{1} \binom{20}{k} (0.01)^k (0.99)^{20-k} = 0.0169. \end{equation}  
+ \]</div>
+<p>即有</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(A_1 \cup A_2 \cup A_3 \cup A_4) \geq 0.0169. \end{equation}  
+ \]</div>
+<p>按第二种方法。以 <span class="math notranslate nohighlight">\(Y \)</span>记 <span class="math notranslate nohighlight">\(80 \)</span>台中同一时刻发生故障的台数。此时， <span class="math notranslate nohighlight">\(Y \sim b(80, 0.01) \)</span>，故 <span class="math notranslate nohighlight">\(80 \)</span>台中发生故障而不能及时维修的概率为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(Y \geq 4) = 1- \sum_{k=0}^{3} \binom{80}{k} (0.01)^k (0.99)^{80-k} = 0.0087. \end{equation}  
+ \]</div>
+<p>我们发现，在后一种情况下尽管任务重了（每人平均维护约 <span class="math notranslate nohighlight">\(27 \)</span>台），但工作效率率不仅没有降低，反而提高了。 □</p>
+</section>
+<section id="id19">
+<h2>（三）泊松分布<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<p>设随机变量 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span>，而取各个值的概率为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \cdots , \end{equation}  
+ \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\lambda &gt; 0 \)</span>是常数。则称 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(\lambda \)</span>的泊松分布，记为 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>。</p>
+<p>易知， <span class="math notranslate nohighlight">\(P(X = k) \geq 0, \quad k = 0, 1, 2, \cdots \)</span>，且有</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \sum_{k=0}^{\infty} P(X = k) = \sum_{k=0}^{\infty} \frac{\lambda^k e^{-\lambda}}{k!} = e^{-\lambda} \sum_{k=0}^{\infty} \frac{\lambda^k}{k!} = e^{-\lambda} \cdot e^{\lambda} = 1. \end{equation}  
+ \]</div>
+<p>即 <span class="math notranslate nohighlight">\(P(X = k) \)</span>满足条件 (2.2)、(2.3)。</p>
+<p>参数 <span class="math notranslate nohighlight">\(\lambda \)</span>的意义将在第四章说明，有关服从泊松分布的随机变量的数学模型将在第十二章中讨论。</p>
+<p>具有泊松分布的随机变量在实际应用中是很多的。例如，一本书一页中的印刷错误数、某地区在一天内邮递遗失的信件数、某一医院在一天内的急诊病人数、某一地区一个时间间隔内发生交通事故的次数。在一个时间间隔内某种放射性物质发出的、经过计数器的 <span class="math notranslate nohighlight">\(\alpha \)</span>粒子数等都服从泊松分布。泊松分布也是概率论中的一种重要分布。</p>
+<p>下面介绍一个用泊松分布来逼近二项分布的定理。</p>
+<p><strong>泊松定理</strong> 设 <span class="math notranslate nohighlight">\(\lambda &gt; 0 \)</span>是一个常数， <span class="math notranslate nohighlight">\(n \)</span>是任意正整数，设 <span class="math notranslate nohighlight">\(np_n = \lambda \)</span>，则对于任一固定的非负整数 <span class="math notranslate nohighlight">\(k \)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k!}. \end{equation}  
+ \]</div>
+<p><strong>证</strong> 由 <span class="math notranslate nohighlight">\(p_n = \frac{\lambda}{n} \)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{n(n-1)\cdots (n-k+1)}{k!} \left(\frac{\lambda}{n}\right)^k \left(1- \frac{\lambda}{n}\right)^{n-k} \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} = \frac{\lambda^k}{k!} \left[1 \cdot \left(1- \frac{1}{n}\right) \cdots \left(1- \frac{k-1}{n}\right)\right] \left(1- \frac{\lambda}{n}\right)^n \left(1- \frac{\lambda}{n}\right)^{-k}. \end{equation}  
+ \]</div>
+<p>对于任意固定的 <span class="math notranslate nohighlight">\(k \)</span>，当 <span class="math notranslate nohighlight">\(n \to \infty \)</span>时</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} 1 \cdot \left(1- \frac{1}{n}\right) \cdots \left(1- \frac{k-1}{n}\right) \to 1, \quad \left(1- \frac{\lambda}{n}\right)^n \to e^{-\lambda}, \quad \left(1- \frac{\lambda}{n}\right)^{-k} \to 1. \end{equation}  
+ \]</div>
+<p>故有</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k!}. \end{equation}  
+ \]</div>
+<p>定理的条件 <span class="math notranslate nohighlight">\(np_n = \lambda \)</span>（常数）意味着当 <span class="math notranslate nohighlight">\(n \)</span>很大时 <span class="math notranslate nohighlight">\(p_n \)</span>必定很小，因此，上述定理表明当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小 ( <span class="math notranslate nohighlight">\(np = \lambda \)</span>) 时有以下近似式</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \binom{n}{k} p^k (1- p)^{n-k} \approx \frac{\lambda^k e^{-\lambda}}{k!} \quad (\text{其中} \lambda = np). \tag{2.7} \end{equation}  
+ \]</div>
+<p>也就是说以 <span class="math notranslate nohighlight">\(n, p \)</span>为参数的二项分布的概率值可以由参数为 <span class="math notranslate nohighlight">\(\lambda = np \)</span>的泊松分布的概率值近似。上述也能用来作二项分布概率的近似计算。</p>
+</section>
+<section id="id20">
+<h2>知识点扩展与讲解：<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<p><strong>一、泊松分布的定义</strong></p>
+<p>设随机变量 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span>，其取各个值的概率为 <span class="math notranslate nohighlight">\(P(X = k)=\frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \cdots \)</span>，其中 <span class="math notranslate nohighlight">\(\lambda&gt;0 \)</span>是常数，此时称 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(\lambda \)</span>的泊松分布，记为 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>。</p>
+<p>从概率的基本性质来看，显然 <span class="math notranslate nohighlight">\(P(X = k) \geq 0, \quad k = 0, 1, 2, \cdots \)</span>，并且通过计算 <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k)=\sum_{k=0}^{\infty} \frac{\lambda^k e^{-\lambda}}{k!}=e^{-\lambda} \sum_{k=0}^{\infty} \frac{\lambda^k}{k!}=e^{-\lambda} \cdot e^{\lambda}=1 \)</span>，可知 <span class="math notranslate nohighlight">\(P(X = k) \)</span>满足概率分布的基本条件。</p>
+<p><strong>二、泊松分布的实际意义</strong></p>
+<p>在实际应用中，具有泊松分布的随机变量非常多。比如一本书一页中的印刷错误数，由于每页上出现错误的概率相对较小，且可将其看作是在一定空间范围内的随机事件发生次数，符合泊松分布的特点；某地区在一天内邮递遗失的信件数，一天内遗失信件的情况是随机发生的，且发生的概率较低，可近似用泊松分布来描述；某一医院在一天内的急诊病人数，急诊病人的到来是不确定的，在一定时间内发生的次数可认为服从泊松分布；某一地区一个时间间隔内发生交通事故的次数，同样是在一定时间和空间内的随机事件，其发生次数也常服从泊松分布；在一个时间间隔内某种放射性物质发出的、经过计数器的 <span class="math notranslate nohighlight">\(\alpha \)</span>粒子数，粒子的发射是随机的，在给定时间间隔内的发射次数也可用泊松分布来刻画。</p>
+<p><strong>三、泊松定理及应用</strong></p>
+<p>泊松定理指出，设 <span class="math notranslate nohighlight">\(\lambda&gt;0 \)</span>是一个常数， <span class="math notranslate nohighlight">\(n \)</span>是任意正整数，设 <span class="math notranslate nohighlight">\(np_n=\lambda \)</span>，则对于任一固定的非负整数 <span class="math notranslate nohighlight">\(k \)</span>，有 <span class="math notranslate nohighlight">\(\lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n- k}=\frac{\lambda^k e^{-\lambda}}{k!} \)</span>。</p>
+<p>证明过程中，先将 <span class="math notranslate nohighlight">\(\binom{n}{k} p_n^k (1- p_n)^{n- k} \)</span>展开并变形为 <span class="math notranslate nohighlight">\(\frac{\lambda^k}{k!}\left[1\cdot\left(1- \frac{1}{n}\right)\cdots \left(1- \frac{k- 1}{n}\right)\right]\left(1- \frac{\lambda}{n}\right)^n\left(1- \frac{\lambda}{n}\right)^{-k} \)</span>，然后当 <span class="math notranslate nohighlight">\(n \to \infty \)</span>时，分析得到 <span class="math notranslate nohighlight">\(1\cdot\left(1- \frac{1}{n}\right)\cdots \left(1- \frac{k- 1}{n}\right) \to 1 \)</span>， <span class="math notranslate nohighlight">\(\left(1- \frac{\lambda}{n}\right)^n \to e^{-\lambda} \)</span>， <span class="math notranslate nohighlight">\(\left(1- \frac{\lambda}{n}\right)^{-k} \to 1 \)</span>，从而得出 <span class="math notranslate nohighlight">\(\lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n- k}=\frac{\lambda^k e^{-\lambda}}{k!} \)</span>。</p>
+<p>泊松定理的条件 <span class="math notranslate nohighlight">\(np_n=\lambda \)</span>（常数）意味着当 <span class="math notranslate nohighlight">\(n \)</span>很大时 <span class="math notranslate nohighlight">\(p_n \)</span>必定很小，所以当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小（ <span class="math notranslate nohighlight">\(np = \lambda \)</span>）时，有近似式 <span class="math notranslate nohighlight">\(\binom{n}{k} p^k (1- p)^{n- k}\approx\frac{\lambda^k e^{-\lambda}}{k!} \)</span>。这表明以 <span class="math notranslate nohighlight">\(n, p \)</span>为参数的二项分布的概率值在满足上述条件时，可以由参数为 <span class="math notranslate nohighlight">\(\lambda = np \)</span>的泊松分布的概率值近似，从而为二项分布概率的近似计算提供了一种有效的方法。</p>
+</section>
+<section id="id21">
+<h2>选择题及答案：<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<p><strong>一、选择题题目</strong></p>
+<ol class="arabic simple">
+<li><p>若随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(\lambda \)</span>的泊松分布，记为 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 3) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{\lambda^3 e^{-\lambda}}{3!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{\lambda^3 e^{-\lambda}}{2!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{\lambda^2 e^{-\lambda}}{3!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{\lambda^2 e^{-\lambda}}{2!} \)</span></p></li>
+</ul>
+</li>
+<li><p>以下哪种情况不适合用泊松分布来描述（  ）</p>
+<ul class="simple">
+<li><p>A. 某超市一天内顾客的消费金额</p></li>
+<li><p>B. 某段时间内电话总机接到的呼叫次数</p></li>
+<li><p>C. 某路口在一小时内发生交通事故的次数</p></li>
+<li><p>D. 一个月内某机器出现故障的次数</p></li>
+</ul>
+</li>
+<li><p>对于泊松分布 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>， <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(0 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\lambda \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span></p></li>
+</ul>
+</li>
+<li><p>设随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从泊松分布 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，若 <span class="math notranslate nohighlight">\(\lambda = 2 \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 0) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(e^{-2} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(2e^{-2} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{1}{2}e^{-2} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{2} \)</span></p></li>
+</ul>
+</li>
+<li><p>泊松分布中参数 <span class="math notranslate nohighlight">\(\lambda \)</span>的意义将在（  ）说明。</p>
+<ul class="simple">
+<li><p>A. 第二章</p></li>
+<li><p>B. 第三章</p></li>
+<li><p>C. 第四章</p></li>
+<li><p>D. 第五章</p></li>
+</ul>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(X \sim \pi(3) \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 1) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(2e^{-3} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(e^{-3} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{3e^{-3}}{1!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{e^{-3}}{1!} \)</span></p></li>
+</ul>
+</li>
+<li><p>根据泊松定理，当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小且 <span class="math notranslate nohighlight">\(np = \lambda \)</span>时， <span class="math notranslate nohighlight">\(\binom{n}{k} p^k (1- p)^{n- k} \)</span>近似等于（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{n^k e^{-\lambda}}{k!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{\lambda^k e^{-\lambda}}{k!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{n^k p^k e^{-\lambda}}{k!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{\lambda^k p^k e^{-\lambda}}{k!} \)</span></p></li>
+</ul>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>服从泊松分布，已知 <span class="math notranslate nohighlight">\(P(X = 2)=\frac{2}{e^{2}} \)</span>，则参数 <span class="math notranslate nohighlight">\(\lambda \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(2 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(3 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(4 \)</span></p></li>
+</ul>
+</li>
+<li><p>对于泊松分布 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，当 <span class="math notranslate nohighlight">\(\lambda \)</span>增大时， <span class="math notranslate nohighlight">\(P(X = k) \)</span>的变化趋势是（  ）</p>
+<ul class="simple">
+<li><p>A. 对于固定的 <span class="math notranslate nohighlight">\(k \)</span>， <span class="math notranslate nohighlight">\(P(X = k) \)</span>增大</p></li>
+<li><p>B. 对于固定的 <span class="math notranslate nohighlight">\(k \)</span>， <span class="math notranslate nohighlight">\(P(X = k) \)</span>减小</p></li>
+<li><p>C. 对于固定的 <span class="math notranslate nohighlight">\(k \)</span>， <span class="math notranslate nohighlight">\(P(X = k) \)</span>先增大后减小</p></li>
+<li><p>D. 不确定</p></li>
+</ul>
+</li>
+<li><p>某工厂生产的产品中次品数服从泊松分布，若平均次品数为 <span class="math notranslate nohighlight">\(5 \)</span>，则该工厂生产 <span class="math notranslate nohighlight">\(10 \)</span>件产品中恰有 <span class="math notranslate nohighlight">\(3 \)</span>件次品的概率为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{5^3 e^{-5}}{3!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{5^{10} e^{-5}}{3!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\binom{10}{3} \frac{5^3 e^{-5}}{3!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\binom{10}{3} \frac{5^{10} e^{-5}}{10!} \)</span></p></li>
+</ul>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，则 <span class="math notranslate nohighlight">\(P(X \geq 1) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(1- e^{-\lambda} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(1- \frac{\lambda e^{-\lambda}}{1!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{\lambda e^{-\lambda}}{1!} \)</span></p></li>
+</ul>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>服从泊松分布 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，当 <span class="math notranslate nohighlight">\(\lambda = 1 \)</span>时， <span class="math notranslate nohighlight">\(P(X \leq 2) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(e^{-1}(1 + 1 + \frac{1}{2}) \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(e^{-1}(1 + 1 + \frac{1}{2!}) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(e^{-1}(1 + 1 + \frac{1}{3}) \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{-1}(1 + 1 + \frac{1}{3!}) \)</span></p></li>
+</ul>
+</li>
+<li><p>泊松分布是一种（  ）</p>
+<ul class="simple">
+<li><p>A. 离散型分布</p></li>
+<li><p>B. 连续型分布</p></li>
+<li><p>C. 既不是离散型也不是连续型分布</p></li>
+<li><p>D. 不确定</p></li>
+</ul>
+</li>
+<li><p>根据泊松定理，当 <span class="math notranslate nohighlight">\(n \to \infty \)</span>时，若 <span class="math notranslate nohighlight">\(np_n = \lambda \)</span>，则 <span class="math notranslate nohighlight">\(\left(1- \frac{\lambda}{n}\right)^n \)</span>的极限值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(0 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{\lambda} \)</span></p></li>
+</ul>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(X \sim \pi(4) \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 4) \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{4^4 e^{-4}}{4!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{4^3 e^{-4}}{3!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{4^5 e^{-4}}{5!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{4^6 e^{-4}}{6!} \)</span></p></li>
+</ul>
+</li>
+<li><p>以下关于泊松分布和二项分布关系的说法，正确的是（  ）</p>
+<ul class="simple">
+<li><p>A. 泊松分布是二项分布的一种特殊情况</p></li>
+<li><p>B. 二项分布是泊松分布的一种特殊情况</p></li>
+<li><p>C. 当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布可用泊松分布近似</p></li>
+<li><p>D. 二者毫无关系</p></li>
+</ul>
+</li>
+<li><p>设 <span class="math notranslate nohighlight">\(X \)</span>服从泊松分布 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，若 <span class="math notranslate nohighlight">\(P(X = 0)=\frac{1}{e} \)</span>，则 <span class="math notranslate nohighlight">\(\lambda \)</span>的值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(0 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(2 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(3 \)</span></p></li>
+</ul>
+</li>
+<li><p>对于泊松分布 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>， <span class="math notranslate nohighlight">\(P(X = k) \)</span>随着 <span class="math notranslate nohighlight">\(k \)</span>的增大（  ）</p>
+<ul class="simple">
+<li><p>A. 一定增大</p></li>
+<li><p>B. 一定减小</p></li>
+<li><p>C. 先增大后减小</p></li>
+<li><p>D. 不确定</p></li>
+</ul>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，则 <span class="math notranslate nohighlight">\(P(X = k + 1) \)</span>与 <span class="math notranslate nohighlight">\(P(X = k) \)</span>的比值为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{\lambda}{k + 1} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{k + 1}{\lambda} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{\lambda^{k + 1}}{(k + 1)!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{(k + 1)!}{\lambda^{k + 1}} \)</span></p></li>
+</ul>
+</li>
+<li><p>某车站在一小时内到达的乘客数服从泊松分布，若平均每小时到达 <span class="math notranslate nohighlight">\(6 \)</span>人，则该车站在一小时内到达 <span class="math notranslate nohighlight">\(8 \)</span>人的概率为（  ）</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{6^8 e^{-6}}{8!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{6^7 e^{-6}}{7!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{6^8 e^{-8}}{8!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{6^7 e^{-7}}{7!} \)</span></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>二、答案及解析</strong></p>
+<ol class="arabic simple">
+<li><p>答案：A<br />
+解析：若随机变量 <span class="math notranslate nohighlight">\(X \)</span>服从参数为 <span class="math notranslate nohighlight">\(\lambda \)</span>的泊松分布，根据泊松分布的概率公式 <span class="math notranslate nohighlight">\(P(X = k)=\frac{\lambda^k e^{-\lambda}}{k!} \)</span>，当 <span class="math notranslate nohighlight">\(k = 3 \)</span>时， <span class="math notranslate nohighlight">\(P(X = 3)=\frac{\lambda^3 e^{-\lambda}}{3!} \)</span>，所以选A。</p></li>
+<li><p>答案：A<br />
+解析：泊松分布适用于描述在一定时间或空间内随机事件发生的次数，且事件发生的概率相对较小。某超市一天内顾客的消费金额是连续型数据，不适合用泊松分布来描述；而某段时间内电话总机接到的呼叫次数、某路口在一小时内发生交通事故的次数、一个月内某机器出现故障的次数都属于在一定时间内随机事件发生的次数，可用泊松分布描述，所以选A。</p></li>
+<li><p>答案：B<br />
+解析：由泊松分布的性质可知 <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k)=\sum_{k=0}^{\infty} \frac{\lambda^k e^{-\lambda}}{k!}=e^{-\lambda} \sum_{k=0}^{\infty} \frac{\lambda^k}{k!}=e^{-\lambda} \cdot e^{\lambda}=1 \)</span>，所以选B。</p></li>
+<li><p>答案：A<br />
+解析：若 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，当 <span class="math notranslate nohighlight">\(\lambda = 2 \)</span>时，根据泊松分布概率公式 <span class="math notranslate nohighlight">\(P(X = 0)=\frac{\lambda^0 e^{-\lambda}}{0!}=e^{-\lambda}=e^{-2} \)</span>，所以选A。</p></li>
+<li><p>答案：C<br />
+解析：文中明确提到参数 <span class="math notranslate nohighlight">\(\lambda \)</span>的意义将在第四章说明，所以选C。</p></li>
+<li><p>答案：C<br />
+解析：若 <span class="math notranslate nohighlight">\(X \sim \pi(3) \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 1)=\frac{3^1 e^{-3}}{1!}=\frac{3e^{-3}}{1!} \)</span>，所以选C。</p></li>
+<li><p>答案：B<br />
+解析：根据泊松定理，当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小且 <span class="math notranslate nohighlight">\(np = \lambda \)</span>时， <span class="math notranslate nohighlight">\(\binom{n}{k} p^k (1- p)^{n- k}\approx\frac{\lambda^k e^{-\lambda}}{k!} \)</span>，所以选B。</p></li>
+<li><p>答案：B<br />
+解析：已知 <span class="math notranslate nohighlight">\(P(X = 2)=\frac{\lambda^2 e^{-\lambda}}{2!}=\frac{2}{e^{2}} \)</span>，即 <span class="math notranslate nohighlight">\(\frac{\lambda^2 e^{-\lambda}}{2}=\frac{2}{e^{2}} \)</span>，解方程可得 <span class="math notranslate nohighlight">\(\lambda = 2 \)</span>，所以选B。</p></li>
+<li><p>答案：B<br />
+解析：对于泊松分布 <span class="math notranslate nohighlight">\(P(X = k)=\frac{\lambda^k e^{-\lambda}}{k!} \)</span>，当 <span class="math notranslate nohighlight">\(\lambda \)</span>增大时，对于固定的 <span class="math notranslate nohighlight">\(k \)</span>， <span class="math notranslate nohighlight">\(\lambda^k \)</span>的增长速度慢于 <span class="math notranslate nohighlight">\(e^{\lambda} \)</span>的增长速度，且 <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span>随着 <span class="math notranslate nohighlight">\(\lambda \)</span>增大而减小，所以 <span class="math notranslate nohighlight">\(P(X = k) \)</span>减小，选B。</p></li>
+<li><p>答案：A<br />
+解析：已知产品中次品数服从泊松分布，平均次品数为 <span class="math notranslate nohighlight">\(5 \)</span>，即 <span class="math notranslate nohighlight">\(\lambda = 5 \)</span>，则生产 <span class="math notranslate nohighlight">\(10 \)</span>件产品中恰有 <span class="math notranslate nohighlight">\(3 \)</span>件次品的概率，可直接用泊松分布计算，为 <span class="math notranslate nohighlight">\(P(X = 3)=\frac{5^3 e^{-5}}{3!} \)</span>，所以选A。</p></li>
+<li><p>答案：A<br />
+解析：若 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，则 <span class="math notranslate nohighlight">\(P(X \geq 1)=1- P(X = 0)=1- e^{-\lambda} \)</span>，所以选A。</p></li>
+<li><p>答案：B<br />
+解析：当 <span class="math notranslate nohighlight">\(X \sim \pi(1) \)</span>时， <span class="math notranslate nohighlight">\(P(X \leq 2)=P(X = 0)+P(X = 1)+P(X = 2)=\frac{1^0 e^{-1}}{0!}+\frac{1^1 e^{-1}}{1!}+\frac{1^2 e^{-1}}{2!}=e^{-1}(1 + 1 + \frac{1}{2!}) \)</span>，所以选B。</p></li>
+<li><p>答案：A<br />
+解析：泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>所有可能取的值为 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span>，是离散型的，所以泊松分布是离散型分布，选A。</p></li>
+<li><p>答案：C<br />
+解析：根据泊松定理的证明过程可知，当 <span class="math notranslate nohighlight">\(n \to \infty \)</span>时， <span class="math notranslate nohighlight">\(\left(1- \frac{\lambda}{n}\right)^n \to e^{-\lambda} \)</span></p></li>
+<li><p>答案：A<br />
+解析：若 <span class="math notranslate nohighlight">\(X\sim\pi(4) \)</span>，根据泊松分布概率公式 <span class="math notranslate nohighlight">\(P(X = k)=\frac{\lambda^k e^{-\lambda}}{k!} \)</span>，当 <span class="math notranslate nohighlight">\(k = 4 \)</span>时， <span class="math notranslate nohighlight">\(P(X = 4)=\frac{4^4 e^{-4}}{4!} \)</span>，所以选A。</p></li>
+<li><p>答案：C<br />
+解析：当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布可用泊松分布近似，这是泊松定理所表明的关系，所以选C。</p></li>
+<li><p>答案：B<br />
+解析：若 <span class="math notranslate nohighlight">\(X\sim\pi(\lambda) \)</span>，且 <span class="math notranslate nohighlight">\(P(X = 0)=\frac{\lambda^0 e^{-\lambda}}{0!}=e^{-\lambda}=\frac{1}{e} \)</span>，则 <span class="math notranslate nohighlight">\(\lambda = 1 \)</span>，所以选B。</p></li>
+<li><p>答案：C<br />
+解析：对于泊松分布 <span class="math notranslate nohighlight">\(P(X = k)=\frac{\lambda^k e^{-\lambda}}{k!} \)</span>，随着 <span class="math notranslate nohighlight">\(k \)</span>的增大， <span class="math notranslate nohighlight">\(\lambda^k \)</span>增大， <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span>不变， <span class="math notranslate nohighlight">\(k! \)</span>一直增大，综合起来 <span class="math notranslate nohighlight">\(P(X = k) \)</span>先增大后减小，所以选C。</p></li>
+<li><p>答案：A<br />
+解析：若 <span class="math notranslate nohighlight">\(X\sim\pi(\lambda) \)</span>，则 <span class="math notranslate nohighlight">\(\frac{P(X = k + 1)}{P(X = k)}=\frac{\frac{\lambda^{k + 1}e^{-\lambda}}{(k + 1)!}}{\frac{\lambda^{k}e^{-\lambda}}{k!}}=\frac{\lambda}{k + 1} \)</span>，所以选A。</p></li>
+<li><p>答案：A<br />
+解析：已知车站在一小时内到达的乘客数服从泊松分布，平均每小时到达 <span class="math notranslate nohighlight">\(6 \)</span>人，即 <span class="math notranslate nohighlight">\(\lambda = 6 \)</span>，则一小时内到达 <span class="math notranslate nohighlight">\(8 \)</span>人的概率为 <span class="math notranslate nohighlight">\(P(X = 8)=\frac{6^8 e^{-6}}{8!} \)</span>，所以选A。</p></li>
+</ol>
+</section>
+<section id="id22">
+<h2>知识点扩展讲解<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<p>泊松分布是一种离散概率分布，用于描述在固定时间或空间内，某事件发生的次数的概率分布。这种分布以参数 <span class="math notranslate nohighlight">\(\lambda \)</span>为特征， <span class="math notranslate nohighlight">\(\lambda \)</span>表示在单位时间或单位空间内，事件发生的平均次数。泊松分布的概率质量函数（PMF）为：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \ldots \end{equation}  
+ \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(e \)</span>是自然对数的底数， <span class="math notranslate nohighlight">\(k! \)</span>是 <span class="math notranslate nohighlight">\(k \)</span>的阶乘。</p>
+<p>泊松分布具有以下性质：</p>
+<ol class="arabic simple">
+<li><p>所有概率 <span class="math notranslate nohighlight">\(P(X = k) \)</span>都是非负的。</p></li>
+<li><p>所有概率之和为1，满足概率的基本规则。</p></li>
+</ol>
+<p>泊松分布的应用非常广泛，例如：</p>
+<ul class="simple">
+<li><p>描述一本书中一页的印刷错误数。</p></li>
+<li><p>描述一天内某地区邮递遗失的信件数。</p></li>
+<li><p>描述医院一天内的急诊病人数。</p></li>
+<li><p>描述一个时间间隔内发生交通事故的次数。</p></li>
+</ul>
+<p>泊松定理提供了一个重要的理论基础，即在 <span class="math notranslate nohighlight">\(n \)</span>很大且 <span class="math notranslate nohighlight">\(p \)</span>很小的情况下，二项分布可以用泊松分布来近似。这个定理的数学表达式为：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k!} \end{equation}  
+ \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\lambda = np \)</span>。</p>
+</section>
+<section id="id23">
+<h2>选择题<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>泊松分布的概率质量函数是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k (1-\lambda)^{1-k}}{k!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k (1-\lambda)^{k}}{k!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k e^{\lambda}}{k!} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 泊松分布的概率质量函数正确表达式为 <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \)</span>。</p></li>
+</ul>
+</li>
+<li><p>泊松分布适用于描述：</p>
+<ul class="simple">
+<li><p>A. 连续型随机变量</p></li>
+<li><p>B. 离散型随机变量</p></li>
+<li><p>C. 正态分布的随机变量</p></li>
+<li><p>D. 均匀分布的随机变量<br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> 泊松分布用于描述在固定时间或空间内，某事件发生的次数，这是一个离散型随机变量。</p></li>
+</ul>
+</li>
+<li><p>参数 <span class="math notranslate nohighlight">\(\lambda \)</span>在泊松分布中代表：</p>
+<ul class="simple">
+<li><p>A. 事件发生的最小次数</p></li>
+<li><p>B. 事件发生的平均次数</p></li>
+<li><p>C. 事件发生的最大次数</p></li>
+<li><p>D. 事件发生的总次数<br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> 参数 <span class="math notranslate nohighlight">\(\lambda \)</span>表示在单位时间或单位空间内，事件发生的平均次数。</p></li>
+</ul>
+</li>
+<li><p>当 <span class="math notranslate nohighlight">\(n \)</span>很大且 <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布可以用泊松分布来近似，这个近似的条件是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lambda = np \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lambda = \frac{1}{np} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\lambda = \frac{1}{p} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\lambda = \frac{1}{n} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(n \)</span>很大且 <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布可以用泊松分布来近似，其中 <span class="math notranslate nohighlight">\(\lambda = np \)</span>。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的概率质量函数中， <span class="math notranslate nohighlight">\(e \)</span>是：</p>
+<ul class="simple">
+<li><p>A. 错误率</p></li>
+<li><p>B. 自然对数的底数</p></li>
+<li><p>C. 事件发生的次数</p></li>
+<li><p>D. 事件发生的概率<br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> 在泊松分布的概率质量函数中， <span class="math notranslate nohighlight">\(e \)</span>是自然对数的底数，约等于2.71828。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 0) \)</span>是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{\lambda^0 e^{-\lambda}}{0!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{\lambda^0 (1-\lambda)^{1-0}}{0!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{\lambda^0 e^{\lambda}}{0!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{\lambda^0 e^{-\lambda}}{1} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(k = 0 \)</span>时，泊松分布的概率质量函数简化为 <span class="math notranslate nohighlight">\(P(X = 0) = e^{-\lambda} \)</span>。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的期望值 <span class="math notranslate nohighlight">\(E(X) \)</span>是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lambda \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1-\lambda \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{1}{\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\sqrt{\lambda} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 泊松分布的期望值等于其参数 <span class="math notranslate nohighlight">\(\lambda \)</span>。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的方差 <span class="math notranslate nohighlight">\(\text{Var}(X) \)</span>是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lambda \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(1-\lambda \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{1}{\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\sqrt{\lambda} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 泊松分布的方差也等于其参数 <span class="math notranslate nohighlight">\(\lambda \)</span>。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>且 <span class="math notranslate nohighlight">\(\lambda = 3 \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 2) \)</span>是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{3^2 e^{-3}}{2!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{3^2 (1-3)^{1-2}}{2!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{3^2 e^{3}}{2!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{3^2 e^{-3}}{1} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 根据泊松分布的概率质量函数， <span class="math notranslate nohighlight">\(P(X = 2) = \frac{3^2 e^{-3}}{2!} \)</span>。</p></li>
+</ul>
+</li>
+<li><p>泊松定理表明，当 <span class="math notranslate nohighlight">\(n \)</span>很大且 <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布可以用泊松分布来近似，这个定理的数学表达式是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k (1-\lambda)^{n-k}}{k!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k e^{\lambda}}{k!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{1} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 泊松定理的数学表达式正确地描述了在 <span class="math notranslate nohighlight">\(n \)</span>很大且 <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布的概率质量函数可以用泊松分布的概率质量函数来近似。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>可以取的值是：</p>
+<ul class="simple">
+<li><p>A. 0 到 <span class="math notranslate nohighlight">\(n \)</span>的整数</p></li>
+<li><p>B. 0 到正无穷大的整数</p></li>
+<li><p>C. 1 到正无穷大的整数</p></li>
+<li><p>D. 任意实数<br />
+<strong>答案：B</strong><br />
+<strong>解析：</strong> 泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>可以取0到正无穷大的任意整数值。</p></li>
+</ul>
+</li>
+<li><p>当 <span class="math notranslate nohighlight">\(\lambda \)</span>增加时，泊松分布的概率质量函数 <span class="math notranslate nohighlight">\(P(X = k) \)</span>的值：</p>
+<ul class="simple">
+<li><p>A. 增加</p></li>
+<li><p>B. 减少</p></li>
+<li><p>C. 先增加后减少</p></li>
+<li><p>D. 保持不变<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(\lambda \)</span>增加时，泊松分布的概率质量函数 <span class="math notranslate nohighlight">\(P(X = k) \)</span>先增加后减少，形成一个单峰分布。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的累积分布函数 <span class="math notranslate nohighlight">\(F(X) \)</span>是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(F(X) = \sum_{k=0}^{X} \frac{\lambda^k e^{-\lambda}}{k!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(F(X) = \sum_{k=0}^{\infty} \frac{\lambda^k e^{-\lambda}}{k!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(F(X) = \sum_{k=0}^{X} \frac{\lambda^k (1-\lambda)^{1-k}}{k!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(F(X) = \sum_{k=0}^{X} \frac{\lambda^k e^{\lambda}}{k!} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 泊松分布的累积分布函数 <span class="math notranslate nohighlight">\(F(X) \)</span>是从0到 <span class="math notranslate nohighlight">\(X \)</span>的所有可能值的概率之和。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 1) \)</span>是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{\lambda^1 e^{-\lambda}}{1!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{\lambda^1 (1-\lambda)^{1-1}}{1!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{\lambda^1 e^{\lambda}}{1!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{\lambda^1 e^{-\lambda}}{0!} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 根据泊松分布的概率质量函数， <span class="math notranslate nohighlight">\(P(X = 1) = \frac{\lambda^1 e^{-\lambda}}{1!} \)</span>。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值和方差的关系是：</p>
+<ul class="simple">
+<li><p>A. 期望值等于方差</p></li>
+<li><p>B. 期望值是方差的两倍</p></li>
+<li><p>C. 期望值小于方差</p></li>
+<li><p>D. 期望值大于方差<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 对于泊松分布，期望值 <span class="math notranslate nohighlight">\(E(X) \)</span>等于方差 <span class="math notranslate nohighlight">\(\text{Var}(X) \)</span>，都是 <span class="math notranslate nohighlight">\(\lambda \)</span>。</p></li>
+</ul>
+</li>
+<li><p>当 <span class="math notranslate nohighlight">\(n \)</span>很大且 <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布 <span class="math notranslate nohighlight">\(b(n, p) \)</span>可以用泊松分布 <span class="math notranslate nohighlight">\(\pi(\lambda) \)</span>来近似，其中 <span class="math notranslate nohighlight">\(\lambda \)</span>等于：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(np \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(n(1-p) \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(p \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(1-p \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(n \)</span>很大且 <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布可以用泊松分布来近似，其中 <span class="math notranslate nohighlight">\(\lambda = np \)</span>。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的概率质量函数 <span class="math notranslate nohighlight">\(P(X = k) \)</span>在 <span class="math notranslate nohighlight">\(k = 0 \)</span>时的值是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{\lambda^0 e^{-\lambda}}{0!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{\lambda^0 (1-\lambda)^{1-0}}{0!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{\lambda^0 e^{\lambda}}{0!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{\lambda^0 e^{-\lambda}}{1} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 当 <span class="math notranslate nohighlight">\(k = 0 \)</span>时，泊松分布的概率质量函数简化为 <span class="math notranslate nohighlight">\(P(X = 0) = e^{-\lambda} \)</span>。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的概率质量函数 <span class="math notranslate nohighlight">\(P(X = k) \)</span>在 <span class="math notranslate nohighlight">\(k \)</span>增加时：</p>
+<ul class="simple">
+<li><p>A. 总是增加</p></li>
+<li><p>B. 总是减少</p></li>
+<li><p>C. 先增加后减少</p></li>
+<li><p>D. 保持不变<br />
+<strong>答案：C</strong><br />
+<strong>解析：</strong> 泊松分布的概率质量函数在 <span class="math notranslate nohighlight">\(k \)</span>较小时增加，达到一个峰值后随着 <span class="math notranslate nohighlight">\(k \)</span>的增加而减少。</p></li>
+</ul>
+</li>
+<li><p>泊松分布的概率质量函数 <span class="math notranslate nohighlight">\(P(X = k) \)</span>满足：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) = 1 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) &gt; 1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) &lt; 1 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) \)</span>可以是任意值<br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 泊松分布的所有概率之和必须等于1，这是概率分布的基本性质。</p></li>
+</ul>
+</li>
+<li><p>如果 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>且 <span class="math notranslate nohighlight">\(\lambda = 2 \)</span>，则 <span class="math notranslate nohighlight">\(P(X = 1) \)</span>的值是：</p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\frac{2^1 e^{-2}}{1!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\frac{2^1 (1-2)^{1-1}}{1!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\frac{2^1 e^{2}}{1!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\frac{2^1 e^{-2}}{2} \)</span><br />
+<strong>答案：A</strong><br />
+<strong>解析：</strong> 根据泊松分布的概率质量函数，当 <span class="math notranslate nohighlight">\(\lambda = 2 \)</span>时， <span class="math notranslate nohighlight">\(P(X = 1) = \frac{2^1 e^{-2}}{1!} \)</span>。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id24">
+<h2>扩展讲解<a class="headerlink" href="#id24" title="Link to this heading"></a></h2>
+<section id="id25">
+<h3>（三）泊松分布<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<p><strong>泊松分布</strong>是一种重要的离散概率分布，用于描述在固定时间间隔或空间区域内随机事件发生的次数。泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>可以取值为 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span>，其概率质量函数为：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \cdots \end{equation}  
+ \]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\lambda &gt; 0 \)</span>是常数，称为泊松分布的参数。泊松分布记为 <span class="math notranslate nohighlight">\(X \sim \pi(\lambda) \)</span>。</p>
+<p><strong>性质</strong>：</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(P(X = k) \geq 0 \)</span>对于所有 <span class="math notranslate nohighlight">\(k = 0, 1, 2, \cdots \)</span>。</p></li>
+<li><p>概率和为 1：</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \sum_{k=0}^{\infty} P(X = k) = \sum_{k=0}^{\infty} \frac{\lambda^k e^{-\lambda}}{k!} = e^{-\lambda} \sum_{k=0}^{\infty} \frac{\lambda^k}{k!} = e^{-\lambda} \cdot e^{\lambda} = 1 \end{equation}  
+ \]</div>
+<p><strong>应用</strong>：<br />
+泊松分布在实际应用中非常广泛，例如：</p>
+<ul class="simple">
+<li><p>一本书一页中的印刷错误数。</p></li>
+<li><p>某地区在一天内邮递遗失的信件数。</p></li>
+<li><p>某一医院在一天内的急诊病人数。</p></li>
+<li><p>某一地区一个时间间隔内发生交通事故的次数。</p></li>
+<li><p>在一个时间间隔内某种放射性物质发出的、经过计数器的 <span class="math notranslate nohighlight">\(\alpha \)</span>粒子数。</p></li>
+</ul>
+</section>
+<section id="id26">
+<h3>泊松定理<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<p><strong>泊松定理</strong>提供了一种用泊松分布逼近二项分布的方法。设 <span class="math notranslate nohighlight">\(\lambda &gt; 0 \)</span>是一个常数， <span class="math notranslate nohighlight">\(n \)</span>是任意正整数，且 <span class="math notranslate nohighlight">\(np_n = \lambda \)</span>，则对于任一固定的非负整数 <span class="math notranslate nohighlight">\(k \)</span>，有：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k!} \end{equation}  
+ \]</div>
+<p><strong>证明</strong>：<br />
+由 <span class="math notranslate nohighlight">\(p_n = \frac{\lambda}{n} \)</span>，有：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{n(n-1)\cdots (n-k+1)}{k!} \left(\frac{\lambda}{n}\right)^k \left(1- \frac{\lambda}{n}\right)^{n-k} \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} = \frac{\lambda^k}{k!} \left[1 \cdot \left(1- \frac{1}{n}\right) \cdots \left(1- \frac{k-1}{n}\right)\right] \left(1- \frac{\lambda}{n}\right)^n \left(1- \frac{\lambda}{n}\right)^{-k} \end{equation}  
+ \]</div>
+<p>对于任意固定的 <span class="math notranslate nohighlight">\(k \)</span>，当 <span class="math notranslate nohighlight">\(n \to \infty \)</span>时：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} 1 \cdot \left(1- \frac{1}{n}\right) \cdots \left(1- \frac{k-1}{n}\right) \to 1, \quad \left(1- \frac{\lambda}{n}\right)^n \to e^{-\lambda}, \quad \left(1- \frac{\lambda}{n}\right)^{-k} \to 1 \end{equation}  
+ \]</div>
+<p>因此：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \lim_{n \to \infty} \binom{n}{k} p_n^k (1- p_n)^{n-k} = \frac{\lambda^k e^{-\lambda}}{k!} \end{equation}  
+ \]</div>
+<p><strong>近似计算</strong>：<br />
+当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小时（ <span class="math notranslate nohighlight">\(np = \lambda \)</span>），有以下近似式：</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \binom{n}{k} p^k (1- p)^{n-k} \approx \frac{\lambda^k e^{-\lambda}}{k!} \quad (\text{其中} \lambda = np) \end{equation}  
+ \]</div>
+</section>
+</section>
+<section id="id27">
+<h2>选择题<a class="headerlink" href="#id27" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的可能取值是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(0, 1, 2, \cdots , n \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(0 \)</span>到 <span class="math notranslate nohighlight">\(1 \)</span>之间的任意实数</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(0 \)</span>到 <span class="math notranslate nohighlight">\(1 \)</span>之间的整数</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>可以取值为 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>泊松分布的概率质量函数是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k e^{\lambda}}{k!} \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k}{k!} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(P(X = k) = \frac{e^{-\lambda}}{k!} \)</span></p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的概率质量函数为 <span class="math notranslate nohighlight">\(P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>泊松分布的参数 <span class="math notranslate nohighlight">\(\lambda \)</span>是：</strong></p>
+<ul class="simple">
+<li><p>A. 常数</p></li>
+<li><p>B. 随机变量</p></li>
+<li><p>C. 函数</p></li>
+<li><p>D. 任意正整数</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的参数 <span class="math notranslate nohighlight">\(\lambda \)</span>是一个常数。</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><strong>泊松分布的概率和为：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(1 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lambda \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(e^{\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span></p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的概率和为 <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) = 1 \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p><strong>泊松分布的期望值是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lambda \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lambda^2 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(e^{\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span></p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的期望值是 <span class="math notranslate nohighlight">\(\lambda \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p><strong>泊松分布的方差是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lambda \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lambda^2 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(e^{\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span></p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的方差是 <span class="math notranslate nohighlight">\(\lambda \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="7">
+<li><p><strong>泊松定理的条件是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(np_n = \lambda \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(np_n = 1 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(np_n = 0 \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(np_n = n \)</span></p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松定理的条件是 <span class="math notranslate nohighlight">\(np_n = \lambda \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="8">
+<li><p><strong>泊松定理表明当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布可以用什么分布近似？</strong></p>
+<ul class="simple">
+<li><p>A. 正态分布</p></li>
+<li><p>B. 泊松分布</p></li>
+<li><p>C. 指数分布</p></li>
+<li><p>D. 均匀分布</p></li>
+<li><p><strong>答案</strong>：B</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松定理表明当 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小时，二项分布可以用泊松分布近似。</p></li>
+</ul>
+<ol class="arabic simple" start="9">
+<li><p><strong>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(0, 1, 2, \cdots , n \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(0 \)</span>到 <span class="math notranslate nohighlight">\(1 \)</span>之间的任意实数</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(0 \)</span>到 <span class="math notranslate nohighlight">\(1 \)</span>之间的整数</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围是 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="10">
+<li><p><strong>泊松分布的概率质量函数中的 <span class="math notranslate nohighlight">\(e \)</span>是：</strong></p>
+<ul class="simple">
+<li><p>A. 自然对数的底</p></li>
+<li><p>B. 常数 2.718</p></li>
+<li><p>C. 随机变量</p></li>
+<li><p>D. 任意正整数</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的概率质量函数中的 <span class="math notranslate nohighlight">\(e \)</span>是自然对数的底。</p></li>
+</ul>
+<ol class="arabic simple" start="11">
+<li><p><strong>泊松分布的参数 <span class="math notranslate nohighlight">\(\lambda \)</span>的意义是：</strong></p>
+<ul class="simple">
+<li><p>A. 期望值</p></li>
+<li><p>B. 方差</p></li>
+<li><p>C. 概率</p></li>
+<li><p>D. 随机变量</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的参数 <span class="math notranslate nohighlight">\(\lambda \)</span>的意义是期望值。</p></li>
+</ul>
+<ol class="arabic simple" start="12">
+<li><p><strong>泊松分布的概率和为 1 是因为：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) = 1 \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) = \lambda \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) = e^{\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) = e^{-\lambda} \)</span></p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的概率和为 1 是因为 <span class="math notranslate nohighlight">\(\sum_{k=0}^{\infty} P(X = k) = 1 \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="13">
+<li><p><strong>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值和方差的关系是：</strong></p>
+<ul class="simple">
+<li><p>A. 相等</p></li>
+<li><p>B. 不相等</p></li>
+<li><p>C. 期望值大于方差</p></li>
+<li><p>D. 方差大于期望值</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值和方差相等。</p></li>
+</ul>
+<ol class="arabic simple" start="14">
+<li><p><strong>泊松分布的概率质量函数中的 <span class="math notranslate nohighlight">\(k! \)</span>是：</strong></p>
+<ul class="simple">
+<li><p>A. 阶乘</p></li>
+<li><p>B. 常数</p></li>
+<li><p>C. 随机变量</p></li>
+<li><p>D. 任意正整数</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的概率质量函数中的 <span class="math notranslate nohighlight">\(k! \)</span>是阶乘。</p></li>
+</ul>
+<ol class="arabic simple" start="15">
+<li><p><strong>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(0, 1, 2, \cdots , n \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(0 \)</span>到 <span class="math notranslate nohighlight">\(1 \)</span>之间的任意实数</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(0 \)</span>到 <span class="math notranslate nohighlight">\(1 \)</span>之间的整数</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的取值范围是 <span class="math notranslate nohighlight">\(0, 1, 2, \cdots \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="16">
+<li><p><strong>泊松分布的概率质量函数中的 <span class="math notranslate nohighlight">\(\lambda \)</span>是：</strong></p>
+<ul class="simple">
+<li><p>A. 常数</p></li>
+<li><p>B. 随机变量</p></li>
+<li><p>C. 函数</p></li>
+<li><p>D. 任意正整数</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的概率质量函数中的 <span class="math notranslate nohighlight">\(\lambda \)</span>是常数。</p></li>
+</ul>
+<ol class="arabic simple" start="17">
+<li><p><strong>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lambda \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lambda^2 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(e^{\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span></p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的期望值是 <span class="math notranslate nohighlight">\(\lambda \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="18">
+<li><p><strong>泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的方差是：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(\lambda \)</span></p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(\lambda^2 \)</span></p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(e^{\lambda} \)</span></p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span></p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的随机变量 <span class="math notranslate nohighlight">\(X \)</span>的方差是 <span class="math notranslate nohighlight">\(\lambda \)</span>。</p></li>
+</ul>
+<ol class="arabic simple" start="19">
+<li><p><strong>泊松定理的条件 <span class="math notranslate nohighlight">\(np_n = \lambda \)</span>意味着：</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(n \)</span>很小， <span class="math notranslate nohighlight">\(p \)</span>很大</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(n \)</span>和 <span class="math notranslate nohighlight">\(p \)</span>都是常数</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(n \)</span>和 <span class="math notranslate nohighlight">\(p \)</span>都是随机变量</p></li>
+<li><p><strong>答案</strong>：A</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松定理的条件 <span class="math notranslate nohighlight">\(np_n = \lambda \)</span>意味着 <span class="math notranslate nohighlight">\(n \)</span>很大， <span class="math notranslate nohighlight">\(p \)</span>很小。</p></li>
+</ul>
+<ol class="arabic simple" start="20">
+<li><p><strong>泊松分布的概率质量函数中的 <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span>是：</strong></p>
+<ul class="simple">
+<li><p>A. 自然对数的底</p></li>
+<li><p>B. 常数</p></li>
+<li><p>C. 随机变量</p></li>
+<li><p>D. 任意正整数</p></li>
+<li><p><strong>答案</strong>：B</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><strong>解释</strong>：泊松分布的概率质量函数中的 <span class="math notranslate nohighlight">\(e^{-\lambda} \)</span>是常数。</p></li>
+</ul>
+<p><strong>例 5</strong> 计算机硬件公司制造某种特殊型号的微型芯片，次品率达 <span class="math notranslate nohighlight">\(0.1\% \)</span>，各芯片成为次品相互独立。求在 <span class="math notranslate nohighlight">\(1000 \)</span>只产品中至少有 <span class="math notranslate nohighlight">\(2 \)</span>只次品的概率。以 <span class="math notranslate nohighlight">\(X \)</span>记产品中的次品数， <span class="math notranslate nohighlight">\(X \sim b(1000, 0.001) \)</span>。</p>
+<p><strong>解</strong> 所求概率为</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X \geq 2) = 1- P(X = 0)- P(X = 1) \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} = 1- (0.999)^{1000}- \binom{1000}{1} (0.999)^{999} (0.001) \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} \approx 1- 0.3676954- 0.3680635 \approx 0.2642411. \end{equation}  
+ \]</div>
+<p>利用 (2.7) 式来计算得， <span class="math notranslate nohighlight">\(\lambda = 1000 \times 0.001 = 1 \)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation} P(X \geq 2) = 1- P(X = 0)- P(X = 1) \end{equation}  
+ \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{equation} = 1- e^{-1}- e^{-1} \approx 0.2642411. \end{equation}  
+ \]</div>
+<p>显然利用 (2.7) 式的计算来得方便。一般，当 <span class="math notranslate nohighlight">\(n \geq 20, p \leq 0.05 \)</span>时用 <span class="math notranslate nohighlight">\(\frac{\lambda^k e^{-\lambda}}{k!} (\lambda = np) \)</span>作为 <span class="math notranslate nohighlight">\(\binom{n}{k} p^k (1- p)^{n-k} \)</span>的近似值效果颇佳。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2024, hjy。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
