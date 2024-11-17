@@ -15,6 +15,8 @@ Welcome to the probability documentation! Here you will find information related
    第二章-随机变量及其分布/2.1_随机变量
    第二章-随机变量及其分布/2.2_离散型随机变量及其分布律
    第二章-随机变量及其分布/2.3_随机变量的分布函数
+   第二章-随机变量及其分布/2.4_连续型随机变量及其概率密度
+   第二章-随机变量及其分布/2.5_随机变量的函数的分布
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
