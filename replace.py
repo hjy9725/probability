@@ -114,6 +114,8 @@ def replace_dollar_signs_in_md_files(root_dir="."):
                 new_content = new_content.replace("\cup ", "\cup")
                 new_content = new_content.replace("\cup ", "\cup")
                 new_content = new_content.replace("\cup", "\cup ")
+                new_content = new_content.replace("\circC", "\circ C")
+                new_content = new_content.replace("\simB", "\sim B")
                 new_content = new_content.replace("** $", "**$")
 
                 # 写回文件
