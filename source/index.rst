@@ -18,6 +18,7 @@ Welcome to the probability documentation! Here you will find information related
    第二章-随机变量及其分布/2.4_连续型随机变量及其概率密度
    第二章-随机变量及其分布/2.5_随机变量的函数的分布
    第四章-随机变量的数字特征/4.1_数学期望
+   第四章-随机变量的数字特征/附录
    第七章-参数估计/7.1_点估计
 
 * :ref:`genindex`
