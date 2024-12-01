@@ -20,6 +20,9 @@ Welcome to the probability documentation! Here you will find information related
    第四章-随机变量的数字特征/4.1_数学期望
    第四章-随机变量的数字特征/附录
    第七章-参数估计/7.1_点估计
+   线代第3章\1矩阵的初等变换与标准形
+   线代第3章\2矩阵的秩
+   线代第3章\3线性方程组的解
 
 * :ref:`genindex`
 * :ref:`modindex`
